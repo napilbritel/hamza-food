@@ -3,23 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamza Food — سناك حمزة | الرباط</title>
-    <meta name="description" content="سناك حمزة — أشهى الوجبات السريعة في الرباط. طاكوس، برغر، شوارما، بانيني، بيتزا وأكثر. توصيل سريع.">
+    <title>Hamza Food — سناك حمزة | Rabat</title>
+    <meta name="description" content="Hamza Food — Les meilleurs plats rapides à Rabat. Tacos, Burgers, Chawarma, Panini, Pizza et plus. Livraison rapide.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
 </head>
 <body>
 
     <!-- ═══ LOADER ═══ -->
     <div class="loader" id="loader">
         <div class="loader-inner">
-            <div class="loader-icon">🍔</div>
+            <div class="loader-logo">
+                <svg viewBox="0 0 120 120" width="80" height="80">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF4500"/>
+                            <stop offset="100%" style="stop-color:#FFB800"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="56" fill="none" stroke="url(#logoGrad)" stroke-width="3" opacity="0.3"/>
+                    <circle cx="60" cy="60" r="46" fill="url(#logoGrad)" opacity="0.1"/>
+                    <text x="60" y="52" text-anchor="middle" fill="url(#logoGrad)" font-size="32" font-weight="900" font-family="Poppins,sans-serif">HF</text>
+                    <text x="60" y="80" text-anchor="middle" fill="#999" font-size="11" font-weight="600" font-family="Poppins,sans-serif">SINCE 2020</text>
+                </svg>
+            </div>
             <div class="loader-bar"><div class="loader-fill"></div></div>
-            <p>Hamza Food</p>
+            <p class="loader-name">HAMZA FOOD</p>
+            <p class="loader-tagline">Fast Food • Rabat</p>
         </div>
     </div>
 
@@ -27,23 +42,41 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-content">
             <a href="#" class="logo">
-                <div class="logo-icon">🔥</div>
+                <div class="logo-icon">
+                    <svg viewBox="0 0 50 50" width="42" height="42">
+                        <defs>
+                            <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF4500"/>
+                                <stop offset="100%" style="stop-color:#FFB800"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="2" width="46" height="46" rx="12" fill="url(#navLogoGrad)"/>
+                        <text x="25" y="30" text-anchor="middle" fill="#fff" font-size="18" font-weight="900" font-family="Poppins,sans-serif">HF</text>
+                    </svg>
+                </div>
                 <div class="logo-text">
                     <span class="logo-name">Hamza Food</span>
-                    <span class="logo-sub">سناك حمزة</span>
+                    <span class="logo-sub">سناك حمزة — الرباط</span>
                 </div>
             </a>
-            <button class="nav-toggle" aria-label="Menu" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#menu">القائمة</a></li>
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#gallery">صور</a></li>
-                <li><a href="#reviews">آراء</a></li>
-                <li><a href="#contact" class="btn-nav"><i class="fab fa-whatsapp"></i> اطلب الآن</a></li>
-            </ul>
+            <div class="nav-right">
+                <button class="lang-toggle" id="langToggle" onclick="toggleLang()" aria-label="Switch language">
+                    <span class="lang-opt active" data-l="ar">عربي</span>
+                    <span class="lang-opt" data-l="fr">FR</span>
+                    <div class="lang-slider"></div>
+                </button>
+                <button class="nav-toggle" aria-label="Menu" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a></li>
+                    <li><a href="#menu" data-ar="القائمة" data-fr="Menu">القائمة</a></li>
+                    <li><a href="#about" data-ar="من نحن" data-fr="À propos">من نحن</a></li>
+                    <li><a href="#gallery" data-ar="صور" data-fr="Galerie">صور</a></li>
+                    <li><a href="#reviews" data-ar="آراء" data-fr="Avis">آراء</a></li>
+                    <li><a href="#contact" class="btn-nav"><i class="fab fa-whatsapp"></i> <span data-ar="اطلب الآن" data-fr="Commander">اطلب الآن</span></a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -51,6 +84,7 @@
     <section class="hero" id="home">
         <div class="hero-bg">
             <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
             <div class="hero-orbs">
                 <div class="orb orb-1"></div>
                 <div class="orb orb-2"></div>
@@ -60,40 +94,59 @@
         <div class="container hero-grid">
             <div class="hero-content">
                 <div class="hero-badge" data-reveal>
-                    <span class="badge-fire">🔥</span> الأشهى في الرباط
+                    <i class="fas fa-award"></i>
+                    <span data-ar="الأشهى في الرباط" data-fr="Le meilleur à Rabat">الأشهى في الرباط</span>
                 </div>
                 <h1 data-reveal>
-                    <span class="hero-line-1">أطيب الوجبات</span>
-                    <span class="hero-line-2">في <span class="text-gradient">Hamza Food</span></span>
+                    <span class="hero-line-1" data-ar="أطيب الوجبات" data-fr="Les meilleurs plats">أطيب الوجبات</span>
+                    <span class="hero-line-2" data-ar-html="في <span class='text-gradient'>Hamza Food</span>" data-fr-html="chez <span class='text-gradient'>Hamza Food</span>">في <span class="text-gradient">Hamza Food</span></span>
                 </h1>
-                <p class="hero-desc" data-reveal>طاكوس، برغر، شوارما، بانيني وأكثر… كلشي طازج ولذيذ بأثمنة مناسبة. جربو وغادي ترجعو!</p>
+                <p class="hero-desc" data-reveal data-ar="طاكوس، برغر، شوارما، بانيني وأكثر… كلشي طازج ولذيذ بأثمنة مناسبة. جربو وغادي ترجعو!" data-fr="Tacos, burgers, chawarma, panini et plus encore… Tout est frais et délicieux à des prix abordables !">طاكوس، برغر، شوارما، بانيني وأكثر… كلشي طازج ولذيذ بأثمنة مناسبة. جربو وغادي ترجعو!</p>
                 <div class="hero-buttons" data-reveal>
                     <a href="#menu" class="btn btn-fire btn-lg">
-                        <i class="fas fa-utensils"></i> شوف القائمة
+                        <i class="fas fa-utensils"></i> <span data-ar="شوف القائمة" data-fr="Voir le menu">شوف القائمة</span>
                     </a>
                     <a href="https://wa.me/212676220003" class="btn btn-whatsapp btn-lg" target="_blank">
-                        <i class="fab fa-whatsapp"></i> اطلب دابا
+                        <i class="fab fa-whatsapp"></i> <span data-ar="اطلب دابا" data-fr="Commander">اطلب دابا</span>
                     </a>
                 </div>
-                <div class="hero-features" data-reveal>
-                    <div class="hero-feat"><i class="fas fa-motorcycle"></i> توصيل سريع</div>
-                    <div class="hero-feat"><i class="fas fa-clock"></i> مفتوح كل يوم</div>
-                    <div class="hero-feat"><i class="fas fa-star"></i> +500 عميل</div>
+                <div class="hero-stats" data-reveal>
+                    <div class="hero-stat">
+                        <strong class="counter" data-count="500">0</strong><span>+</span>
+                        <p data-ar="عميل سعيد" data-fr="Clients satisfaits">عميل سعيد</p>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <strong>4.5</strong><span>⭐</span>
+                        <p data-ar="تقييم Google" data-fr="Note Google">تقييم Google</p>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <strong>45+</strong><span></span>
+                        <p data-ar="طبق في القائمة" data-fr="Plats au menu">طبق في القائمة</p>
+                    </div>
                 </div>
             </div>
             <div class="hero-visual" data-reveal>
                 <div class="hero-img-wrap">
                     <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=600&fit=crop" alt="Burger Hamza Food" class="hero-img">
                     <div class="hero-price-tag">
-                        <span>ابتداءً من</span>
+                        <span data-ar="ابتداءً من" data-fr="À partir de">ابتداءً من</span>
                         <strong>15 dh</strong>
+                    </div>
+                    <div class="hero-quality-badge">
+                        <i class="fas fa-certificate"></i>
+                        <span data-ar="جودة عالية" data-fr="Haute qualité">جودة عالية</span>
                     </div>
                 </div>
                 <div class="floating-food food-1">
                     <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=120&h=120&fit=crop" alt="Pizza">
                 </div>
                 <div class="floating-food food-2">
-                    <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=120&h=120&fit=crop" alt="Tacos">
+                    <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=120&h=120&fit=crop" alt="Tacos">
+                </div>
+                <div class="floating-food food-3">
+                    <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=100&h=100&fit=crop" alt="Shawarma">
                 </div>
             </div>
         </div>
@@ -102,43 +155,128 @@
 
     <!-- ═══ PROMO STRIP ═══ -->
     <div class="promo-strip">
-        <div class="container promo-content">
-            <div class="promo-item"><i class="fas fa-fire"></i> أطباق طازجة</div>
-            <div class="promo-item"><i class="fas fa-truck-fast"></i> توصيل سريع</div>
-            <div class="promo-item"><i class="fas fa-tags"></i> أثمنة مناسبة</div>
-            <div class="promo-item"><i class="fas fa-heart"></i> مكونات طبيعية</div>
-            <div class="promo-item"><i class="fas fa-child"></i> عروض للأطفال</div>
+        <div class="promo-marquee">
+            <div class="promo-track">
+                <div class="promo-item"><i class="fas fa-fire"></i> <span data-ar="أطباق طازجة" data-fr="Plats frais">أطباق طازجة</span></div>
+                <div class="promo-sep">★</div>
+                <div class="promo-item"><i class="fas fa-truck-fast"></i> <span data-ar="توصيل سريع" data-fr="Livraison rapide">توصيل سريع</span></div>
+                <div class="promo-sep">★</div>
+                <div class="promo-item"><i class="fas fa-tags"></i> <span data-ar="أثمنة مناسبة" data-fr="Prix abordables">أثمنة مناسبة</span></div>
+                <div class="promo-sep">★</div>
+                <div class="promo-item"><i class="fas fa-heart"></i> <span data-ar="مكونات طبيعية" data-fr="Ingrédients naturels">مكونات طبيعية</span></div>
+                <div class="promo-sep">★</div>
+                <div class="promo-item"><i class="fas fa-child"></i> <span data-ar="عروض للأطفال" data-fr="Offres enfants">عروض للأطفال</span></div>
+                <div class="promo-sep">★</div>
+                <div class="promo-item"><i class="fas fa-fire"></i> <span data-ar="أطباق طازجة" data-fr="Plats frais">أطباق طازجة</span></div>
+                <div class="promo-sep">★</div>
+                <div class="promo-item"><i class="fas fa-truck-fast"></i> <span data-ar="توصيل سريع" data-fr="Livraison rapide">توصيل سريع</span></div>
+                <div class="promo-sep">★</div>
+                <div class="promo-item"><i class="fas fa-tags"></i> <span data-ar="أثمنة مناسبة" data-fr="Prix abordables">أثمنة مناسبة</span></div>
+                <div class="promo-sep">★</div>
+                <div class="promo-item"><i class="fas fa-heart"></i> <span data-ar="مكونات طبيعية" data-fr="Ingrédients naturels">مكونات طبيعية</span></div>
+                <div class="promo-sep">★</div>
+                <div class="promo-item"><i class="fas fa-child"></i> <span data-ar="عروض للأطفال" data-fr="Offres enfants">عروض للأطفال</span></div>
+                <div class="promo-sep">★</div>
+            </div>
         </div>
     </div>
 
-    <!-- ═══ MENU ═══ -->
-    <section class="section" id="menu">
+    <!-- ═══ POPULAR ITEMS ═══ -->
+    <section class="section" id="popular">
         <div class="container">
             <div class="section-header" data-reveal>
-                <span class="section-tag"><i class="fas fa-utensils"></i> القائمة</span>
-                <h2>شنو بغيتي تاكل اليوم؟</h2>
-                <p>اختار من القائمة ديالنا — كلشي طازج ومحضر بحب</p>
+                <span class="section-tag"><i class="fas fa-fire-flame-curved"></i> <span data-ar="الأكثر طلبا" data-fr="Les plus demandés">الأكثر طلبا</span></span>
+                <h2 data-ar="أشهر أطباقنا" data-fr="Nos plats populaires">أشهر أطباقنا</h2>
+                <p data-ar="الأطباق اللي كيحماقو عليها الزبائن" data-fr="Les plats préférés de nos clients">الأطباق اللي كيحماقو عليها الزبائن</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="popular-grid" data-reveal>
+                <div class="popular-card">
+                    <div class="popular-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400&h=300&fit=crop" alt="Tacos Hamza">
+                        <div class="popular-badge" data-ar="الأكثر طلبا" data-fr="Best-seller">الأكثر طلبا</div>
+                        <div class="popular-price">38-45<small>dh</small></div>
+                    </div>
+                    <div class="popular-info">
+                        <h3 data-ar="طاكوس حمزة" data-fr="Tacos Hamza">طاكوس حمزة</h3>
+                        <p data-ar="الطبق الخاص — طاكوس معمر بالكامل" data-fr="Notre spécialité — Tacos bien garni">الطبق الخاص — طاكوس معمر بالكامل</p>
+                        <div class="popular-bottom">
+                            <div class="popular-rating"><i class="fas fa-star"></i> 4.8</div>
+                            <a href="https://wa.me/212676220003?text=بغيت طاكوس حمزة" target="_blank" class="popular-order"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular-card">
+                    <div class="popular-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1586816001966-79b736744398?w=400&h=300&fit=crop" alt="Burger King">
+                        <div class="popular-price">38<small>dh</small></div>
+                    </div>
+                    <div class="popular-info">
+                        <h3 data-ar="برغر كينغ" data-fr="Burger King">برغر كينغ</h3>
+                        <p data-ar="برغر كبير محشي ولذيذ" data-fr="Gros burger bien garni et délicieux">برغر كبير محشي ولذيذ</p>
+                        <div class="popular-bottom">
+                            <div class="popular-rating"><i class="fas fa-star"></i> 4.7</div>
+                            <a href="https://wa.me/212676220003?text=بغيت برغر كينغ" target="_blank" class="popular-order"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular-card">
+                    <div class="popular-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&h=300&fit=crop" alt="Chawarma Double">
+                        <div class="popular-price">45<small>dh</small></div>
+                    </div>
+                    <div class="popular-info">
+                        <h3 data-ar="شوارما دوبل" data-fr="Chawarma Double">شوارما دوبل</h3>
+                        <p data-ar="شوارما مضاعفة — ضعف اللذة" data-fr="Double chawarma — double plaisir">شوارما مضاعفة — ضعف اللذة</p>
+                        <div class="popular-bottom">
+                            <div class="popular-rating"><i class="fas fa-star"></i> 4.9</div>
+                            <a href="https://wa.me/212676220003?text=بغيت شوارما دوبل" target="_blank" class="popular-order"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular-card">
+                    <div class="popular-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=300&fit=crop" alt="Tajin Pil-Pil">
+                        <div class="popular-badge special" data-ar="خاص الشاف" data-fr="Spécial chef">خاص الشاف</div>
+                        <div class="popular-price">60<small>dh</small></div>
+                    </div>
+                    <div class="popular-info">
+                        <h3 data-ar="طاجين بيل بيل" data-fr="Tajine Pil-Pil">طاجين بيل بيل</h3>
+                        <p data-ar="طاجين تقليدي مغربي مميز" data-fr="Tajine marocain traditionnel unique">طاجين تقليدي مغربي مميز</p>
+                        <div class="popular-bottom">
+                            <div class="popular-rating"><i class="fas fa-star"></i> 4.9</div>
+                            <a href="https://wa.me/212676220003?text=بغيت طاجين بيل بيل" target="_blank" class="popular-order"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ MENU ═══ -->
+    <section class="section section-alt" id="menu">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <span class="section-tag"><i class="fas fa-utensils"></i> <span data-ar="القائمة الكاملة" data-fr="Menu complet">القائمة الكاملة</span></span>
+                <h2 data-ar="شنو بغيتي تاكل اليوم؟" data-fr="Que voulez-vous manger ?">شنو بغيتي تاكل اليوم؟</h2>
+                <p data-ar="اختار من القائمة ديالنا — كلشي طازج ومحضر بحب" data-fr="Choisissez dans notre menu — tout est frais et préparé avec amour">اختار من القائمة ديالنا — كلشي طازج ومحضر بحب</p>
                 <div class="section-line"></div>
             </div>
 
-            <!-- Menu Tabs -->
             <div class="menu-tabs" data-reveal>
-                <button class="menu-tab active" data-cat="all"><i class="fas fa-th-large"></i> الكل</button>
-                <button class="menu-tab" data-cat="tacos"><i class="fas fa-pepper-hot"></i> طاكوس</button>
-                <button class="menu-tab" data-cat="burger"><i class="fas fa-hamburger"></i> برغر</button>
-                <button class="menu-tab" data-cat="chawarma"><i class="fas fa-drumstick-bite"></i> شوارما</button>
-                <button class="menu-tab" data-cat="panini"><i class="fas fa-bread-slice"></i> بانيني</button>
-                <button class="menu-tab" data-cat="sandwich"><i class="fas fa-hotdog"></i> سندويتش</button>
-                <button class="menu-tab" data-cat="plats"><i class="fas fa-bowl-food"></i> أطباق</button>
-                <button class="menu-tab" data-cat="tajin"><i class="fas fa-fire-burner"></i> طاجين</button>
-                <button class="menu-tab" data-cat="omelette"><i class="fas fa-egg"></i> أومليط</button>
-                <button class="menu-tab" data-cat="kids"><i class="fas fa-child"></i> أطفال</button>
+                <button class="menu-tab active" data-cat="all"><i class="fas fa-th-large"></i> <span data-ar="الكل" data-fr="Tout">الكل</span></button>
+                <button class="menu-tab" data-cat="tacos"><i class="fas fa-pepper-hot"></i> <span data-ar="طاكوس" data-fr="Tacos">طاكوس</span></button>
+                <button class="menu-tab" data-cat="burger"><i class="fas fa-hamburger"></i> <span data-ar="برغر" data-fr="Burger">برغر</span></button>
+                <button class="menu-tab" data-cat="chawarma"><i class="fas fa-drumstick-bite"></i> <span data-ar="شوارما" data-fr="Chawarma">شوارما</span></button>
+                <button class="menu-tab" data-cat="panini"><i class="fas fa-bread-slice"></i> <span data-ar="بانيني" data-fr="Panini">بانيني</span></button>
+                <button class="menu-tab" data-cat="sandwich"><i class="fas fa-hotdog"></i> <span data-ar="سندويتش" data-fr="Sandwich">سندويتش</span></button>
+                <button class="menu-tab" data-cat="plats"><i class="fas fa-bowl-food"></i> <span data-ar="أطباق" data-fr="Plats">أطباق</span></button>
+                <button class="menu-tab" data-cat="tajin"><i class="fas fa-fire-burner"></i> <span data-ar="طاجين" data-fr="Tajine">طاجين</span></button>
+                <button class="menu-tab" data-cat="omelette"><i class="fas fa-egg"></i> <span data-ar="أومليط" data-fr="Omelette">أومليط</span></button>
+                <button class="menu-tab" data-cat="kids"><i class="fas fa-child"></i> <span data-ar="أطفال" data-fr="Enfants">أطفال</span></button>
             </div>
 
-            <!-- Menu Grid -->
-            <div class="menu-grid" id="menu-grid">
-                <!-- filled by JS -->
-            </div>
+            <div class="menu-grid" id="menu-grid"></div>
         </div>
     </section>
 
@@ -147,18 +285,18 @@
         <div class="container">
             <div class="offer-grid" data-reveal>
                 <div class="offer-content">
-                    <span class="offer-tag">🎁 عرض خاص</span>
-                    <h2>هدية للأطفال!</h2>
-                    <p>بيتزا مارغاريتا + فريت + عصير = <strong>35 dh</strong> فقط!<br>همبرغر + فريت + عصير = <strong>30 dh</strong> فقط!</p>
+                    <span class="offer-tag"><i class="fas fa-gift"></i> <span data-ar="عرض خاص" data-fr="Offre spéciale">عرض خاص</span></span>
+                    <h2 data-ar="هدية للأطفال!" data-fr="Offre Enfants !">هدية للأطفال!</h2>
+                    <p data-ar-html="بيتزا مارغاريتا + فريت + عصير = <strong>35 dh</strong> فقط!<br>همبرغر + فريت + عصير = <strong>30 dh</strong> فقط!" data-fr-html="Pizza Margarita + Frites + Jus = <strong>35 dh</strong> seulement !<br>Hamburger + Frites + Jus = <strong>30 dh</strong> seulement !">بيتزا مارغاريتا + فريت + عصير = <strong>35 dh</strong> فقط!<br>همبرغر + فريت + عصير = <strong>30 dh</strong> فقط!</p>
                     <a href="https://wa.me/212676220003?text=بغيت نطلب عرض الأطفال" target="_blank" class="btn btn-fire btn-lg">
-                        <i class="fab fa-whatsapp"></i> اطلب العرض
+                        <i class="fab fa-whatsapp"></i> <span data-ar="اطلب العرض" data-fr="Commander l'offre">اطلب العرض</span>
                     </a>
                 </div>
                 <div class="offer-visual">
                     <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop" alt="Pizza" class="offer-img">
                     <div class="offer-badge">
                         <span class="offer-price">30<small>dh</small></span>
-                        <span>فقط!</span>
+                        <span data-ar="فقط!" data-fr="Seulement !">فقط!</span>
                     </div>
                 </div>
             </div>
@@ -166,34 +304,41 @@
     </section>
 
     <!-- ═══ ABOUT ═══ -->
-    <section class="section section-alt" id="about">
+    <section class="section" id="about">
         <div class="container">
             <div class="about-grid">
                 <div class="about-visual" data-reveal>
                     <div class="about-img-main">
-                        <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&h=450&fit=crop" alt="Hamza Food Restaurant">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=450&fit=crop" alt="Hamza Food Restaurant">
+                    </div>
+                    <div class="about-img-secondary">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&h=300&fit=crop" alt="Food platter">
                     </div>
                     <div class="about-float top">
-                        <div class="af-icon">⭐</div>
-                        <div><strong>4.5+</strong><span>تقييم Google</span></div>
+                        <div class="af-icon"><i class="fas fa-star" style="color:#FFB800;font-size:1.4rem"></i></div>
+                        <div><strong>4.5+</strong><span data-ar="تقييم Google" data-fr="Note Google">تقييم Google</span></div>
                     </div>
                     <div class="about-float bottom">
-                        <div class="af-icon">🏆</div>
-                        <div><strong>+500</strong><span>عميل راضي</span></div>
+                        <div class="af-icon"><i class="fas fa-trophy" style="color:#FFB800;font-size:1.4rem"></i></div>
+                        <div><strong>+500</strong><span data-ar="عميل راضي" data-fr="Clients satisfaits">عميل راضي</span></div>
+                    </div>
+                    <div class="about-experience">
+                        <strong>5+</strong>
+                        <span data-ar="سنوات خبرة" data-fr="Ans d'expérience">سنوات خبرة</span>
                     </div>
                 </div>
                 <div class="about-content" data-reveal>
-                    <span class="section-tag"><i class="fas fa-info-circle"></i> من نحن</span>
-                    <h2>علاش Hamza Food؟</h2>
-                    <p>حنا سناك عائلي فالرباط، كنقدمو أطيب الوجبات السريعة بمكونات طازجة كل يوم. من الطاكوس حتى الطاجين، عندنا كلشي باش ترضيو ذوقكم!</p>
+                    <span class="section-tag"><i class="fas fa-info-circle"></i> <span data-ar="من نحن" data-fr="À propos">من نحن</span></span>
+                    <h2 data-ar="علاش Hamza Food؟" data-fr="Pourquoi Hamza Food ?">علاش Hamza Food؟</h2>
+                    <p data-ar="حنا سناك عائلي فالرباط، كنقدمو أطيب الوجبات السريعة بمكونات طازجة كل يوم. من الطاكوس حتى الطاجين، عندنا كلشي باش ترضيو ذوقكم!" data-fr="Nous sommes un snack familial à Rabat, proposant les meilleurs plats rapides avec des ingrédients frais chaque jour. Des tacos aux tajines, nous avons tout pour satisfaire vos papilles !">حنا سناك عائلي فالرباط، كنقدمو أطيب الوجبات السريعة بمكونات طازجة كل يوم. من الطاكوس حتى الطاجين، عندنا كلشي باش ترضيو ذوقكم!</p>
                     <div class="about-points">
-                        <div class="apoint"><div class="apoint-icon"><i class="fas fa-check"></i></div><div><strong>مكونات طازجة يوميا</strong><span>كنستعملو غير الخضرة واللحم الطازج</span></div></div>
-                        <div class="apoint"><div class="apoint-icon"><i class="fas fa-check"></i></div><div><strong>أثمنة في المتناول</strong><span>ابتداءً من 15 درهم فقط</span></div></div>
-                        <div class="apoint"><div class="apoint-icon"><i class="fas fa-check"></i></div><div><strong>توصيل سريع</strong><span>نوصلو ليكم الأكل ساخن حتى لداركم</span></div></div>
-                        <div class="apoint"><div class="apoint-icon"><i class="fas fa-check"></i></div><div><strong>عروض للعائلات والأطفال</strong><span>قائمة خاصة بالأطفال بأثمنة مناسبة</span></div></div>
+                        <div class="apoint"><div class="apoint-icon"><i class="fas fa-leaf"></i></div><div><strong data-ar="مكونات طازجة يوميا" data-fr="Ingrédients frais quotidiens">مكونات طازجة يوميا</strong><span data-ar="كنستعملو غير الخضرة واللحم الطازج" data-fr="Nous n'utilisons que des légumes et viandes frais">كنستعملو غير الخضرة واللحم الطازج</span></div></div>
+                        <div class="apoint"><div class="apoint-icon"><i class="fas fa-coins"></i></div><div><strong data-ar="أثمنة في المتناول" data-fr="Prix abordables">أثمنة في المتناول</strong><span data-ar="ابتداءً من 15 درهم فقط" data-fr="À partir de 15 dh seulement">ابتداءً من 15 درهم فقط</span></div></div>
+                        <div class="apoint"><div class="apoint-icon"><i class="fas fa-motorcycle"></i></div><div><strong data-ar="توصيل سريع" data-fr="Livraison rapide">توصيل سريع</strong><span data-ar="نوصلو ليكم الأكل ساخن حتى لداركم" data-fr="Nous vous livrons chaud à domicile">نوصلو ليكم الأكل ساخن حتى لداركم</span></div></div>
+                        <div class="apoint"><div class="apoint-icon"><i class="fas fa-users"></i></div><div><strong data-ar="عروض للعائلات والأطفال" data-fr="Offres familles & enfants">عروض للعائلات والأطفال</strong><span data-ar="قائمة خاصة بالأطفال بأثمنة مناسبة" data-fr="Menu enfants à prix réduits">قائمة خاصة بالأطفال بأثمنة مناسبة</span></div></div>
                     </div>
                     <a href="https://wa.me/212676220003" target="_blank" class="btn btn-primary btn-lg">
-                        <i class="fab fa-whatsapp"></i> تواصل معنا
+                        <i class="fab fa-whatsapp"></i> <span data-ar="تواصل معنا" data-fr="Contactez-nous">تواصل معنا</span>
                     </a>
                 </div>
             </div>
@@ -201,104 +346,79 @@
     </section>
 
     <!-- ═══ GALLERY ═══ -->
-    <section class="section" id="gallery">
+    <section class="section section-alt" id="gallery">
         <div class="container">
             <div class="section-header" data-reveal>
-                <span class="section-tag"><i class="fas fa-camera"></i> صور أطباقنا</span>
-                <h2>شوفو شنو كنحضرو</h2>
-                <p>كل طبق محضر بعناية وحب</p>
+                <span class="section-tag"><i class="fas fa-camera"></i> <span data-ar="صور أطباقنا" data-fr="Photos de nos plats">صور أطباقنا</span></span>
+                <h2 data-ar="شوفو شنو كنحضرو" data-fr="Découvrez nos créations">شوفو شنو كنحضرو</h2>
+                <p data-ar="كل طبق محضر بعناية وحب" data-fr="Chaque plat préparé avec soin et amour">كل طبق محضر بعناية وحب</p>
                 <div class="section-line"></div>
             </div>
             <div class="gallery-grid" data-reveal>
                 <div class="gallery-item gi-tall">
                     <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=800&fit=crop" alt="Burger" loading="lazy">
-                    <div class="gallery-overlay"><span>برغر</span></div>
+                    <div class="gallery-overlay"><span data-ar="برغر" data-fr="Burger">برغر</span></div>
                 </div>
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&h=400&fit=crop" alt="Pizza" loading="lazy">
-                    <div class="gallery-overlay"><span>بيتزا</span></div>
+                    <div class="gallery-overlay"><span data-ar="بيتزا" data-fr="Pizza">بيتزا</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=500&h=400&fit=crop" alt="Tacos" loading="lazy">
-                    <div class="gallery-overlay"><span>طاكوس</span></div>
+                    <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=500&h=400&fit=crop" alt="Tacos" loading="lazy">
+                    <div class="gallery-overlay"><span data-ar="طاكوس" data-fr="Tacos">طاكوس</span></div>
                 </div>
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=500&h=400&fit=crop" alt="Sandwich" loading="lazy">
-                    <div class="gallery-overlay"><span>سندويتش</span></div>
+                    <div class="gallery-overlay"><span data-ar="سندويتش" data-fr="Sandwich">سندويتش</span></div>
                 </div>
                 <div class="gallery-item gi-wide">
                     <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" alt="أطباق" loading="lazy">
-                    <div class="gallery-overlay"><span>أطباق متنوعة</span></div>
+                    <div class="gallery-overlay"><span data-ar="أطباق متنوعة" data-fr="Plats variés">أطباق متنوعة</span></div>
                 </div>
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=500&h=400&fit=crop" alt="Shawarma" loading="lazy">
-                    <div class="gallery-overlay"><span>شوارما</span></div>
+                    <div class="gallery-overlay"><span data-ar="شوارما" data-fr="Chawarma">شوارما</span></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ═══ REVIEWS ═══ -->
-    <section class="section section-alt" id="reviews">
+    <section class="section" id="reviews">
         <div class="container">
             <div class="section-header" data-reveal>
-                <span class="section-tag"><i class="fas fa-comment-dots"></i> آراء العملاء</span>
-                <h2>شنو كيقولو عملاؤنا</h2>
-                <p>آراء حقيقية من زبائننا الكرام</p>
+                <span class="section-tag"><i class="fas fa-comment-dots"></i> <span data-ar="آراء العملاء" data-fr="Avis clients">آراء العملاء</span></span>
+                <h2 data-ar="شنو كيقولو عملاؤنا" data-fr="Ce que disent nos clients">شنو كيقولو عملاؤنا</h2>
+                <p data-ar="آراء حقيقية من زبائننا الكرام" data-fr="Avis authentiques de nos chers clients">آراء حقيقية من زبائننا الكرام</p>
                 <div class="section-line"></div>
             </div>
             <div class="swiper reviews-swiper" data-reveal>
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <div class="review-header">
-                                <div class="review-avatar">أ</div>
-                                <div><strong>أحمد م.</strong><span>عميل دائم</span></div>
-                            </div>
-                            <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="review-text">أحسن سناك في الحي! الطاكوس ديالهم خياليين والبرغر ديالهم كبير ومعمر. كنرجع ليهم كل أسبوع.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <div class="review-header">
-                                <div class="review-avatar rv-2">س</div>
-                                <div><strong>سارة ب.</strong><span>تجربة أولى</span></div>
-                            </div>
-                            <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="review-text">الشوارما ديالهم لذيذة بزاف! والتوصيل كان سريع. الأكل وصل ساخن. غادي نعاود نطلب إن شاء الله.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <div class="review-header">
-                                <div class="review-avatar rv-3">ي</div>
-                                <div><strong>يوسف ك.</strong><span>عميل دائم</span></div>
-                            </div>
-                            <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="review-text">ولادي كيحماقو على البيتزا والعرض ديال الأطفال مزيان بزاف. 30 درهم فقط! أحسن quality/prix.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <div class="review-header">
-                                <div class="review-avatar rv-4">ف</div>
-                                <div><strong>فاطمة ر.</strong><span>عميلة</span></div>
-                            </div>
-                            <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                            <p class="review-text">الطاجين ديال بيل بيل ممتاز! والثمن معقول. المكان نظيف والموظفين محترمين. نوصي بيه.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <div class="review-header">
-                                <div class="review-avatar rv-5">م</div>
-                                <div><strong>محمد ع.</strong><span>عميل جديد</span></div>
-                            </div>
-                            <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="review-text">جربت الأومليط شاف وكان لذيذ بزاف! والكفتة معمرة. أسعار جيدة مقارنة بالجودة.</p>
-                        </div>
-                    </div>
+                    <div class="swiper-slide"><div class="review-card">
+                        <div class="review-header"><div class="review-avatar">أ</div><div><strong>أحمد م.</strong><span data-ar="عميل دائم" data-fr="Client régulier">عميل دائم</span></div></div>
+                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text" data-ar="أحسن سناك في الحي! الطاكوس ديالهم خياليين والبرغر ديالهم كبير ومعمر." data-fr="Le meilleur snack du quartier ! Leurs tacos sont incroyables et leur burger est énorme.">أحسن سناك في الحي! الطاكوس ديالهم خياليين والبرغر ديالهم كبير ومعمر.</p>
+                    </div></div>
+                    <div class="swiper-slide"><div class="review-card">
+                        <div class="review-header"><div class="review-avatar rv-2">س</div><div><strong>سارة ب.</strong><span data-ar="تجربة أولى" data-fr="Première visite">تجربة أولى</span></div></div>
+                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text" data-ar="الشوارما ديالهم لذيذة بزاف! والتوصيل كان سريع. الأكل وصل ساخن." data-fr="Leur chawarma est vraiment délicieuse ! La livraison était rapide et chaude.">الشوارما ديالهم لذيذة بزاف! والتوصيل كان سريع. الأكل وصل ساخن.</p>
+                    </div></div>
+                    <div class="swiper-slide"><div class="review-card">
+                        <div class="review-header"><div class="review-avatar rv-3">ي</div><div><strong>يوسف ك.</strong><span data-ar="عميل دائم" data-fr="Client régulier">عميل دائم</span></div></div>
+                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text" data-ar="ولادي كيحماقو على البيتزا والعرض ديال الأطفال مزيان بزاف. 30 درهم فقط!" data-fr="Mes enfants adorent la pizza et l'offre enfants est géniale. 30 dh seulement !">ولادي كيحماقو على البيتزا والعرض ديال الأطفال مزيان بزاف. 30 درهم فقط!</p>
+                    </div></div>
+                    <div class="swiper-slide"><div class="review-card">
+                        <div class="review-header"><div class="review-avatar rv-4">ف</div><div><strong>فاطمة ر.</strong><span data-ar="عميلة" data-fr="Cliente">عميلة</span></div></div>
+                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <p class="review-text" data-ar="الطاجين ديال بيل بيل ممتاز! والثمن معقول. المكان نظيف." data-fr="Le tajine pil-pil est excellent ! Le prix est raisonnable. L'endroit est propre.">الطاجين ديال بيل بيل ممتاز! والثمن معقول. المكان نظيف.</p>
+                    </div></div>
+                    <div class="swiper-slide"><div class="review-card">
+                        <div class="review-header"><div class="review-avatar rv-5">م</div><div><strong>محمد ع.</strong><span data-ar="عميل جديد" data-fr="Nouveau client">عميل جديد</span></div></div>
+                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text" data-ar="جربت الأومليط شاف وكان لذيذ بزاف! والكفتة معمرة. أسعار جيدة." data-fr="J'ai essayé l'omelette chef, c'était délicieux ! Bon rapport qualité/prix.">جربت الأومليط شاف وكان لذيذ بزاف! والكفتة معمرة. أسعار جيدة.</p>
+                    </div></div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -306,45 +426,40 @@
     </section>
 
     <!-- ═══ LOCATION ═══ -->
-    <section class="section" id="location">
+    <section class="section section-alt" id="location">
         <div class="container">
             <div class="section-header" data-reveal>
-                <span class="section-tag"><i class="fas fa-map-marker-alt"></i> موقعنا</span>
-                <h2>فين تلقاونا</h2>
+                <span class="section-tag"><i class="fas fa-map-marker-alt"></i> <span data-ar="موقعنا" data-fr="Notre emplacement">موقعنا</span></span>
+                <h2 data-ar="فين تلقاونا" data-fr="Où nous trouver">فين تلقاونا</h2>
                 <div class="section-line"></div>
             </div>
             <div class="location-grid">
                 <div class="map-container" data-reveal>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.5!2d-6.8498!3d34.0133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76c8b4d0c1f53%3A0x4a5e63c8f41e0b4b!2sHamza%20Food!5e0!3m2!1sfr!2sma!4v1"
-                        width="100%" height="400" style="border:0; border-radius:16px;" allowfullscreen="" loading="lazy">
-                    </iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.5!2d-6.8498!3d34.0133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76c8b4d0c1f53%3A0x4a5e63c8f41e0b4b!2sHamza%20Food!5e0!3m2!1sfr!2sma!4v1" width="100%" height="400" style="border:0; border-radius:16px;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="info-cards" data-reveal>
                     <div class="info-card">
                         <div class="ic-icon"><i class="fas fa-clock"></i></div>
                         <div>
-                            <h4>أوقات العمل</h4>
-                            <p>كل يوم: 11:00 - 23:00</p>
-                            <div class="status-badge open"><span class="dot"></span> مفتوح الآن</div>
+                            <h4 data-ar="أوقات العمل" data-fr="Horaires">أوقات العمل</h4>
+                            <p data-ar="كل يوم: 11:00 - 23:00" data-fr="Tous les jours : 11h - 23h">كل يوم: 11:00 - 23:00</p>
+                            <div class="status-badge open"><span class="dot"></span> <span data-ar="مفتوح الآن" data-fr="Ouvert">مفتوح الآن</span></div>
                         </div>
                     </div>
                     <div class="info-card">
                         <div class="ic-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div>
-                            <h4>العنوان</h4>
-                            <p>الرباط، المغرب</p>
-                            <a href="https://maps.app.goo.gl/u7gHWxWksG43x8Tb6" target="_blank" class="info-link">
-                                <i class="fas fa-directions"></i> الاتجاهات
-                            </a>
+                            <h4 data-ar="العنوان" data-fr="Adresse">العنوان</h4>
+                            <p data-ar="الرباط، المغرب" data-fr="Rabat, Maroc">الرباط، المغرب</p>
+                            <a href="https://maps.app.goo.gl/u7gHWxWksG43x8Tb6" target="_blank" class="info-link"><i class="fas fa-directions"></i> <span data-ar="الاتجاهات" data-fr="Itinéraire">الاتجاهات</span></a>
                         </div>
                     </div>
                     <div class="info-card">
                         <div class="ic-icon"><i class="fas fa-phone"></i></div>
                         <div>
-                            <h4>الهاتف</h4>
+                            <h4 data-ar="الهاتف" data-fr="Téléphone">الهاتف</h4>
                             <p dir="ltr">0676 220 003</p>
-                            <a href="tel:0676220003" class="info-link"><i class="fas fa-phone"></i> اتصل بنا</a>
+                            <a href="tel:0676220003" class="info-link"><i class="fas fa-phone"></i> <span data-ar="اتصل بنا" data-fr="Appelez-nous">اتصل بنا</span></a>
                         </div>
                     </div>
                 </div>
@@ -354,22 +469,17 @@
 
     <!-- ═══ CTA ═══ -->
     <section class="cta-section" id="contact">
-        <div class="cta-bg">
-            <div class="cta-gradient"></div>
-            <div class="cta-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
-        </div>
+        <div class="cta-bg"><div class="cta-gradient"></div><div class="cta-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div></div></div>
         <div class="container">
             <div class="cta-content" data-reveal>
-                <div class="cta-emoji">🍔🌮🍕</div>
-                <h2>جوعان؟ اطلب دابا!</h2>
-                <p>سيفط لينا رسالة على واتساب وغادي نوصلو ليك الأكل ساخن</p>
+                <div class="cta-icon">
+                    <svg viewBox="0 0 120 120" width="100" height="100"><circle cx="60" cy="60" r="56" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/><text x="60" y="70" text-anchor="middle" fill="white" font-size="48">🍔</text></svg>
+                </div>
+                <h2 data-ar="جوعان؟ اطلب دابا!" data-fr="Vous avez faim ? Commandez !">جوعان؟ اطلب دابا!</h2>
+                <p data-ar="سيفط لينا رسالة على واتساب وغادي نوصلو ليك الأكل ساخن" data-fr="Envoyez-nous un message WhatsApp et nous vous livrons chaud">سيفط لينا رسالة على واتساب وغادي نوصلو ليك الأكل ساخن</p>
                 <div class="cta-buttons">
-                    <a href="https://wa.me/212676220003?text=سلام، بغيت نطلب من عندكم" target="_blank" class="btn btn-whatsapp btn-xl">
-                        <i class="fab fa-whatsapp"></i> اطلب على واتساب
-                    </a>
-                    <a href="tel:0676220003" class="btn btn-call-cta btn-xl">
-                        <i class="fas fa-phone"></i> اتصل بنا
-                    </a>
+                    <a href="https://wa.me/212676220003?text=سلام، بغيت نطلب من عندكم" target="_blank" class="btn btn-whatsapp btn-xl"><i class="fab fa-whatsapp"></i> <span data-ar="اطلب على واتساب" data-fr="Commander sur WhatsApp">اطلب على واتساب</span></a>
+                    <a href="tel:0676220003" class="btn btn-call-cta btn-xl"><i class="fas fa-phone"></i> <span data-ar="اتصل بنا" data-fr="Appelez-nous">اتصل بنا</span></a>
                 </div>
             </div>
         </div>
@@ -377,49 +487,47 @@
 
     <!-- ═══ FOOTER ═══ -->
     <footer class="footer">
-        <div class="footer-wave">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z" fill="currentColor"/></svg>
-        </div>
+        <div class="footer-wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z" fill="currentColor"/></svg></div>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <span class="fl-icon">🔥</span>
+                        <svg viewBox="0 0 50 50" width="36" height="36"><rect x="2" y="2" width="46" height="46" rx="12" fill="url(#navLogoGrad)"/><text x="25" y="30" text-anchor="middle" fill="#fff" font-size="18" font-weight="900" font-family="Poppins,sans-serif">HF</text></svg>
                         <h3>Hamza Food</h3>
                     </div>
-                    <p>سناك حمزة — أحسن الوجبات السريعة في الرباط. طاكوس، برغر، شوارما وأكثر.</p>
+                    <p data-ar="سناك حمزة — أحسن الوجبات السريعة في الرباط." data-fr="Hamza Food — Le meilleur fast-food de Rabat.">سناك حمزة — أحسن الوجبات السريعة في الرباط.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/212676220003" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/212676220003" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 <div class="footer-nav">
-                    <h4>روابط</h4>
-                    <a href="#home">الرئيسية</a>
-                    <a href="#menu">القائمة</a>
-                    <a href="#about">من نحن</a>
-                    <a href="#gallery">صور</a>
-                    <a href="#contact">اطلب</a>
+                    <h4 data-ar="روابط" data-fr="Liens">روابط</h4>
+                    <a href="#home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+                    <a href="#menu" data-ar="القائمة" data-fr="Menu">القائمة</a>
+                    <a href="#about" data-ar="من نحن" data-fr="À propos">من نحن</a>
+                    <a href="#gallery" data-ar="صور" data-fr="Galerie">صور</a>
+                    <a href="#contact" data-ar="اطلب" data-fr="Commander">اطلب</a>
                 </div>
                 <div class="footer-menu-quick">
-                    <h4>الأكثر طلبا</h4>
-                    <a href="#menu">🌮 طاكوس حمزة</a>
-                    <a href="#menu">🍔 برغر كينغ</a>
-                    <a href="#menu">🥙 شوارما دوبل</a>
-                    <a href="#menu">🍕 بيتزا طاكوس</a>
+                    <h4 data-ar="الأكثر طلبا" data-fr="Les plus commandés">الأكثر طلبا</h4>
+                    <a href="#menu">🌮 <span data-ar="طاكوس حمزة" data-fr="Tacos Hamza">طاكوس حمزة</span></a>
+                    <a href="#menu">🍔 <span data-ar="برغر كينغ" data-fr="Burger King">برغر كينغ</span></a>
+                    <a href="#menu">🥙 <span data-ar="شوارما دوبل" data-fr="Chawarma Double">شوارما دوبل</span></a>
+                    <a href="#menu">🍕 <span data-ar="بيتزا طاكوس" data-fr="Pizza Tacos">بيتزا طاكوس</span></a>
                 </div>
                 <div class="footer-contact-info">
-                    <h4>تواصل معنا</h4>
-                    <div class="fci"><i class="fas fa-map-marker-alt"></i><span>الرباط، المغرب</span></div>
+                    <h4 data-ar="تواصل معنا" data-fr="Contact">تواصل معنا</h4>
+                    <div class="fci"><i class="fas fa-map-marker-alt"></i><span data-ar="الرباط، المغرب" data-fr="Rabat, Maroc">الرباط، المغرب</span></div>
                     <div class="fci"><i class="fas fa-phone"></i><span dir="ltr">0676 220 003</span></div>
-                    <div class="fci"><i class="fas fa-clock"></i><span>كل يوم 11:00 - 23:00</span></div>
+                    <div class="fci"><i class="fas fa-clock"></i><span data-ar="كل يوم 11:00 - 23:00" data-fr="Tous les jours 11h - 23h">كل يوم 11:00 - 23:00</span></div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Hamza Food — سناك حمزة. جميع الحقوق محفوظة</p>
-                <p class="made-by">صُنع بواسطة <a href="https://mediabuz.ma" target="_blank">Mediabuz</a> ⚡</p>
+                <p>© 2026 Hamza Food — <span data-ar="جميع الحقوق محفوظة" data-fr="Tous droits réservés">جميع الحقوق محفوظة</span></p>
+                <p class="made-by"><span data-ar="صُنع بواسطة" data-fr="Réalisé par">صُنع بواسطة</span> <a href="https://mediabuz.ma" target="_blank">Mediabuz</a> ⚡</p>
             </div>
         </div>
     </footer>
@@ -428,10 +536,9 @@
     <a href="https://wa.me/212676220003?text=سلام، بغيت نطلب من عندكم" target="_blank" class="wa-float" aria-label="WhatsApp">
         <div class="wa-float-pulse"></div>
         <i class="fab fa-whatsapp"></i>
-        <span class="wa-tooltip">اطلب على واتساب</span>
+        <span class="wa-tooltip" data-ar="اطلب على واتساب" data-fr="Commander sur WhatsApp">اطلب على واتساب</span>
     </a>
 
-    <!-- ═══ Powered by Banner ═══ -->
     <div class="powered-banner">
         <span>⚡ Powered by <a href="https://wa.me/212774946024" target="_blank">Mediabuz</a></span>
     </div>
