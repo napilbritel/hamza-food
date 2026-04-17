@@ -6,6 +6,10 @@
 let currentLang = 'ar';
 
 function toggleLang(lang) {
+    // If called without arg, toggle between ar/fr
+    if (!lang) {
+        lang = currentLang === 'ar' ? 'fr' : 'ar';
+    }
     currentLang = lang;
     document.body.classList.toggle('lang-fr', lang === 'fr');
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
@@ -212,20 +216,24 @@ window.addEventListener('scroll', () => {
 });
 
 // Mobile nav
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
-if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
+function toggleMenu() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (navToggle && navLinks) {
         navToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
-    });
-    navLinks.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-        });
-    });
+    }
 }
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) navToggle.classList.remove('active');
+        if (navLinks) navLinks.classList.remove('active');
+    });
+});
 
 // ─── Smooth Scroll ───
 document.querySelectorAll('a[href^="#"]').forEach(a => {

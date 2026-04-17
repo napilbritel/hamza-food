@@ -80,14 +80,14 @@
                 <button class="nav-toggle" aria-label="Menu" onclick="toggleMenu()">
                     <span></span><span></span><span></span>
                 </button>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a></li>
-                    <li><a href="#menu" data-ar="القائمة" data-fr="Menu">القائمة</a></li>
-                    <li><a href="#about" data-ar="من نحن" data-fr="À propos">من نحن</a></li>
-                    <li><a href="#gallery" data-ar="صور" data-fr="Galerie">صور</a></li>
-                    <li><a href="#reviews" data-ar="آراء" data-fr="Avis">آراء</a></li>
-                    <li><a href="#contact" class="btn-nav"><i class="fab fa-whatsapp"></i> <span data-ar="اطلب الآن" data-fr="Commander">اطلب الآن</span></a></li>
-                </ul>
+                <div class="nav-links" id="navLinks">
+                    <a href="#home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+                    <a href="#menu" data-ar="القائمة" data-fr="Menu">القائمة</a>
+                    <a href="#about" data-ar="من نحن" data-fr="À propos">من نحن</a>
+                    <a href="#gallery" data-ar="صور" data-fr="Galerie">صور</a>
+                    <a href="#reviews" data-ar="آراء" data-fr="Avis">آراء</a>
+                    <a href="#contact" class="btn-nav"><i class="fab fa-whatsapp"></i> <span data-ar="اطلب الآن" data-fr="Commander">اطلب الآن</span></a>
+                </div>
             </div>
         </div>
     </nav>
@@ -141,7 +141,7 @@
             </div>
             <div class="hero-visual" data-reveal>
                 <div class="hero-img-wrap">
-                    <img src="img/storefront.jpg" alt="Hamza Food — Rabat" class="hero-img">
+                    <img src="img/storefront.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=600&fit=crop'" alt="Hamza Food — Rabat" class="hero-img">
                     <div class="hero-price-tag">
                         <span data-ar="ابتداءً من" data-fr="À partir de">ابتداءً من</span>
                         <strong>15 dh</strong>
@@ -276,16 +276,16 @@
             </div>
 
             <div class="menu-tabs" data-reveal>
-                <button class="menu-tab active" data-cat="all"><i class="fas fa-th-large"></i> <span data-ar="الكل" data-fr="Tout">الكل</span></button>
-                <button class="menu-tab" data-cat="tacos"><i class="fas fa-pepper-hot"></i> <span data-ar="طاكوس" data-fr="Tacos">طاكوس</span></button>
-                <button class="menu-tab" data-cat="burger"><i class="fas fa-hamburger"></i> <span data-ar="برغر" data-fr="Burger">برغر</span></button>
-                <button class="menu-tab" data-cat="chawarma"><i class="fas fa-drumstick-bite"></i> <span data-ar="شوارما" data-fr="Chawarma">شوارما</span></button>
-                <button class="menu-tab" data-cat="panini"><i class="fas fa-bread-slice"></i> <span data-ar="بانيني" data-fr="Panini">بانيني</span></button>
-                <button class="menu-tab" data-cat="sandwich"><i class="fas fa-hotdog"></i> <span data-ar="سندويتش" data-fr="Sandwich">سندويتش</span></button>
-                <button class="menu-tab" data-cat="plats"><i class="fas fa-bowl-food"></i> <span data-ar="أطباق" data-fr="Plats">أطباق</span></button>
-                <button class="menu-tab" data-cat="tajin"><i class="fas fa-fire-burner"></i> <span data-ar="طاجين" data-fr="Tajine">طاجين</span></button>
-                <button class="menu-tab" data-cat="omelette"><i class="fas fa-egg"></i> <span data-ar="أومليط" data-fr="Omelette">أومليط</span></button>
-                <button class="menu-tab" data-cat="kids"><i class="fas fa-child"></i> <span data-ar="أطفال" data-fr="Enfants">أطفال</span></button>
+                <button class="menu-tab active" onclick="setTab('all',this)"><i class="fas fa-th-large"></i> <span data-ar="الكل" data-fr="Tout">الكل</span></button>
+                <button class="menu-tab" onclick="setTab('tacos',this)"><i class="fas fa-pepper-hot"></i> <span data-ar="طاكوس" data-fr="Tacos">طاكوس</span></button>
+                <button class="menu-tab" onclick="setTab('burger',this)"><i class="fas fa-hamburger"></i> <span data-ar="برغر" data-fr="Burger">برغر</span></button>
+                <button class="menu-tab" onclick="setTab('chawarma',this)"><i class="fas fa-drumstick-bite"></i> <span data-ar="شوارما" data-fr="Chawarma">شوارما</span></button>
+                <button class="menu-tab" onclick="setTab('panini',this)"><i class="fas fa-bread-slice"></i> <span data-ar="بانيني" data-fr="Panini">بانيني</span></button>
+                <button class="menu-tab" onclick="setTab('sandwich',this)"><i class="fas fa-hotdog"></i> <span data-ar="سندويتش" data-fr="Sandwich">سندويتش</span></button>
+                <button class="menu-tab" onclick="setTab('plats',this)"><i class="fas fa-bowl-food"></i> <span data-ar="أطباق" data-fr="Plats">أطباق</span></button>
+                <button class="menu-tab" onclick="setTab('tajin',this)"><i class="fas fa-fire-burner"></i> <span data-ar="طاجين" data-fr="Tajine">طاجين</span></button>
+                <button class="menu-tab" onclick="setTab('omelette',this)"><i class="fas fa-egg"></i> <span data-ar="أومليط" data-fr="Omelette">أومليط</span></button>
+                <button class="menu-tab" onclick="setTab('kids',this)"><i class="fas fa-child"></i> <span data-ar="أطفال" data-fr="Enfants">أطفال</span></button>
             </div>
 
             <div class="menu-grid" id="menu-grid"></div>
@@ -321,7 +321,7 @@
             <div class="about-grid">
                 <div class="about-visual" data-reveal>
                     <div class="about-img-main">
-                        <img src="img/storefront.jpg" alt="Hamza Food — محل حمزة فود">
+                        <img src="img/storefront.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=450&fit=crop'" alt="Hamza Food — محل حمزة فود">
                     </div>
                     <div class="about-img-secondary">
                         <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&h=300&fit=crop" alt="Food platter">
@@ -455,7 +455,7 @@
                         <div>
                             <h4 data-ar="أوقات العمل" data-fr="Horaires">أوقات العمل</h4>
                             <p data-ar="كل يوم: 11:00 - 23:00" data-fr="Tous les jours : 11h - 23h">كل يوم: 11:00 - 23:00</p>
-                            <div class="status-badge open"><span class="dot"></span> <span data-ar="مفتوح الآن" data-fr="Ouvert">مفتوح الآن</span></div>
+                            <div class="status-badge open" id="status-badge"><span class="dot"></span> <span data-ar="مفتوح الآن" data-fr="Ouvert">مفتوح الآن</span></div>
                         </div>
                     </div>
                     <div class="info-card">
