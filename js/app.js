@@ -1,8 +1,5 @@
-/* ═══════════════════════════════════════════════
-   HAMZA FOOD — App v3 (Premium Interactions)
-   ═══════════════════════════════════════════════ */
+/* Hamza Food — App v4 (TailwindCSS) */
 
-// ─── Language System ───
 let currentLang = 'ar';
 
 function toggleLang(lang) {
@@ -11,125 +8,259 @@ function toggleLang(lang) {
     document.body.classList.toggle('lang-fr', lang === 'fr');
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
-
     document.querySelectorAll('[data-ar]').forEach(el => {
-        if (el.hasAttribute('data-ar-html')) {
-            el.innerHTML = lang === 'ar' ? el.getAttribute('data-ar-html') : el.getAttribute('data-fr-html');
-        } else {
-            el.textContent = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-fr');
-        }
+        el.textContent = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-fr');
     });
-
     document.querySelectorAll('.lang-opt').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-l') === lang);
     });
-
+    renderTabs();
     renderMenu();
     updateStatus();
 }
 
-// ─── Menu Data ───
 const MENU = {
-    tacos: {
-        ar: 'تاكوس', fr: 'Tacos', icon: 'fas fa-pepper-hot',
+    sandwich: {
+        ar: 'سندويتش / بانيني', fr: 'Sandwich / Panini', icon: 'fas fa-hotdog',
         items: [
-            { ar: 'تاكوس بوليه', fr: 'Tacos Poulet', price: [27, 32], img: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200&h=200&fit=crop' },
-            { ar: 'تاكوس بوليه گريي', fr: 'Tacos Poulet Grillé', price: [28, 35], img: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=200&h=200&fit=crop' },
-            { ar: 'تاكوس شاورما', fr: 'Tacos Chawarma', price: [28, 35], img: 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=200&h=200&fit=crop' },
-            { ar: 'تاكوس ناگيتس', fr: 'Tacos Nuggets', price: [28, 35], img: 'https://images.unsplash.com/photo-1562059390-a761a084768e?w=200&h=200&fit=crop' },
-            { ar: 'تاكوس لحم مفروم', fr: 'Tacos Viande Hachée', price: [30, 36], img: 'https://images.unsplash.com/photo-1624462422803-a3e3791f3dbc?w=200&h=200&fit=crop' },
-            { ar: 'تاكوس كوردون بلو', fr: 'Tacos Cordon Bleu', price: [32, 38], img: 'https://images.unsplash.com/photo-1619221882220-947b3d3c8861?w=200&h=200&fit=crop' },
-            { ar: 'تاكوس ميكست', fr: 'Tacos Mixte', price: [33, 40], img: 'https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?w=200&h=200&fit=crop' },
-            { ar: 'تاكوس بيتزا', fr: 'Tacos Pizza', price: [38, 43], img: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=200&h=200&fit=crop', featured: true },
-            { ar: 'تاكوس حمزة', fr: 'Tacos Hamza', price: [38, 45], img: 'https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=200&h=200&fit=crop', featured: true }
+            { ar: 'بوكاديوس', fr: 'Bocadios', price: 10 },
+            { ar: 'سندويتش طون', fr: 'Sandwich Thon', price: 12 },
+            { ar: 'سندويتش هوت دوغ', fr: 'Sandwich Hot Dog', price: 15 },
+            { ar: 'سندويتش لحم مفروم', fr: 'Sandwich Viande Hachée', price: 17 },
+            { ar: 'سندويتش سوسيس', fr: 'Sandwich Saucisse', price: 17 },
+            { ar: 'سندويتش بوليه', fr: 'Sandwich Poulet', price: 18 },
+            { ar: 'سندويتش جامبون', fr: 'Sandwich Jambon', price: 18 },
+            { ar: 'سندويتش شاورما', fr: 'Sandwich Chawarma', price: 20 },
+            { ar: 'سندويتش ميكست', fr: 'Sandwich Mixte', price: 20 },
+            { ar: 'سندويتش تشيكن كريسبي', fr: 'Sandwich Chicken Crispy', price: 22 },
+            { ar: 'سندويتش سبيسيال', fr: 'Sandwich Spécial', price: 23 },
+            { ar: 'سندويتش ميزون', fr: 'Sandwich Maison', price: 25, featured: true }
         ]
     },
     burger: {
         ar: 'برگر', fr: 'Burger', icon: 'fas fa-hamburger',
         items: [
-            { ar: 'برگر سيمبل', fr: 'Burger Simple', price: 23, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&h=200&fit=crop' },
-            { ar: 'تشيز برگر', fr: 'Cheeseburger', price: 27, img: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200&h=200&fit=crop' },
-            { ar: 'بيگ برگر', fr: 'Big Burger', price: 32, img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=200&h=200&fit=crop', featured: true },
-            { ar: 'برگر كينگ', fr: 'Burgerking', price: 38, img: 'https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?w=200&h=200&fit=crop', featured: true }
+            { ar: 'تشيز برگر', fr: 'Cheese Burger', price: 17 },
+            { ar: 'تشيكن برگر', fr: 'Chicken Burger', price: 20 },
+            { ar: 'دوبل تشيز برگر', fr: 'Double Cheese Burger', price: 22 },
+            { ar: 'باكون برگر', fr: 'Bacon Burger', price: 25, desc_fr: 'Viande Hachée, Jambon' },
+            { ar: 'رويال برگر', fr: 'Royal Burger', price: 28, featured: true, desc_fr: 'Chicken Crispy, Jambon' }
+        ]
+    },
+    tacos: {
+        ar: 'تاكوس', fr: 'Tacos', icon: 'fas fa-pepper-hot',
+        sizes: ['L', 'XL'],
+        items: [
+            { ar: 'تاكوس فلافل', fr: 'Tacos Falafel', price: [12, 17] },
+            { ar: 'تاكوس معكودة', fr: 'Tacos Maakouda', price: [12, 17] },
+            { ar: 'تاكوس طورتيا', fr: 'Tacos Tortilla', price: [12, 17] },
+            { ar: 'تاكوس هوت دوغ', fr: 'Tacos Hot Dog', price: [15, 23] },
+            { ar: 'تاكوس بوليه', fr: 'Tacos Poulet', price: [23, 35] },
+            { ar: 'تاكوس لحم مفروم', fr: 'Tacos Viande Hachée', price: [20, 30] },
+            { ar: 'تاكوس سوسيس', fr: 'Tacos Saucisse', price: [20, 30] },
+            { ar: 'تاكوس شاورما', fr: 'Tacos Chawarma', price: [25, 38] },
+            { ar: 'تاكوس ميكست', fr: 'Tacos Mixte', price: [25, 38] },
+            { ar: 'تاكوس سبيسيال', fr: 'Tacos Spécial', price: [25, 38] },
+            { ar: 'تاكوس تشيكن كريسبي', fr: 'Tacos Chicken Crispy', price: [30, 42] },
+            { ar: 'تاكوس ناگيتس', fr: 'Tacos Nugette', price: [30, 42] },
+            { ar: 'تاكوس كوردون بلو', fr: 'Tacos Corden Bleu', price: [30, 48] },
+            { ar: 'تاكوس رويال', fr: 'Tacos Royal', price: [35, 48], featured: true },
+            { ar: 'تاكوس ميزون', fr: 'Tacos Maison', price: [40, 50], featured: true }
+        ]
+    },
+    tacosGratine: {
+        ar: 'تاكوس گراتيني', fr: 'Tacos Gratiné', icon: 'fas fa-fire-flame-curved',
+        items: [
+            { ar: 'تاكوس گراتيني هوت دوغ', fr: 'Tacos Gratiné Hot Dog', price: null },
+            { ar: 'تاكوس گراتيني لحم مفروم', fr: 'Tacos Gratiné V.Hachée', price: null },
+            { ar: 'تاكوس گراتيني بوليه', fr: 'Tacos Gratiné Poulet', price: null },
+            { ar: 'تاكوس گراتيني شاورما', fr: 'Tacos Gratiné Chawarma', price: null },
+            { ar: 'تاكوس گراتيني ميكست', fr: 'Tacos Gratiné Mixte', price: null },
+            { ar: 'تاكوس گراتيني سبيسيال', fr: 'Tacos Gratiné Spécial', price: null }
+        ]
+    },
+    triangle: {
+        ar: 'تريانگل (بوتشي)', fr: 'Triangle (Poutchi)', icon: 'fas fa-play fa-rotate-270',
+        items: [
+            { ar: 'تريانگل فلافل', fr: 'Triangle Falafel', price: 8 },
+            { ar: 'تريانگل معكودة', fr: 'Triangle Maakouda', price: 8 },
+            { ar: 'تريانگل طورتيا', fr: 'Triangle Tortilla', price: 10 },
+            { ar: 'تريانگل هوت دوغ', fr: 'Triangle Hot Dog', price: 12 },
+            { ar: 'تريانگل طون', fr: 'Triangle Thon', price: 12 },
+            { ar: 'تريانگل ستراسبورغ', fr: 'Triangle Strasbourg', price: 12 },
+            { ar: 'تريانگل سوسيس', fr: 'Triangle Saucisse', price: 15 },
+            { ar: 'تريانگل لحم مفروم', fr: 'Triangle Viande Hachée', price: 15 },
+            { ar: 'تريانگل بوليه', fr: 'Triangle Poulet', price: 17 },
+            { ar: 'تريانگل شاورما', fr: 'Triangle Chawarma', price: 20 },
+            { ar: 'تريانگل تشيكن كريسبي', fr: 'Triangle Chicken Crispy', price: 20 },
+            { ar: 'تريانگل ميكست', fr: 'Triangle Mixte', price: 20 },
+            { ar: 'تريانگل سبيسيال', fr: 'Triangle Spécial', price: 22 },
+            { ar: 'تريانگل كوردون بلو', fr: 'Triangle Cordon Bleu', price: 25 },
+            { ar: 'تريانگل رويال', fr: 'Triangle Royal', price: 25, featured: true }
         ]
     },
     chawarma: {
         ar: 'شاورما', fr: 'Chawarma', icon: 'fas fa-drumstick-bite',
         items: [
-            { ar: 'شاورما سيمبل', fr: 'Chawarma Simple', price: 25, img: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=200&h=200&fit=crop' },
-            { ar: 'شاورما فروماج', fr: 'Chawarma Fromage', price: 27, img: 'https://images.unsplash.com/photo-1561651188-d207bbec4ec3?w=200&h=200&fit=crop' },
-            { ar: 'شاورما بلاط سوكوب', fr: 'Chawarma Plat Soucoupe', price: 32, img: 'https://images.unsplash.com/photo-1633321702518-7fecdafb94d5?w=200&h=200&fit=crop' },
-            { ar: 'شاورما ميكست', fr: 'Chawarma Mixte sur pain', price: 35, img: 'https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=200&h=200&fit=crop' },
-            { ar: 'شاورما بلاط ميكست', fr: 'Chawarma Plat Mixte', price: 43, img: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=200&h=200&fit=crop', featured: true },
-            { ar: 'شاورما دوبل', fr: 'Chawarma Double', price: 45, img: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=200&h=200&fit=crop', featured: true }
+            { ar: 'شاورما', fr: 'Chawarma', price: 20 },
+            { ar: 'شاورما دوبل', fr: 'Chawarma Double', price: 30 },
+            { ar: 'تاكوس شاورما', fr: 'Tacos Chawarma', price: 25 },
+            { ar: 'شاورما رويال', fr: 'Chawarma Royal', price: 28, desc_fr: 'Sandwich Chawarma Cornicho Mozzarella', featured: true },
+            { ar: 'بلاط شاورما', fr: 'Plat Chawarma', price: 35 },
+            { ar: 'شاورما عربي', fr: 'Chawarma Arabi', price: 35 }
         ]
     },
-    panini: {
-        ar: 'بانيني', fr: 'Panini', icon: 'fas fa-bread-slice',
+    falafel: {
+        ar: 'فلافل', fr: 'Falafel', icon: 'fas fa-seedling',
         items: [
-            { ar: 'بانيني هوت دوغ', fr: 'Panini Hot Dog', price: 22, img: 'https://images.unsplash.com/photo-1619740455993-9e612b49640a?w=200&h=200&fit=crop' },
-            { ar: 'بانيني طون', fr: 'Panini Thon', price: 23, img: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=200&h=200&fit=crop' },
-            { ar: 'بانيني داند', fr: 'Panini Dinde', price: 25, img: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=200&h=200&fit=crop' },
-            { ar: 'بانيني بوليه گريي', fr: 'Panini Poulet Grillé', price: 25, img: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=200&h=200&fit=crop' },
-            { ar: 'بانيني لحم مفروم', fr: 'Panini Viande Hachée', price: 26, img: 'https://images.unsplash.com/photo-1554433607-66b5a31b2e97?w=200&h=200&fit=crop' },
-            { ar: 'بانيني سوسيس', fr: 'Panini Saucisse', price: 26, img: 'https://images.unsplash.com/photo-1619096252214-ef06c45683e3?w=200&h=200&fit=crop' },
-            { ar: 'بانيني ميكست', fr: 'Panini Mixte', price: 30, img: 'https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=200&h=200&fit=crop' }
-        ]
-    },
-    sandwich: {
-        ar: 'سندويتش', fr: 'Sandwich', icon: 'fas fa-hotdog',
-        items: [
-            { ar: 'سندويتش هوت دوغ', fr: 'Sandwich Hot Dog', price: 22, img: 'https://images.unsplash.com/photo-1612392062126-47986823ac3d?w=200&h=200&fit=crop' },
-            { ar: 'سندويتش ستراسبورگ', fr: 'Sandwich Strasbourg', price: 22, img: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=200&h=200&fit=crop' },
-            { ar: 'سندويتش داند', fr: 'Sandwich Dinde', price: 26, img: 'https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?w=200&h=200&fit=crop' },
-            { ar: 'سندويتش بوليه گريي', fr: 'Sandwich Poulet Grillé', price: 28, img: 'https://images.unsplash.com/photo-1554433607-66b5a31b2e97?w=200&h=200&fit=crop' },
-            { ar: 'سندويتش سوسيس', fr: 'Sandwich Saucisse', price: 28, img: 'https://images.unsplash.com/photo-1619096252214-ef06c45683e3?w=200&h=200&fit=crop' },
-            { ar: 'سندويتش لحم مفروم', fr: 'Sandwich Viande Hachée', price: 30, img: 'https://images.unsplash.com/photo-1603046891726-36bfd957e0bf?w=200&h=200&fit=crop' },
-            { ar: 'سندويتش كفتة', fr: 'Sandwich Kefta', price: 30, img: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=200&h=200&fit=crop' },
-            { ar: 'سندويتش فوا', fr: 'Sandwich Foie', price: 35, img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=200&h=200&fit=crop' },
-            { ar: 'سندويتش ميكست', fr: 'Sandwich Mixte', price: 35, img: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=200&h=200&fit=crop', featured: true }
+            { ar: 'سندويتش فلافل', fr: 'Sandwich Falafel', price: 8 },
+            { ar: 'سندويتش دوبل فلافل', fr: 'Sandwich Double Falafel', price: 12 },
+            { ar: 'تاكوس فلافل', fr: 'Tacos Falafel', price: 12 },
+            { ar: 'بلاط فلافل', fr: 'Plats Falafel', price: 15 }
         ]
     },
     plats: {
         ar: 'أطباق', fr: 'Plats', icon: 'fas fa-utensils',
         items: [
-            { ar: 'لحم مفروم', fr: 'Viande Hachée', price: 28, img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200&h=200&fit=crop' },
-            { ar: 'داند', fr: 'Dinde', price: 30, img: 'https://images.unsplash.com/photo-1432139509613-5c4255a187fb?w=200&h=200&fit=crop' },
-            { ar: 'إمينسي', fr: 'Émincés', price: 32, img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&h=200&fit=crop' },
-            { ar: 'ناگيتس', fr: 'Nuggets', price: 32, img: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=200&h=200&fit=crop' },
-            { ar: 'كويس', fr: 'Cuisse', price: 35, img: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=200&h=200&fit=crop' },
-            { ar: 'كوردون بلو', fr: 'Cordon Bleu', price: 38, img: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=200&h=200&fit=crop', featured: true }
+            { ar: 'بلاط شاورما', fr: 'Plat Chawarma', price: 35 },
+            { ar: 'بلاط بروشيت بوليه', fr: 'Plat Brochette Poulet', price: 35 },
+            { ar: 'بلاط لحم مفروم', fr: 'Plat Viande Hachée', price: 35 },
+            { ar: 'بلاط ميكست', fr: 'Plat Mixte', price: 40, desc_fr: 'Chawarma, Saucisse, Viande Hachée' },
+            { ar: 'بلاط تشيكن كريسبي', fr: 'Plat Chicken Crispy', price: 40 },
+            { ar: 'بلاط رويال', fr: 'Plat Royal', price: 45, featured: true, desc_fr: 'Chawarma, Saucisse, V.Hachée, Chicken Crispy' }
         ]
     },
-    tajin: {
-        ar: 'طاجين', fr: 'Tajin', icon: 'fas fa-fire',
+    pizza: {
+        ar: 'بيتزا', fr: 'Pizza', icon: 'fas fa-pizza-slice',
+        sizes: ['P', 'G'],
         items: [
-            { ar: 'طاجين داند', fr: 'Tajin Dinde', price: 28, img: 'https://images.unsplash.com/photo-1511690743698-d9d18f7e20f1?w=200&h=200&fit=crop' },
-            { ar: 'طاجين سوسيس', fr: 'Tajin Saucisse', price: 30, img: 'https://images.unsplash.com/photo-1547424850-28ac9ac2fa43?w=200&h=200&fit=crop' },
-            { ar: 'طاجين لحم مفروم', fr: 'Tajin Viande Hachée', price: 32, img: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=200&h=200&fit=crop' },
-            { ar: 'طاجين بيل بيل', fr: 'Tajin Pil-Pil', price: 60, img: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=200&h=200&fit=crop', featured: true }
+            { ar: 'بيتزا مارغاريتا', fr: 'Pizza Margarita', price: [18, 35] },
+            { ar: 'بيتزا خضار', fr: 'Pizza Végétarien', price: [18, 35] },
+            { ar: 'بيتزا هوت دوغ', fr: 'Pizza Hot Dog', price: [18, 35] },
+            { ar: 'بيتزا مكسيكان', fr: 'Pizza Mexicain', price: [20, 35] },
+            { ar: 'بيتزا بوليه', fr: 'Pizza Poulet', price: [20, 35] },
+            { ar: 'بيتزا لحم مفروم', fr: 'Pizza Viande Hachée', price: [20, 35] },
+            { ar: 'بيتزا ميلانو', fr: 'Pizza Milano', price: [20, 35] },
+            { ar: 'بيتزا طون', fr: 'Pizza Thon', price: [20, 35] },
+            { ar: 'بيتزا جامبون فوميه', fr: 'Pizza Jambon Fumée', price: [22, 28] },
+            { ar: 'بيتزا فريشور', fr: 'Pizza Fraicheur', price: [22, 28] },
+            { ar: 'بيتزا شاورما', fr: 'Pizza Chawarma', price: [25, 40] },
+            { ar: 'بيتزا ميكست', fr: 'Pizza Mixte', price: [25, 40] },
+            { ar: 'بيتزا سبيسيال', fr: 'Pizza Spécial', price: [25, 40] },
+            { ar: 'بيتزا رويال', fr: 'Pizza Royale', price: [30, 45] },
+            { ar: 'بيتزا 4 سيزون', fr: 'Pizza 4 Saison', price: [30, 45] },
+            { ar: 'بيتزا 4 فروماج', fr: 'Pizza 4 Fromages', price: [30, 45] },
+            { ar: 'بيتزا فواكه البحر', fr: 'Pizza Fruit de mer', price: [30, 45] },
+            { ar: 'بيتزا كالزون', fr: 'Pizza Galzone', price: [30, 45] },
+            { ar: 'بيتزا كوردون بلو', fr: 'Pizza Cordon Blue', price: [35, 50], featured: true },
+            { ar: 'بيتزا ميزون', fr: 'Pizza Maison', price: [40, 55], featured: true }
         ]
     },
-    omelette: {
-        ar: 'أومليت', fr: 'Omelette', icon: 'fas fa-egg',
+    pasticcio: {
+        ar: 'باستيتشو', fr: 'Pasticcio', icon: 'fas fa-bowl-food',
+        desc_ar: 'على أساس الفريت', desc_fr: 'A base des frites',
         items: [
-            { ar: 'أومليت سيمبل', fr: 'Omelette Simple', price: 15, img: 'https://images.unsplash.com/photo-1525184782196-8e2ded604bf7?w=200&h=200&fit=crop' },
-            { ar: 'أومليت فروماج', fr: 'Omelette Fromage', price: 17, img: 'https://images.unsplash.com/photo-1510693206972-df098062cb71?w=200&h=200&fit=crop' },
-            { ar: 'أومليت كريفيت', fr: 'Omelette Crevettes', price: 32, img: 'https://images.unsplash.com/photo-1612240498936-65f5101365d2?w=200&h=200&fit=crop', featured: true },
-            { ar: 'أومليت شيف', fr: 'Omelette Chef', price: 35, img: 'https://images.unsplash.com/photo-1643640076993-0341e52a8fd7?w=200&h=200&fit=crop', featured: true }
+            { ar: 'باستيتشو هوت دوغ', fr: 'Pasticcio Hot Dog', price: 20 },
+            { ar: 'باستيتشو لحم مفروم', fr: 'Pasticcio V.Hachée', price: 25 },
+            { ar: 'باستيتشو بوليه', fr: 'Pasticcio Poulet', price: 27 },
+            { ar: 'باستيتشو جامبون', fr: 'Pasticcio Jambon', price: 27 },
+            { ar: 'باستيتشو شاورما', fr: 'Pasticcio Chawarma', price: 30 },
+            { ar: 'باستيتشو ميكست', fr: 'Pasticcio Mixte', price: 30 },
+            { ar: 'باستيتشو رويال', fr: 'Pasticcio Royal', price: 35, featured: true }
         ]
     },
-    kids: {
-        ar: 'أطفال', fr: 'Kids', icon: 'fas fa-child',
+    gratin: {
+        ar: 'گراتان', fr: 'Gratin', icon: 'fas fa-cheese',
+        desc_ar: 'على أساس المعكرونة', desc_fr: 'A base des Pattes',
         items: [
-            { ar: 'هامبرگر + فريت + عصير', fr: 'Hamburger + Frite + Jus', price: 30, img: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200&h=200&fit=crop' },
-            { ar: 'بيتزا + فريت + عصير', fr: 'Pizza + Frite + Jus', price: 35, img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&h=200&fit=crop' }
+            { ar: 'گراتان هوت دوغ', fr: 'Gratin Hot Dog', price: 20 },
+            { ar: 'گراتان جامبون', fr: 'Gratin Jambon', price: 25 },
+            { ar: 'گراتان شاورما', fr: 'Gratin Chawarma', price: 27 },
+            { ar: 'گراتان ميكست', fr: 'Gratin Mixte', price: 30 },
+            { ar: 'گراتان رويال', fr: 'Gratin Royal', price: 30, featured: true }
+        ]
+    },
+    kumpir: {
+        ar: 'كومپير', fr: 'Kumpir', icon: 'fas fa-bowl-rice',
+        items: [
+            { ar: 'كومپير سيمبل', fr: 'Kumpir Simple', price: 25 },
+            { ar: 'كومپير طون', fr: 'Kumpir Thon', price: 30 },
+            { ar: 'كومپير بوليه', fr: 'Kumpir Poulet', price: 32 },
+            { ar: 'كومپير لحم مفروم', fr: 'Kumpir V.Hachée', price: 30 },
+            { ar: 'كومپير شاورما', fr: 'Kumpir Chawarma', price: 35 },
+            { ar: 'كومپير سبيسيال', fr: 'Kumpir Spécial', price: 35, featured: true }
+        ]
+    },
+    mkilat: {
+        ar: 'مقيلات', fr: 'Mkilat (Fritures)', icon: 'fas fa-shrimp',
+        items: [
+            { ar: 'شربة السمك', fr: 'Soupe de Poisson', price: 10 },
+            { ar: 'مقيلة كفتة السردين', fr: 'Kefta Sardine Frite', price: 20 },
+            { ar: 'مقيلة بيض السمك', fr: 'Oeufs de Poisson Frits', price: 25 },
+            { ar: 'مقيلة بوزروك', fr: 'Bouzrouk Frit', price: 30 },
+            { ar: 'مقيلة روكان', fr: 'Roucan Frit', price: 35 },
+            { ar: 'مقيلة كروفيت', fr: 'Crevettes Frites', price: 35 },
+            { ar: 'مقيلة كلمار', fr: 'Calamar Frit', price: 35 },
+            { ar: 'مقيلة ميكس', fr: 'Mixte Frit', price: 40, featured: true },
+            { ar: 'مقيلة رويال', fr: 'Royale Frite', price: 45, featured: true },
+            { ar: 'پنس دو كراب (4 قطع)', fr: 'Pince de Crabe (4 pièces)', price: 15 }
+        ]
+    },
+    salade: {
+        ar: 'سلطة بار', fr: 'Salade Bar', icon: 'fas fa-leaf',
+        items: [
+            { ar: 'بوفيه سلطات متنوعة', fr: 'Buffet Salades Variées', price: 15, desc_ar: 'عمر السلطة ديالك بيديك', desc_fr: 'Composez votre salade vous-même', featured: true }
+        ]
+    },
+    jus: {
+        ar: 'عصائر', fr: 'Jus', icon: 'fas fa-blender',
+        items: [
+            { ar: 'عصير ليمون', fr: 'Jus Citron', price: 5 },
+            { ar: 'عصير برتقال', fr: 'Jus Orange', price: 10 },
+            { ar: 'عصير تفاح', fr: 'Jus Pomme', price: 12 },
+            { ar: 'عصير بنان', fr: 'Jus Banane', price: 12 },
+            { ar: 'عصير خوخ', fr: 'Jus Pêche', price: 15 },
+            { ar: 'عصير باباي', fr: 'Jus Papaye', price: 15 },
+            { ar: 'عصير مانگو', fr: 'Jus Mangue', price: 15 },
+            { ar: 'عصير أناناس', fr: 'Jus Ananas', price: 15 },
+            { ar: 'پاناشي', fr: 'Panaché', price: 15 },
+            { ar: 'عصير أفوكا', fr: 'Jus Avocat', price: 20, featured: true }
+        ]
+    },
+    dessert: {
+        ar: 'حلويات', fr: 'Desserts', icon: 'fas fa-ice-cream',
+        items: [
+            { ar: 'محلبية', fr: 'Mehalabiya', price: 5 },
+            { ar: 'زبادي', fr: 'Zabadi', price: 5 },
+            { ar: 'حلى خش خش', fr: 'Hala KhachKhach', price: 10 },
+            { ar: 'حلى أوريو', fr: 'Hala Oreo', price: 10 },
+            { ar: 'حلى لوتس', fr: 'Hala Lotus', price: 10, featured: true }
+        ]
+    },
+    boisson: {
+        ar: 'مشروبات', fr: 'Boissons', icon: 'fas fa-glass-water',
+        items: [
+            { ar: 'ماء 33 سل', fr: 'Eau 33cl', price: 5 },
+            { ar: 'ماء 1.5 لتر', fr: 'Eau 1.5L', price: 8 },
+            { ar: 'كانيط', fr: 'Canette', price: 6 },
+            { ar: 'أولمس', fr: 'Oulmès', price: 5 },
+            { ar: 'راني', fr: 'Rani', price: 8 }
         ]
     }
 };
 
-// ─── Menu Rendering ───
 let activeTab = 'all';
+
+function renderTabs() {
+    const container = document.getElementById('menu-tabs');
+    if (!container) return;
+    const lang = currentLang;
+    let html = '<button class="menu-tab' + (activeTab === 'all' ? ' active' : '') + '" onclick="setTab(\'all\', this)"><i class="fas fa-th"></i>' + (lang === 'ar' ? 'الكل' : 'Tout') + '</button>';
+    Object.entries(MENU).forEach(([key, cat]) => {
+        html += '<button class="menu-tab' + (activeTab === key ? ' active' : '') + '" onclick="setTab(\'' + key + '\', this)"><i class="' + cat.icon + '"></i>' + cat[lang] + '</button>';
+    });
+    container.innerHTML = html;
+}
 
 function renderMenu() {
     const grid = document.getElementById('menu-grid');
@@ -143,17 +274,32 @@ function renderMenu() {
         if (activeTab === 'all') {
             html += '<div class="menu-cat-header"><span class="cat-icon"><i class="' + cat.icon + '"></i></span><h3>' + cat[lang] + '</h3></div>';
         }
+        const hasSizes = cat.sizes;
         cat.items.forEach(item => {
             const name = item[lang];
-            const priceText = Array.isArray(item.price)
-                ? '<small>DH</small> ' + item.price[0] + '/' + item.price[1]
-                : '<small>DH</small> ' + item.price;
+            let priceText;
+            if (item.price === null) {
+                priceText = '<span class="text-white/40 text-xs">' + (lang === 'ar' ? 'إسأل على الثمن' : 'Demandez le prix') + '</span>';
+            } else if (Array.isArray(item.price)) {
+                if (hasSizes) {
+                    priceText = '<small>' + cat.sizes[0] + '</small> ' + item.price[0] + ' · <small>' + cat.sizes[1] + '</small> ' + item.price[1] + ' <small>DH</small>';
+                } else {
+                    priceText = item.price[0] + '/' + item.price[1] + ' <small>DH</small>';
+                }
+            } else {
+                priceText = item.price + ' <small>DH</small>';
+            }
             const featured = item.featured ? ' featured' : '';
+            const desc = lang === 'ar' ? (item.desc_ar || '') : (item.desc_fr || '');
             html += '<div class="menu-card' + featured + '" style="animation-delay:' + delay + 'ms">';
-            html += '<div class="mc-img"><img src="' + item.img + '" alt="' + name + '" loading="lazy"></div>';
-            html += '<div class="mc-info"><div class="mc-name">' + name + '</div></div>';
-            html += '<div class="mc-price">' + priceText + '</div></div>';
-            delay += 35;
+            html += '<div class="mc-body">';
+            if (item.featured) html += '<div class="mc-badge">⭐ ' + (lang === 'ar' ? 'مميز' : 'Populaire') + '</div>';
+            html += '<div class="mc-name">' + name + '</div>';
+            if (desc) html += '<div class="mc-desc">' + desc + '</div>';
+            html += '<div class="mc-footer"><div class="mc-price">' + priceText + '</div>';
+            html += '<a href="https://wa.me/212676220003?text=' + encodeURIComponent(name) + '" target="_blank" class="mc-order"><i class="fab fa-whatsapp"></i></a>';
+            html += '</div></div></div>';
+            delay += 25;
         });
     });
     grid.innerHTML = html;
@@ -161,206 +307,131 @@ function renderMenu() {
 
 function setTab(tab, btn) {
     activeTab = tab;
-    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+    renderTabs();
     renderMenu();
+    if (tab !== 'all') {
+        document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
-// ─── Loader ───
+// Loader
 window.addEventListener('load', () => {
     setTimeout(() => {
-        const loader = document.querySelector('.loader');
+        const loader = document.getElementById('loader');
         if (loader) loader.classList.add('hidden');
-    }, 2000);
+    }, 2200);
 });
 
-// ─── Navbar Scroll ───
-const navbar = document.querySelector('.navbar');
-const scrollProgressBar = document.getElementById('scrollProgress');
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+const scrollProgress = document.getElementById('scrollProgress');
+const scrollTopBtn = document.getElementById('scrollTop');
 
-function onScroll() {
-    const scrollY = window.scrollY;
-    // Navbar solid bg
-    if (navbar) navbar.classList.toggle('scrolled', scrollY > 50);
-    // Scroll progress bar
-    if (scrollProgressBar) {
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
-        scrollProgressBar.style.width = progress + '%';
+window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (navbar) navbar.classList.toggle('scrolled', y > 50);
+    if (scrollProgress) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        scrollProgress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
     }
-    // Active nav section tracking
+    if (scrollTopBtn) scrollTopBtn.classList.toggle('show', y > 500);
     updateActiveNav();
-}
-window.addEventListener('scroll', onScroll, { passive: true });
+}, { passive: true });
 
-// ─── Active Nav Section ───
 function updateActiveNav() {
     const sections = document.querySelectorAll('section[id]');
-    const scrollPos = window.scrollY + 200;
-    sections.forEach(section => {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        const id = section.getAttribute('id');
-        const link = document.querySelector('.nav-link[href="#' + id + '"]');
+    const pos = window.scrollY + 200;
+    sections.forEach(s => {
+        const link = document.querySelector('.nav-link[href="#' + s.id + '"]');
         if (link) {
-            if (scrollPos >= top && scrollPos < top + height) {
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-            }
+            const active = pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight;
+            link.classList.toggle('active', active);
         }
     });
 }
 
-// ─── Mobile Nav ───
+// Mobile nav
 function toggleMenu() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (navToggle && navLinks) {
-        navToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    }
+    document.querySelector('.mobile-nav')?.classList.toggle('show');
+    document.querySelector('.nav-toggle')?.classList.toggle('active');
 }
 
-document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        if (navToggle) navToggle.classList.remove('active');
-        if (navLinks) navLinks.classList.remove('active');
-    });
-});
-
-// ─── Smooth Scroll ───
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         const id = a.getAttribute('href');
         if (id === '#') return;
-        const target = document.querySelector(id);
-        if (target) {
+        const t = document.querySelector(id);
+        if (t) {
             e.preventDefault();
-            const offset = 80;
-            const y = target.getBoundingClientRect().top + window.scrollY - offset;
-            window.scrollTo({ top: y, behavior: 'smooth' });
+            window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' });
         }
     });
 });
 
-// ─── Reveal on Scroll (Staggered) ───
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const delay = parseInt(entry.target.getAttribute('data-delay')) || 0;
-            setTimeout(() => {
-                entry.target.classList.add('revealed');
-            }, delay);
-            revealObserver.unobserve(entry.target);
+// Reveal
+const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            const d = parseInt(e.target.getAttribute('data-delay')) || 0;
+            setTimeout(() => e.target.classList.add('revealed'), d);
+            revealObs.unobserve(e.target);
         }
     });
 }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
 
-document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
-
-// ─── Counter Animation ───
+// Counters
 function animateCounter(el) {
     const target = parseInt(el.getAttribute('data-count'));
-    const duration = 2200;
     const start = performance.now();
-    function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 4);
-        el.textContent = Math.floor(eased * target);
-        if (progress < 1) requestAnimationFrame(update);
+    function tick(now) {
+        const p = Math.min((now - start) / 2200, 1);
+        el.textContent = Math.floor((1 - Math.pow(1 - p, 4)) * target);
+        if (p < 1) requestAnimationFrame(tick);
     }
-    requestAnimationFrame(update);
+    requestAnimationFrame(tick);
 }
-
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.querySelectorAll('[data-count]').forEach(animateCounter);
-            counterObserver.unobserve(entry.target);
+const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.querySelectorAll('[data-count]').forEach(animateCounter);
+            counterObs.unobserve(e.target);
         }
     });
 }, { threshold: 0.3 });
+document.querySelectorAll('[data-count]').forEach(el => {
+    const parent = el.closest('[data-reveal]') || el.parentElement;
+    if (parent) counterObs.observe(parent);
+});
 
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) counterObserver.observe(heroStats);
-
-// ─── Cursor Glow (Desktop Only) ───
-const cursorGlow = document.getElementById('cursorGlow');
-if (cursorGlow && window.matchMedia('(min-width: 1024px)').matches) {
-    let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
-    document.addEventListener('mousemove', e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    }, { passive: true });
-
-    function updateGlow() {
-        glowX += (mouseX - glowX) * 0.08;
-        glowY += (mouseY - glowY) * 0.08;
-        cursorGlow.style.transform = 'translate(' + (glowX - 250) + 'px, ' + (glowY - 250) + 'px)';
-        requestAnimationFrame(updateGlow);
-    }
-    updateGlow();
-}
-
-// ─── Swiper (Reviews) ───
+// Swiper
 if (typeof Swiper !== 'undefined') {
     new Swiper('.reviews-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
+        slidesPerView: 1, spaceBetween: 20, loop: true,
         autoplay: { delay: 5000, disableOnInteraction: false },
         pagination: { el: '.swiper-pagination', clickable: true },
-        breakpoints: {
-            640: { slidesPerView: 2, spaceBetween: 20 },
-            1024: { slidesPerView: 3, spaceBetween: 24 }
-        }
+        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3, spaceBetween: 24 } }
     });
 }
 
-// ─── Open/Close Status ───
+// Status
 function updateStatus() {
     const badge = document.getElementById('status-badge');
     if (!badge) return;
-    const hour = new Date().getHours();
-    const isOpen = hour >= 11 && hour < 23;
-    badge.className = 'status-badge ' + (isOpen ? 'open' : 'closed');
-    const dotHtml = '<span class="dot"></span>';
-    if (isOpen) {
-        badge.innerHTML = currentLang === 'ar' ? dotHtml + ' مفتوح الآن' : dotHtml + ' Ouvert maintenant';
+    const h = new Date().getHours();
+    const open = h >= 11 && h < 23;
+    if (open) {
+        badge.textContent = currentLang === 'ar' ? 'مفتوح الآن' : 'Ouvert maintenant';
     } else {
-        badge.innerHTML = currentLang === 'ar' ? dotHtml + ' مغلق الآن' : dotHtml + ' Fermé maintenant';
+        badge.textContent = currentLang === 'ar' ? 'مغلق الآن' : 'Fermé maintenant';
     }
 }
 updateStatus();
 setInterval(updateStatus, 60000);
 
-// ─── Gallery Lightbox ───
-document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('click', () => {
-        const img = item.querySelector('img');
-        if (!img) return;
-        const overlay = document.createElement('div');
-        overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(16px);opacity:0;transition:opacity 0.3s';
-        const bigImg = document.createElement('img');
-        bigImg.src = img.src.replace('w=500', 'w=1200').replace('w=600', 'w=1200').replace('w=800', 'w=1200');
-        bigImg.style.cssText = 'max-width:92%;max-height:92%;border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,0.6);transform:scale(0.9);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
-        overlay.appendChild(bigImg);
-        overlay.addEventListener('click', () => {
-            overlay.style.opacity = '0';
-            setTimeout(() => overlay.remove(), 300);
-        });
-        document.body.appendChild(overlay);
-        requestAnimationFrame(() => {
-            overlay.style.opacity = '1';
-            bigImg.style.transform = 'scale(1)';
-        });
-    });
-});
-
-// ─── Init ───
+// Init
 document.addEventListener('DOMContentLoaded', () => {
+    renderTabs();
     renderMenu();
 });
