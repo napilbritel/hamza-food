@@ -13,7 +13,7 @@ let favorites = readSavedFavorites();
 
 const MENU = {
     sandwich: {
-        ar: 'سندويتش / بانيني', fr: 'Sandwich / Panini', icon: 'fas fa-hotdog', image: 'https://images.unsplash.com/photo-1528735602780-cf6f53cf6c0f?w=400&h=300&fit=crop',
+        ar: 'سندويتش / بانيني', fr: 'Sandwich / Panini', icon: 'fas fa-hotdog', emoji: '🥖', image: 'https://images.unsplash.com/photo-1528735602780-cf6f53cf6c0f?w=400&h=300&fit=crop',
         items: [
             { ar: 'بوكاديوس', fr: 'Bocadios', price: 10 },
             { ar: 'سندويتش طون', fr: 'Sandwich Thon', price: 12 },
@@ -30,7 +30,7 @@ const MENU = {
         ]
     },
     burger: {
-        ar: 'برگر', fr: 'Burger', icon: 'fas fa-hamburger', image: 'https://images.unsplash.com/photo-1586816001966-79b736744398?w=400&h=300&fit=crop',
+        ar: 'برگر', fr: 'Burger', icon: 'fas fa-hamburger', emoji: '🍔', image: 'https://images.unsplash.com/photo-1586816001966-79b736744398?w=400&h=300&fit=crop',
         items: [
             { ar: 'تشيز برگر', fr: 'Cheese Burger', price: 17 },
             { ar: 'تشيكن برگر', fr: 'Chicken Burger', price: 20 },
@@ -40,7 +40,7 @@ const MENU = {
         ]
     },
     tacos: {
-        ar: 'تاكوس', fr: 'Tacos', icon: 'fas fa-pepper-hot', image: 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400&h=300&fit=crop',
+        ar: 'تاكوس', fr: 'Tacos', icon: 'fas fa-pepper-hot', emoji: '🌮', image: 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400&h=300&fit=crop',
         sizes: ['L', 'XL'],
         items: [
             { ar: 'تاكوس فلافل', fr: 'Tacos Falafel', price: [12, 17], tags: ['vegetarian'] },
@@ -61,7 +61,7 @@ const MENU = {
         ]
     },
     tacosGratine: {
-        ar: 'تاكوس گراتيني', fr: 'Tacos Gratiné', icon: 'fas fa-fire-flame-curved', image: 'https://images.unsplash.com/photo-1595521624224-e8a451a0c44b?w=400&h=300&fit=crop',
+        ar: 'تاكوس گراتيني', fr: 'Tacos Gratiné', icon: 'fas fa-fire-flame-curved', emoji: '🧀🌮', image: 'https://images.unsplash.com/photo-1595521624224-e8a451a0c44b?w=400&h=300&fit=crop',
         items: [
             { ar: 'تاكوس گراتيني هوت دوغ', fr: 'Tacos Gratiné Hot Dog', price: null },
             { ar: 'تاكوس گراتيني لحم مفروم', fr: 'Tacos Gratiné V.Hachée', price: null },
@@ -72,7 +72,7 @@ const MENU = {
         ]
     },
     triangle: {
-        ar: 'تريانگل (بوتشي)', fr: 'Triangle (Poutchi)', icon: 'fas fa-play fa-rotate-270', image: 'https://images.unsplash.com/photo-1566280174857-38c87c1f308c?w=400&h=300&fit=crop',
+        ar: 'تريانگل (بوتشي)', fr: 'Triangle (Poutchi)', icon: 'fas fa-play fa-rotate-270', emoji: '🔺', image: 'https://images.unsplash.com/photo-1566280174857-38c87c1f308c?w=400&h=300&fit=crop',
         items: [
             { ar: 'تريانگل فلافل', fr: 'Triangle Falafel', price: 8 },
             { ar: 'تريانگل معكودة', fr: 'Triangle Maakouda', price: 8 },
@@ -92,7 +92,7 @@ const MENU = {
         ]
     },
     chawarma: {
-        ar: 'شاورما', fr: 'Chawarma', icon: 'fas fa-drumstick-bite', image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&h=300&fit=crop',
+        ar: 'شاورما', fr: 'Chawarma', icon: 'fas fa-drumstick-bite', emoji: '🌯', image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&h=300&fit=crop',
         items: [
             { ar: 'شاورما', fr: 'Chawarma', price: 20 },
             { ar: 'شاورما دوبل', fr: 'Chawarma Double', price: 30 },
@@ -103,7 +103,7 @@ const MENU = {
         ]
     },
     falafel: {
-        ar: 'فلافل', fr: 'Falafel', icon: 'fas fa-seedling', image: 'https://images.unsplash.com/photo-1599599810694-b5ac4dd97a47?w=400&h=300&fit=crop',
+        ar: 'فلافل', fr: 'Falafel', icon: 'fas fa-seedling', emoji: '🧆', image: 'https://images.unsplash.com/photo-1599599810694-b5ac4dd97a47?w=400&h=300&fit=crop',
         items: [
             { ar: 'سندويتش فلافل', fr: 'Sandwich Falafel', price: 8, tags: ['vegetarian', 'light'] },
             { ar: 'سندويتش دوبل فلافل', fr: 'Sandwich Double Falafel', price: 12, tags: ['vegetarian'] },
@@ -112,7 +112,7 @@ const MENU = {
         ]
     },
     plats: {
-        ar: 'أطباق', fr: 'Plats', icon: 'fas fa-utensils', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
+        ar: 'أطباق', fr: 'Plats', icon: 'fas fa-utensils', emoji: '🍽️', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
         items: [
             { ar: 'بلاط شاورما', fr: 'Plat Chawarma', price: 35 },
             { ar: 'بلاط بروشيت بوليه', fr: 'Plat Brochette Poulet', price: 35 },
@@ -123,7 +123,7 @@ const MENU = {
         ]
     },
     pizza: {
-        ar: 'بيتزا', fr: 'Pizza', icon: 'fas fa-pizza-slice', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop',
+        ar: 'بيتزا', fr: 'Pizza', icon: 'fas fa-pizza-slice', emoji: '🍕', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop',
         sizes: ['P', 'G'],
         items: [
             { ar: 'بيتزا مارغاريتا', fr: 'Pizza Margarita', price: [18, 35], tags: ['vegetarian'] },
@@ -149,7 +149,7 @@ const MENU = {
         ]
     },
     pasticcio: {
-        ar: 'باستيتشو', fr: 'Pasticcio', icon: 'fas fa-bowl-food', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=300&fit=crop',
+        ar: 'باستيتشو', fr: 'Pasticcio', icon: 'fas fa-bowl-food', emoji: '🍝', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=300&fit=crop',
         desc_ar: 'على أساس الفريت', desc_fr: 'A base des frites',
         items: [
             { ar: 'باستيتشو هوت دوغ', fr: 'Pasticcio Hot Dog', price: 20 },
@@ -162,7 +162,7 @@ const MENU = {
         ]
     },
     gratin: {
-        ar: 'گراتان', fr: 'Gratin', icon: 'fas fa-cheese', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=300&fit=crop',
+        ar: 'گراتان', fr: 'Gratin', icon: 'fas fa-cheese', emoji: '🧀', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=300&fit=crop',
         desc_ar: 'على أساس المعكرونة', desc_fr: 'A base des Pattes',
         items: [
             { ar: 'گراتان هوت دوغ', fr: 'Gratin Hot Dog', price: 20 },
@@ -173,7 +173,7 @@ const MENU = {
         ]
     },
     kumpir: {
-        ar: 'كومپير', fr: 'Kumpir', icon: 'fas fa-bowl-rice', image: 'https://images.unsplash.com/photo-1585238341710-57b0e4b932e2?w=400&h=300&fit=crop',
+        ar: 'كومپير', fr: 'Kumpir', icon: 'fas fa-bowl-rice', emoji: '🥔', image: 'https://images.unsplash.com/photo-1585238341710-57b0e4b932e2?w=400&h=300&fit=crop',
         items: [
             { ar: 'كومپير سيمبل', fr: 'Kumpir Simple', price: 25 },
             { ar: 'كومپير طون', fr: 'Kumpir Thon', price: 30 },
@@ -184,7 +184,7 @@ const MENU = {
         ]
     },
     mkilat: {
-        ar: 'مقيلات', fr: 'Mkilat (Fritures)', icon: 'fas fa-shrimp', image: 'https://images.unsplash.com/photo-1579631541616-c3fb466e58d9?w=400&h=300&fit=crop',
+        ar: 'مقيلات', fr: 'Mkilat (Fritures)', icon: 'fas fa-shrimp', emoji: '🦐', image: 'https://images.unsplash.com/photo-1579631541616-c3fb466e58d9?w=400&h=300&fit=crop',
         items: [
             { ar: 'شربة السمك', fr: 'Soupe de Poisson', price: 10, tags: ['light'] },
             { ar: 'مقيلة كفتة السردين', fr: 'Kefta Sardine Frite', price: 20, tags: ['premium'] },
@@ -199,13 +199,13 @@ const MENU = {
         ]
     },
     salade: {
-        ar: 'سلطة بار', fr: 'Salade Bar', icon: 'fas fa-leaf', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
+        ar: 'سلطة بار', fr: 'Salade Bar', icon: 'fas fa-leaf', emoji: '🥗', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
         items: [
             { ar: 'بوفيه سلطات متنوعة', fr: 'Buffet Salades Variées', price: 15, desc_ar: 'عمر السلطة ديالك بيديك', desc_fr: 'Composez votre salade vous-même', featured: true, tags: ['vegetarian', 'healthy'] }
         ]
     },
     jus: {
-        ar: 'عصائر', fr: 'Jus', icon: 'fas fa-blender', image: 'https://images.unsplash.com/photo-1590311092014-486f36cf6d47?w=400&h=300&fit=crop',
+        ar: 'عصائر', fr: 'Jus', icon: 'fas fa-blender', emoji: '🧃', image: 'https://images.unsplash.com/photo-1590311092014-486f36cf6d47?w=400&h=300&fit=crop',
         items: [
             { ar: 'عصير ليمون', fr: 'Jus Citron', price: 5 },
             { ar: 'عصير برتقال', fr: 'Jus Orange', price: 10 },
@@ -220,7 +220,7 @@ const MENU = {
         ]
     },
     dessert: {
-        ar: 'حلويات', fr: 'Desserts', icon: 'fas fa-ice-cream', image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=300&fit=crop',
+        ar: 'حلويات', fr: 'Desserts', icon: 'fas fa-ice-cream', emoji: '🍮', image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=300&fit=crop',
         items: [
             { ar: 'محلبية', fr: 'Mehalabiya', price: 5 },
             { ar: 'زبادي', fr: 'Zabadi', price: 5 },
@@ -230,7 +230,7 @@ const MENU = {
         ]
     },
     boisson: {
-        ar: 'مشروبات', fr: 'Boissons', icon: 'fas fa-glass-water', image: 'https://images.unsplash.com/photo-1513161455079-7ef1a826e90e?w=400&h=300&fit=crop',
+        ar: 'مشروبات', fr: 'Boissons', icon: 'fas fa-glass-water', emoji: '🥤', image: 'https://images.unsplash.com/photo-1513161455079-7ef1a826e90e?w=400&h=300&fit=crop',
         items: [
             { ar: 'ماء 33 سل', fr: 'Eau 33cl', price: 5 },
             { ar: 'ماء 1.5 لتر', fr: 'Eau 1.5L', price: 8 },
@@ -386,7 +386,6 @@ function renderMenu() {
     const grid = document.getElementById('menu-grid');
     if (!grid) return;
     let html = '';
-    let delay = 0;
     let totalVisible = 0;
 
     Object.entries(MENU).forEach(([key, cat]) => {
@@ -399,64 +398,63 @@ function renderMenu() {
         }
 
         const hasSizes = cat.sizes;
+        const catEmoji = cat.emoji || '🍽️';
+
         visibleItems.forEach((item, index) => {
             const name = item[currentLang];
             const isFavorite = favorites[`${key}-${index}`];
-            let priceText;
+            let priceHtml;
             let sizeNote = '';
+
             if (item.price === null) {
-                priceText = '<span class="text-white/40 text-xs">' + (currentLang === 'ar' ? 'اسأل على الثمن' : 'Demandez le prix') + '</span>';
+                priceHtml = '<span class="mc2-price-ask">' + (currentLang === 'ar' ? 'اسأل على الثمن' : 'Demandez le prix') + '</span>';
             } else if (Array.isArray(item.price)) {
                 if (hasSizes) {
-                    priceText = '<small>' + cat.sizes[0] + '</small> ' + item.price[0] + ' · <small>' + cat.sizes[1] + '</small> ' + item.price[1] + ' <small>DH</small>';
-                    sizeNote = '<div class="mc-size-note"><i class="fas fa-ruler-combined"></i><span>' + (currentLang === 'ar' ? 'متوفر بجوج أحجام' : 'Disponible en deux tailles') + '</span></div>';
+                    priceHtml = '<div class="mc2-price-sizes"><span class="mc2-size-tag">' + cat.sizes[0] + '</span><span class="mc2-price-num">' + item.price[0] + '</span><span class="mc2-price-sep">·</span><span class="mc2-size-tag">' + cat.sizes[1] + '</span><span class="mc2-price-num">' + item.price[1] + '</span><span class="mc2-price-dh">DH</span></div>';
                 } else {
-                    priceText = item.price[0] + '/' + item.price[1] + ' <small>DH</small>';
+                    priceHtml = '<span class="mc2-price-num">' + item.price[0] + '/' + item.price[1] + '</span><span class="mc2-price-dh">DH</span>';
                 }
             } else {
-                priceText = item.price + ' <small>DH</small>';
+                priceHtml = '<span class="mc2-price-num">' + item.price + '</span><span class="mc2-price-dh">DH</span>';
             }
-            const featured = item.featured ? ' featured' : '';
-            const desc = currentLang === 'ar' ? (item.desc_ar || '') : (item.desc_fr || '');
-            const orderLink = buildOrderLink(name);
-            const catImage = cat.image || 'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=400&h=300&fit=crop';
 
+            const isFeat = item.featured;
+            const orderLink = buildOrderLink(name);
+            const desc = currentLang === 'ar' ? (item.desc_ar || '') : (item.desc_fr || '');
+
+            // Tags
             let tagsHtml = '';
             if (item.tags && item.tags.length > 0) {
-                tagsHtml = '<div class="mc-tags">';
-                item.tags.forEach(tag => {
-                    const tagIcon = { vegetarian: '🌱', spicy: '🔥', popular: '⭐', premium: '👑', bestseller: '🏆', light: '💚', healthy: '❤️' }[tag] || '✓';
-                    const tagLabel = {
-                        vegetarian: currentLang === 'ar' ? 'نباتي' : 'Végétarien',
-                        spicy: currentLang === 'ar' ? 'حريف' : 'Épicé',
-                        popular: currentLang === 'ar' ? 'مشهور' : 'Populaire',
-                        premium: currentLang === 'ar' ? 'فاخر' : 'Premium',
-                        bestseller: currentLang === 'ar' ? 'الأفضل' : 'Meilleur',
-                        light: currentLang === 'ar' ? 'خفيف' : 'Léger',
-                        healthy: currentLang === 'ar' ? 'صحي' : 'Sain'
-                    }[tag] || tag;
-                    tagsHtml += '<span class="mc-tag mc-tag-' + tag + '" title="' + tagLabel + '">' + tagIcon + '</span>';
-                });
-                tagsHtml += '</div>';
+                const tagMap = { vegetarian:'🌱', spicy:'🔥', popular:'⭐', premium:'👑', bestseller:'🏆', light:'💚', healthy:'❤️' };
+                tagsHtml = item.tags.map(t => '<span class="mc2-tag" title="' + t + '">' + (tagMap[t] || '✓') + '</span>').join('');
             }
 
-            html += '<div class="menu-card' + featured + '">';
-            html += '<div class="relative h-40 overflow-hidden rounded-t-lg bg-navy-800"><img src="' + catImage + '" alt="' + cat[currentLang] + '" class="mc-image" loading="lazy" decoding="async" onerror="this.src=\'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=400&h=300&fit=crop\'"></div>';
-            html += '<div class="mc-body">';
-            if (item.featured) html += '<div class="mc-badge">⭐ ' + (currentLang === 'ar' ? 'مميز' : 'Populaire') + '</div>';
-            html += '<div class="mc-head"><div><div class="mc-kicker">' + cat[currentLang] + '</div><div class="mc-name">' + name + '</div></div><span class="mc-index">' + String(index + 1).padStart(2, '0') + '</span></div>';
-            if (tagsHtml) html += tagsHtml;
-            if (sizeNote) html += sizeNote;
-            html += '<div class="mc-desc">' + (desc || (currentLang === 'ar' ? 'محضر بعناية و جاهز للطلب السريع.' : 'Prepare avec soin et disponible pour une commande rapide.')) + '</div>';
-            html += '<div class="mc-footer"><div class="mc-price">' + priceText + '</div>';
-            html += '<div class="flex items-center gap-2"><a href="' + orderLink + '" target="_blank" rel="noopener noreferrer" class="mc-order flex-1" aria-label="' + (currentLang === 'ar' ? 'اطلب عبر واتساب' : 'Commander via WhatsApp') + '"><i class="fab fa-whatsapp"></i><span>' + (currentLang === 'ar' ? 'اطلب الآن' : 'Commander') + '</span></a>';
-            html += '<button onclick="toggleFavorite(\'' + key + '\', ' + index + ')" class="w-10 h-10 rounded-lg transition-all duration-300 ' + (isFavorite ? 'bg-fire-500/20 text-fire-400' : 'bg-white/[0.04] text-white/40') + '" title="' + (currentLang === 'ar' ? 'أضف للمفضلة' : 'Ajouter aux favoris') + '"><i class="fas fa-heart"></i></button>';
-            html += '</div></div></div>';
+            html += '<div class="mc2' + (isFeat ? ' mc2-featured' : '') + '">';
+            // Emoji + category badge
+            html += '<div class="mc2-top">';
+            html += '<div class="mc2-emoji">' + catEmoji + '</div>';
+            html += '<div class="mc2-info">';
+            html += '<div class="mc2-cat">' + cat[currentLang] + '</div>';
+            html += '<div class="mc2-name">' + name + '</div>';
+            if (desc) html += '<div class="mc2-desc">' + desc + '</div>';
+            html += '</div>';
+            if (isFeat) html += '<div class="mc2-badge">⭐</div>';
+            if (tagsHtml) html += '<div class="mc2-tags">' + tagsHtml + '</div>';
+            html += '</div>';
+            // Price + actions
+            html += '<div class="mc2-bottom">';
+            html += '<div class="mc2-price">' + priceHtml + '</div>';
+            html += '<div class="mc2-actions">';
+            html += '<button onclick="toggleFavorite(\'' + key + '\', ' + index + ')" class="mc2-fav' + (isFavorite ? ' active' : '') + '" title="' + (currentLang === 'ar' ? 'المفضلة' : 'Favoris') + '"><i class="fas fa-heart"></i></button>';
+            html += '<a href="' + orderLink + '" target="_blank" rel="noopener noreferrer" class="mc2-order"><i class="fab fa-whatsapp"></i><span>' + (currentLang === 'ar' ? 'أطلب' : 'Commander') + '</span></a>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
         });
     });
 
     if (!totalVisible) {
-        html = '<div class="menu-empty"><strong>' + (currentLang === 'ar' ? 'ما لقيناش هاد الطبق' : 'Aucun plat trouve') + '</strong><p>' + (currentLang === 'ar' ? 'جرّب اسم آخر أو مسح البحث باش تشوف المنيو كاملة.' : 'Essayez un autre mot-cle ou effacez la recherche pour voir tout le menu.') + '</p></div>';
+        html = '<div class="menu-empty"><strong>' + (currentLang === 'ar' ? 'ما لقيناش هاد الطبق' : 'Aucun plat trouvé') + '</strong><p>' + (currentLang === 'ar' ? 'جرّب اسم آخر أو مسح البحث باش تشوف المنيو كاملة.' : 'Essayez un autre mot-clé ou effacez la recherche.') + '</p></div>';
     }
 
     grid.innerHTML = html;
