@@ -440,7 +440,8 @@ function renderMenu() {
                 tagsHtml += '</div>';
             }
 
-            html += '<div class="menu-card' + featured + '" style="animation-delay:' + delay + 'ms">';
+            const cardDelay = Math.min(delay, 600);
+            html += '<div class="menu-card' + featured + '" style="animation-delay:' + cardDelay + 'ms">';
             html += '<div class="relative h-40 overflow-hidden rounded-t-lg bg-navy-800"><img src="' + catImage + '" alt="' + cat[currentLang] + '" class="mc-image" loading="lazy" decoding="async" onerror="this.src=\'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=400&h=300&fit=crop\'"></div>';
             html += '<div class="mc-body">';
             if (item.featured) html += '<div class="mc-badge">⭐ ' + (currentLang === 'ar' ? 'مميز' : 'Populaire') + '</div>';
@@ -452,7 +453,7 @@ function renderMenu() {
             html += '<div class="flex items-center gap-2"><a href="' + orderLink + '" target="_blank" rel="noopener noreferrer" class="mc-order flex-1" aria-label="' + (currentLang === 'ar' ? 'اطلب عبر واتساب' : 'Commander via WhatsApp') + '"><i class="fab fa-whatsapp"></i><span>' + (currentLang === 'ar' ? 'اطلب الآن' : 'Commander') + '</span></a>';
             html += '<button onclick="toggleFavorite(\'' + key + '\', ' + index + ')" class="w-10 h-10 rounded-lg transition-all duration-300 ' + (isFavorite ? 'bg-fire-500/20 text-fire-400' : 'bg-white/[0.04] text-white/40') + '" title="' + (currentLang === 'ar' ? 'أضف للمفضلة' : 'Ajouter aux favoris') + '"><i class="fas fa-heart"></i></button>';
             html += '</div></div></div>';
-            delay += 25;
+            delay += 15;
         });
     });
 
@@ -680,12 +681,12 @@ document.querySelectorAll('[data-count]').forEach(el => {
 
 if (typeof Swiper !== 'undefined') {
     new Swiper('.reviews-swiper', {
-        slidesPerView: 1, spaceBetween: 20, loop: true,
-        autoplay: { delay: 5000, disableOnInteraction: false },
+        slidesPerView: 1, spaceBetween: 16, loop: true,
+        autoplay: { delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true },
         pagination: { el: '.swiper-pagination', clickable: true },
         keyboard: { enabled: true },
         grabCursor: true,
-        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3, spaceBetween: 24 } }
+        breakpoints: { 640: { slidesPerView: 2, spaceBetween: 20 }, 1024: { slidesPerView: 3, spaceBetween: 24 } }
     });
 }
 

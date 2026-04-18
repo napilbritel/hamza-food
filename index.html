@@ -464,7 +464,11 @@
 
 <!-- ══════════════ ABOUT — BENTO GRID ══════════════ -->
 <section id="about" class="py-20 sm:py-28 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-1/4 left-0 w-[30rem] h-[30rem] bg-gold-500/[0.03] rounded-full blur-[160px]"></div>
+        <div class="absolute bottom-0 right-0 w-[25rem] h-[25rem] bg-fire-500/[0.03] rounded-full blur-[140px]"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="text-center mb-14" data-reveal>
             <div class="inline-flex items-center gap-2 bg-gold-500/[0.08] border border-gold-500/[0.12] text-gold-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase backdrop-blur-sm"><i class="fas fa-info-circle text-[10px]"></i> <span data-ar="من نحن" data-fr="À propos">من نحن</span></div>
             <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black" data-ar="علاش Hamza Food؟" data-fr="Pourquoi Hamza Food ?">علاش Hamza Food؟</h2>
@@ -473,60 +477,98 @@
 
         <!-- Bento Grid -->
         <div class="bento-grid" data-reveal data-delay="100">
-            <!-- Large Image -->
-            <div class="bento-item span-2 row-2 min-h-[300px]">
-                <img src="img/salad-bar.jpg" alt="Hamza Food salade bar" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+            <!-- Large Image with overlay text -->
+            <div class="bento-item span-2 row-2 min-h-[300px] group">
+                <img src="img/salad-bar.jpg" alt="Hamza Food salade bar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+                    <div class="inline-flex items-center gap-2 bg-gold-500/15 border border-gold-500/20 rounded-full px-3 py-1 mb-3">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                        <span class="text-[11px] font-bold text-gold-400 uppercase tracking-wider" data-ar="مفتوح الآن" data-fr="Ouvert maintenant">مفتوح الآن</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-display font-black mb-1" data-ar="سناك حمزة" data-fr="Snack Hamza">سناك حمزة</h3>
+                    <p class="text-white/45 text-sm leading-relaxed" data-ar="خبرة أكثر من 5 سنوات فالوجبات السريعة. كل يوم كنحضرو أطباق لذيذة بمكونات طازجة ومختارة." data-fr="Plus de 5 ans d'expérience en restauration rapide. Chaque jour, nous préparons des plats délicieux avec des ingrédients frais et sélectionnés.">خبرة أكثر من 5 سنوات فالوجبات السريعة. كل يوم كنحضرو أطباق لذيذة بمكونات طازجة ومختارة.</p>
+                </div>
             </div>
+
             <!-- Stat: Years -->
             <div class="bento-item bento-stat">
                 <div class="stat-circle" style="--progress:90%">
-                    <div class="stat-circle-inner">5+</div>
+                    <div class="stat-circle-inner"><span data-count="5">0</span>+</div>
                 </div>
                 <div class="text-sm font-bold mt-1" data-ar="سنوات خبرة" data-fr="Ans d'expérience">سنوات خبرة</div>
                 <div class="text-[11px] text-white/35" data-ar="في مجال الوجبات السريعة" data-fr="Dans la restauration rapide">في مجال الوجبات السريعة</div>
             </div>
+
             <!-- Stat: Recipes -->
             <div class="bento-item bento-stat">
                 <div class="stat-circle" style="--progress:85%">
-                    <div class="stat-circle-inner">70+</div>
+                    <div class="stat-circle-inner"><span data-count="70">0</span>+</div>
                 </div>
                 <div class="text-sm font-bold mt-1" data-ar="وصفة" data-fr="Recettes">وصفة</div>
                 <div class="text-[11px] text-white/35" data-ar="منوعة و لذيذة" data-fr="Variées et délicieuses">منوعة و لذيذة</div>
             </div>
-            <!-- Features -->
-            <div class="bento-item span-2 p-6">
+
+            <!-- Features — 4 cards -->
+            <div class="bento-item span-2 p-5 sm:p-6">
                 <div class="grid grid-cols-2 gap-3 h-full">
-                    <div class="flex items-center gap-3 bg-white/[0.02] border border-white/[0.04] rounded-xl p-4 hover:border-gold-500/20 transition-all">
-                        <div class="w-10 h-10 bg-gold-500/[0.08] rounded-lg flex items-center justify-center text-gold-500 shrink-0"><i class="fas fa-leaf text-sm"></i></div>
-                        <span class="text-[13px] font-semibold leading-snug" data-ar="مكونات طازجة يوميا" data-fr="Ingrédients frais quotidiens">مكونات طازجة يوميا</span>
+                    <div class="about-feature-card group">
+                        <div class="about-feature-icon"><i class="fas fa-leaf text-sm"></i></div>
+                        <div>
+                            <div class="text-[13px] font-bold mb-0.5" data-ar="مكونات طازجة" data-fr="Ingrédients frais">مكونات طازجة</div>
+                            <div class="text-[11px] text-white/30 leading-snug" data-ar="كل يوم من السوق" data-fr="Du marché chaque jour">كل يوم من السوق</div>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-3 bg-white/[0.02] border border-white/[0.04] rounded-xl p-4 hover:border-gold-500/20 transition-all">
-                        <div class="w-10 h-10 bg-gold-500/[0.08] rounded-lg flex items-center justify-center text-gold-500 shrink-0"><i class="fas fa-bolt text-sm"></i></div>
-                        <span class="text-[13px] font-semibold leading-snug" data-ar="تحضير سريع" data-fr="Préparation rapide">تحضير سريع</span>
+                    <div class="about-feature-card group">
+                        <div class="about-feature-icon bg-fire-500/[0.08] text-fire-400"><i class="fas fa-bolt text-sm"></i></div>
+                        <div>
+                            <div class="text-[13px] font-bold mb-0.5" data-ar="تحضير سريع" data-fr="Préparation rapide">تحضير سريع</div>
+                            <div class="text-[11px] text-white/30 leading-snug" data-ar="ما غاديش تسنا بزاف" data-fr="Temps d'attente minimal">ما غاديش تسنا بزاف</div>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-3 bg-white/[0.02] border border-white/[0.04] rounded-xl p-4 hover:border-gold-500/20 transition-all">
-                        <div class="w-10 h-10 bg-gold-500/[0.08] rounded-lg flex items-center justify-center text-gold-500 shrink-0"><i class="fas fa-truck-fast text-sm"></i></div>
-                        <span class="text-[13px] font-semibold leading-snug" data-ar="توصيل سريع" data-fr="Livraison rapide">توصيل سريع</span>
+                    <div class="about-feature-card group">
+                        <div class="about-feature-icon bg-green-500/[0.08] text-green-400"><i class="fas fa-truck-fast text-sm"></i></div>
+                        <div>
+                            <div class="text-[13px] font-bold mb-0.5" data-ar="توصيل سريع" data-fr="Livraison rapide">توصيل سريع</div>
+                            <div class="text-[11px] text-white/30 leading-snug" data-ar="للرباط وضواحيها" data-fr="Rabat et environs">للرباط وضواحيها</div>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-3 bg-white/[0.02] border border-white/[0.04] rounded-xl p-4 hover:border-gold-500/20 transition-all">
-                        <div class="w-10 h-10 bg-gold-500/[0.08] rounded-lg flex items-center justify-center text-gold-500 shrink-0"><i class="fas fa-coins text-sm"></i></div>
-                        <span class="text-[13px] font-semibold leading-snug" data-ar="أثمنة في المتناول" data-fr="Prix abordables">أثمنة في المتناول</span>
+                    <div class="about-feature-card group">
+                        <div class="about-feature-icon bg-purple-500/[0.08] text-purple-400"><i class="fas fa-coins text-sm"></i></div>
+                        <div>
+                            <div class="text-[13px] font-bold mb-0.5" data-ar="أثمنة مناسبة" data-fr="Prix abordables">أثمنة مناسبة</div>
+                            <div class="text-[11px] text-white/30 leading-snug" data-ar="ابتداءً من 8 دراهم" data-fr="À partir de 8 DH">ابتداءً من 8 دراهم</div>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <!-- Small Image -->
-            <div class="bento-item min-h-[180px]">
-                <img src="img/salad-bar2.jpg" alt="Hamza Food buffet" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+            <div class="bento-item min-h-[180px] group">
+                <img src="img/salad-bar2.jpg" alt="Hamza Food buffet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
             </div>
-            <!-- Location -->
+
+            <!-- Stat: Clients -->
+            <div class="bento-item bento-stat">
+                <div class="stat-circle" style="--progress:95%">
+                    <div class="stat-circle-inner"><span data-count="1000">0</span>+</div>
+                </div>
+                <div class="text-sm font-bold mt-1" data-ar="عميل سعيد" data-fr="Clients satisfaits">عميل سعيد</div>
+                <div class="text-[11px] text-white/35" data-ar="كل شهر" data-fr="Chaque mois">كل شهر</div>
+            </div>
+
+            <!-- Location CTA -->
             <div class="bento-item p-6 flex flex-col items-center justify-center text-center">
-                <a href="https://maps.app.goo.gl/u7gHWxWksG43x8Tb6" target="_blank" rel="noopener noreferrer" class="group">
-                    <div class="w-14 h-14 bg-fire-500/[0.1] rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-fire-500/20 transition">
+                <a href="https://maps.app.goo.gl/u7gHWxWksG43x8Tb6" target="_blank" rel="noopener noreferrer" class="group w-full">
+                    <div class="w-14 h-14 bg-fire-500/[0.1] rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-fire-500/20 group-hover:scale-110 transition-all duration-300">
                         <i class="fas fa-map-marker-alt text-fire-500 text-xl"></i>
                     </div>
                     <div class="text-sm font-bold mb-1" data-ar="الموقع ديالنا" data-fr="Notre adresse">الموقع ديالنا</div>
-                    <div class="text-[11px] text-white/35" data-ar="الرباط — شوف فخريطة" data-fr="Rabat — Voir sur la carte">الرباط — شوف فخريطة</div>
-                    <i class="fas fa-external-link-alt text-white/15 group-hover:text-white/40 transition text-[10px] mt-2"></i>
+                    <div class="text-[11px] text-white/35 mb-2" data-ar="الرباط، المغرب" data-fr="Rabat, Maroc">الرباط، المغرب</div>
+                    <div class="inline-flex items-center gap-1.5 text-[11px] text-gold-500/60 group-hover:text-gold-400 transition font-bold">
+                        <span data-ar="شوف فخريطة" data-fr="Voir sur la carte">شوف فخريطة</span>
+                        <i class="fas fa-arrow-up-right-from-square text-[9px]"></i>
+                    </div>
                 </a>
             </div>
         </div>
@@ -588,22 +630,152 @@
 </section>
 
 <!-- ══════════════ REVIEWS ══════════════ -->
-<section id="reviews" class="py-20 sm:py-28 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14" data-reveal>
+<section id="reviews" class="py-20 sm:py-28 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-gold-500/[0.02] rounded-full blur-[200px]"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center mb-6" data-reveal>
             <div class="inline-flex items-center gap-2 bg-gold-500/[0.08] border border-gold-500/[0.12] text-gold-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase backdrop-blur-sm"><i class="fas fa-star text-[10px]"></i> <span data-ar="آراء العملاء" data-fr="Avis clients">آراء العملاء</span></div>
             <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black" data-ar="شنو كيقولو عملاؤنا" data-fr="Ce que disent nos clients">شنو كيقولو عملاؤنا</h2>
+            <p class="text-white/30 mt-3 text-sm max-w-md mx-auto" data-ar="أكثر من 1000 عميل سعيد كل شهر" data-fr="Plus de 1000 clients satisfaits chaque mois">أكثر من 1000 عميل سعيد كل شهر</p>
+        </div>
+
+        <!-- Rating summary -->
+        <div class="flex items-center justify-center gap-4 mb-12" data-reveal data-delay="80">
+            <div class="flex items-center gap-1">
+                <span class="text-3xl sm:text-4xl font-black text-gold-400">4.9</span>
+                <div class="flex flex-col items-start ms-2">
+                    <div class="text-gold-400 text-sm tracking-wide">★★★★★</div>
+                    <div class="text-[11px] text-white/30" data-ar="من Google Reviews" data-fr="sur Google Reviews">من Google Reviews</div>
+                </div>
+            </div>
         </div>
 
         <div class="swiper reviews-swiper" data-reveal data-delay="100">
             <div class="swiper-wrapper pb-14">
-                <div class="swiper-slide"><div class="review-card"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/55 text-sm leading-relaxed mb-6 flex-1" data-ar="أحسن سناك في الحي! الطاكوس ديالهم خياليين و البرغر ديالهم كبير و معمر. 🔥" data-fr="Le meilleur snack du quartier ! Leurs tacos sont incroyables et leur burger est énorme. 🔥">أحسن سناك في الحي! الطاكوس ديالهم خياليين و البرغر ديالهم كبير و معمر. 🔥</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="review-avatar bg-gradient-to-br from-gold-500 to-fire-500 font-display">أ</div><div><div class="text-sm font-bold" data-ar="أحمد م." data-fr="Ahmed M.">أحمد م.</div><div class="text-[11px] text-white/25">Google Review</div></div></div></div></div>
-                <div class="swiper-slide"><div class="review-card"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/55 text-sm leading-relaxed mb-6 flex-1" data-ar="الشاورما ديالهم لذيذة بزاف! و التوصيل كان سريع. الأكل وصل ساخن. 👌" data-fr="Leur chawarma est vraiment délicieuse ! La livraison était rapide et chaude. 👌">الشاورما ديالهم لذيذة بزاف! و التوصيل كان سريع. الأكل وصل ساخن. 👌</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="review-avatar bg-gradient-to-br from-fire-500 to-gold-500 font-display">س</div><div><div class="text-sm font-bold" data-ar="سارة ب." data-fr="Sara B.">سارة ب.</div><div class="text-[11px] text-white/25">Google Review</div></div></div></div></div>
-                <div class="swiper-slide"><div class="review-card"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/55 text-sm leading-relaxed mb-6 flex-1" data-ar="ولادي كيحماقو على البيتزا و العرض ديال الأطفال مزيان بزاف. أثمنة مناسبة! 👨‍👩‍👧‍👦" data-fr="Mes enfants adorent la pizza et l'offre enfants est géniale. Bons prix ! 👨‍👩‍👧‍👦">ولادي كيحماقو على البيتزا و العرض ديال الأطفال مزيان بزاف. أثمنة مناسبة! 👨‍👩‍👧‍👦</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="review-avatar bg-gradient-to-br from-gold-500 to-gold-300 font-display">ي</div><div><div class="text-sm font-bold" data-ar="يوسف ك." data-fr="Youssef K.">يوسف ك.</div><div class="text-[11px] text-white/25">Google Review</div></div></div></div></div>
-                <div class="swiper-slide"><div class="review-card"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/55 text-sm leading-relaxed mb-6 flex-1" data-ar="الكومپير ديالهم حاجة خيالية! و المقيلات ديال فواكه البحر ممتازة. المكان نظيف 🐟" data-fr="Leur kumpir est incroyable ! Et les fritures de fruits de mer excellentes. Endroit propre 🐟">الكومپير ديالهم حاجة خيالية! و المقيلات ديال فواكه البحر ممتازة. المكان نظيف 🐟</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="review-avatar bg-gradient-to-br from-fire-500 to-fire-400 font-display">ف</div><div><div class="text-sm font-bold" data-ar="فاطمة ر." data-fr="Fatima R.">فاطمة ر.</div><div class="text-[11px] text-white/25">Google Review</div></div></div></div></div>
-                <div class="swiper-slide"><div class="review-card"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/55 text-sm leading-relaxed mb-6 flex-1" data-ar="جربت الباستيتشو رويال و كان لذيذ بزاف! و الگراتان ميكست تحفة. أسعار جيدة 💯" data-fr="J'ai essayé le pasticcio royal, c'était délicieux ! Et le gratin mixte superbe. Bon rapport qualité/prix 💯">جربت الباستيتشو رويال و كان لذيذ بزاف! و الگراتان ميكست تحفة. أسعار جيدة 💯</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="review-avatar bg-gradient-to-br from-gold-500 to-fire-500 font-display">م</div><div><div class="text-sm font-bold" data-ar="محمد ع." data-fr="Mohamed A.">محمد ع.</div><div class="text-[11px] text-white/25">Google Review</div></div></div></div></div>
+                <!-- Review 1 -->
+                <div class="swiper-slide"><div class="review-card">
+                    <div class="review-card-top">
+                        <div class="flex items-center gap-3">
+                            <div class="review-avatar bg-gradient-to-br from-gold-500 to-fire-500 font-display">أ</div>
+                            <div>
+                                <div class="text-sm font-bold" data-ar="أحمد م." data-fr="Ahmed M.">أحمد م.</div>
+                                <div class="text-[11px] text-white/25 flex items-center gap-1.5"><i class="fab fa-google text-[10px]"></i> Google Review</div>
+                            </div>
+                        </div>
+                        <div class="text-gold-400 text-xs tracking-wide">★★★★★</div>
+                    </div>
+                    <p class="review-text" data-ar="أحسن سناك في الحي بلا منازع! الطاكوس ديالهم خياليين والبرغر ديالهم كبير و معمر مزيان. الأكل ديما ساخن و طازج. نصحت بيهم بزاف ناس. 🔥" data-fr="Le meilleur snack du quartier sans discussion ! Leurs tacos sont incroyables et leur burger est énorme et bien garni. La nourriture est toujours chaude et fraîche. Je les recommande à tout le monde. 🔥">أحسن سناك في الحي بلا منازع! الطاكوس ديالهم خياليين والبرغر ديالهم كبير و معمر مزيان. الأكل ديما ساخن و طازج. نصحت بيهم بزاف ناس. 🔥</p>
+                    <div class="review-date" data-ar="قبل أسبوعين" data-fr="Il y a 2 semaines">قبل أسبوعين</div>
+                </div></div>
+
+                <!-- Review 2 -->
+                <div class="swiper-slide"><div class="review-card">
+                    <div class="review-card-top">
+                        <div class="flex items-center gap-3">
+                            <div class="review-avatar bg-gradient-to-br from-pink-500 to-purple-500 font-display">س</div>
+                            <div>
+                                <div class="text-sm font-bold" data-ar="سارة ب." data-fr="Sara B.">سارة ب.</div>
+                                <div class="text-[11px] text-white/25 flex items-center gap-1.5"><i class="fab fa-google text-[10px]"></i> Google Review</div>
+                            </div>
+                        </div>
+                        <div class="text-gold-400 text-xs tracking-wide">★★★★★</div>
+                    </div>
+                    <p class="review-text" data-ar="الشاورما ديالهم لذيذة بزاف! و التوصيل كان سريع بزاف — ما كملت حتى 20 دقيقة. الأكل وصل ساخن و معبأ مزيان. شكرا ليكم! 👌" data-fr="Leur chawarma est vraiment délicieuse ! La livraison était super rapide — moins de 20 minutes. La nourriture est arrivée chaude et bien emballée. Merci à vous ! 👌">الشاورما ديالهم لذيذة بزاف! و التوصيل كان سريع بزاف — ما كملت حتى 20 دقيقة. الأكل وصل ساخن و معبأ مزيان. شكرا ليكم! 👌</p>
+                    <div class="review-date" data-ar="قبل 3 أيام" data-fr="Il y a 3 jours">قبل 3 أيام</div>
+                </div></div>
+
+                <!-- Review 3 -->
+                <div class="swiper-slide"><div class="review-card">
+                    <div class="review-card-top">
+                        <div class="flex items-center gap-3">
+                            <div class="review-avatar bg-gradient-to-br from-blue-500 to-cyan-400 font-display">ي</div>
+                            <div>
+                                <div class="text-sm font-bold" data-ar="يوسف ك." data-fr="Youssef K.">يوسف ك.</div>
+                                <div class="text-[11px] text-white/25 flex items-center gap-1.5"><i class="fab fa-google text-[10px]"></i> Google Review</div>
+                            </div>
+                        </div>
+                        <div class="text-gold-400 text-xs tracking-wide">★★★★★</div>
+                    </div>
+                    <p class="review-text" data-ar="ولادي كيحماقو على البيتزا ديالهم! العرض ديال الأطفال مزيان بزاف و الأثمنة مناسبة للعائلات. المكان نظيف و المعاملة خيالية. 👨‍👩‍👧‍👦" data-fr="Mes enfants adorent leur pizza ! L'offre enfants est géniale et les prix sont adaptés aux familles. L'endroit est propre et le service excellent. 👨‍👩‍👧‍👦">ولادي كيحماقو على البيتزا ديالهم! العرض ديال الأطفال مزيان بزاف و الأثمنة مناسبة للعائلات. المكان نظيف و المعاملة خيالية. 👨‍👩‍👧‍👦</p>
+                    <div class="review-date" data-ar="قبل شهر" data-fr="Il y a un mois">قبل شهر</div>
+                </div></div>
+
+                <!-- Review 4 -->
+                <div class="swiper-slide"><div class="review-card">
+                    <div class="review-card-top">
+                        <div class="flex items-center gap-3">
+                            <div class="review-avatar bg-gradient-to-br from-emerald-500 to-teal-400 font-display">ف</div>
+                            <div>
+                                <div class="text-sm font-bold" data-ar="فاطمة ر." data-fr="Fatima R.">فاطمة ر.</div>
+                                <div class="text-[11px] text-white/25 flex items-center gap-1.5"><i class="fab fa-google text-[10px]"></i> Google Review</div>
+                            </div>
+                        </div>
+                        <div class="text-gold-400 text-xs tracking-wide">★★★★★</div>
+                    </div>
+                    <p class="review-text" data-ar="الكومپير ديالهم حاجة خيالية! جربت كومپير ميكست و كان لذيذ بزاف. المقيلات ديال فواكه البحر ممتازة أيضا. المكان نظيف و الخدمة سريعة. 🐟" data-fr="Leur kumpir est incroyable ! J'ai essayé le kumpir mixte, c'était délicieux. Les fritures de fruits de mer sont aussi excellentes. Endroit propre et service rapide. 🐟">الكومپير ديالهم حاجة خيالية! جربت كومپير ميكست و كان لذيذ بزاف. المقيلات ديال فواكه البحر ممتازة أيضا. المكان نظيف و الخدمة سريعة. 🐟</p>
+                    <div class="review-date" data-ar="قبل أسبوع" data-fr="Il y a une semaine">قبل أسبوع</div>
+                </div></div>
+
+                <!-- Review 5 -->
+                <div class="swiper-slide"><div class="review-card">
+                    <div class="review-card-top">
+                        <div class="flex items-center gap-3">
+                            <div class="review-avatar bg-gradient-to-br from-orange-500 to-red-500 font-display">م</div>
+                            <div>
+                                <div class="text-sm font-bold" data-ar="محمد ع." data-fr="Mohamed A.">محمد ع.</div>
+                                <div class="text-[11px] text-white/25 flex items-center gap-1.5"><i class="fab fa-google text-[10px]"></i> Google Review</div>
+                            </div>
+                        </div>
+                        <div class="text-gold-400 text-xs tracking-wide">★★★★★</div>
+                    </div>
+                    <p class="review-text" data-ar="جربت الباستيتشو رويال و كان لذيذ بزاف! الگراتان ميكست ديالهم تحفة. الأكل كأنك فدار. أسعار جيدة مقارنة بالجودة. غنرجع بلا شك! 💯" data-fr="J'ai essayé le pasticcio royal, c'était délicieux ! Leur gratin mixte est superbe. La cuisine est comme faite maison. Excellent rapport qualité/prix. J'y retournerai sans hésiter ! 💯">جربت الباستيتشو رويال و كان لذيذ بزاف! الگراتان ميكست ديالهم تحفة. الأكل كأنك فدار. أسعار جيدة مقارنة بالجودة. غنرجع بلا شك! 💯</p>
+                    <div class="review-date" data-ar="قبل 5 أيام" data-fr="Il y a 5 jours">قبل 5 أيام</div>
+                </div></div>
+
+                <!-- Review 6 -->
+                <div class="swiper-slide"><div class="review-card">
+                    <div class="review-card-top">
+                        <div class="flex items-center gap-3">
+                            <div class="review-avatar bg-gradient-to-br from-amber-400 to-orange-500 font-display">خ</div>
+                            <div>
+                                <div class="text-sm font-bold" data-ar="خديجة ل." data-fr="Khadija L.">خديجة ل.</div>
+                                <div class="text-[11px] text-white/25 flex items-center gap-1.5"><i class="fab fa-google text-[10px]"></i> Google Review</div>
+                            </div>
+                        </div>
+                        <div class="text-gold-400 text-xs tracking-wide">★★★★★</div>
+                    </div>
+                    <p class="review-text" data-ar="العصائر الطبيعية ديالهم لذاذ! جربت عصير أفوكادو و عصير مانگو — فريش و طبيعي 100%. الحلويات ديالهم زوينين بزاف أيضا. نصح بيهم! 🥤" data-fr="Leurs jus naturels sont délicieux ! J'ai essayé le jus d'avocat et le jus de mangue — frais et 100% naturel. Leurs desserts sont aussi très bons. Je recommande ! 🥤">العصائر الطبيعية ديالهم لذاذ! جربت عصير أفوكادو و عصير مانگو — فريش و طبيعي 100%. الحلويات ديالهم زوينين بزاف أيضا. نصح بيهم! 🥤</p>
+                    <div class="review-date" data-ar="قبل أسبوعين" data-fr="Il y a 2 semaines">قبل أسبوعين</div>
+                </div></div>
+
+                <!-- Review 7 -->
+                <div class="swiper-slide"><div class="review-card">
+                    <div class="review-card-top">
+                        <div class="flex items-center gap-3">
+                            <div class="review-avatar bg-gradient-to-br from-indigo-500 to-blue-500 font-display">ع</div>
+                            <div>
+                                <div class="text-sm font-bold" data-ar="عمر ن." data-fr="Omar N.">عمر ن.</div>
+                                <div class="text-[11px] text-white/25 flex items-center gap-1.5"><i class="fab fa-google text-[10px]"></i> Google Review</div>
+                            </div>
+                        </div>
+                        <div class="text-gold-400 text-xs tracking-wide">★★★★★</div>
+                    </div>
+                    <p class="review-text" data-ar="أنا من الزبناء الدائمين — كل أسبوع كنجي! التاكوس گراتيني حاجة ما كتوصف و الفلافل ديالهم ما كيخيبوش. فريق ودود و خدومين. بيغ أب! 💪" data-fr="Je suis un client régulier — j'y vais chaque semaine ! Le tacos gratiné est indescriptible et leurs falafels ne déçoivent jamais. Équipe sympathique et serviable. Top ! 💪">أنا من الزبناء الدائمين — كل أسبوع كنجي! التاكوس گراتيني حاجة ما كتوصف و الفلافل ديالهم ما كيخيبوش. فريق ودود و خدومين. بيغ أب! 💪</p>
+                    <div class="review-date" data-ar="قبل 4 أيام" data-fr="Il y a 4 jours">قبل 4 أيام</div>
+                </div></div>
             </div>
             <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- CTA under reviews -->
+        <div class="text-center mt-8" data-reveal data-delay="200">
+            <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B9%D9%86%D8%AF%D9%83%D9%85" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 bg-white/[0.04] border border-white/[0.06] hover:border-gold-500/20 text-white/60 hover:text-white font-bold px-6 py-3 rounded-full text-sm transition-all duration-300 backdrop-blur-sm">
+                <i class="fab fa-whatsapp text-green-400"></i>
+                <span data-ar="جرب و حكم بنفسك!" data-fr="Essayez et jugez par vous-même !">جرب و حكم بنفسك!</span>
+                <i class="fas fa-arrow-left text-[10px] text-white/30"></i>
+            </a>
         </div>
     </div>
 </section>
