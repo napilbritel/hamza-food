@@ -440,8 +440,7 @@ function renderMenu() {
                 tagsHtml += '</div>';
             }
 
-            const cardDelay = Math.min(delay, 600);
-            html += '<div class="menu-card' + featured + '" style="animation-delay:' + cardDelay + 'ms">';
+            html += '<div class="menu-card' + featured + '">';
             html += '<div class="relative h-40 overflow-hidden rounded-t-lg bg-navy-800"><img src="' + catImage + '" alt="' + cat[currentLang] + '" class="mc-image" loading="lazy" decoding="async" onerror="this.src=\'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=400&h=300&fit=crop\'"></div>';
             html += '<div class="mc-body">';
             if (item.featured) html += '<div class="mc-badge">⭐ ' + (currentLang === 'ar' ? 'مميز' : 'Populaire') + '</div>';
@@ -453,7 +452,6 @@ function renderMenu() {
             html += '<div class="flex items-center gap-2"><a href="' + orderLink + '" target="_blank" rel="noopener noreferrer" class="mc-order flex-1" aria-label="' + (currentLang === 'ar' ? 'اطلب عبر واتساب' : 'Commander via WhatsApp') + '"><i class="fab fa-whatsapp"></i><span>' + (currentLang === 'ar' ? 'اطلب الآن' : 'Commander') + '</span></a>';
             html += '<button onclick="toggleFavorite(\'' + key + '\', ' + index + ')" class="w-10 h-10 rounded-lg transition-all duration-300 ' + (isFavorite ? 'bg-fire-500/20 text-fire-400' : 'bg-white/[0.04] text-white/40') + '" title="' + (currentLang === 'ar' ? 'أضف للمفضلة' : 'Ajouter aux favoris') + '"><i class="fas fa-heart"></i></button>';
             html += '</div></div></div>';
-            delay += 15;
         });
     });
 

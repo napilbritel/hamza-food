@@ -740,7 +740,7 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
     border-radius: var(--radius-xl);
     overflow: hidden;
     transition: var(--transition-spring);
-    animation: cardReveal 0.35s ease both;
+    /* cards appear instantly — no animation delay */
     display: flex;
     flex-direction: column;
     transform-style: preserve-3d;
