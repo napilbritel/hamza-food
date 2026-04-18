@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Hamza Food — المنيو الكامل | Menu Complet</title>
+    <meta name="description" content="Consultez le menu complet de Hamza Food — Tacos, Burger, Pizza, Chawarma, Kumpir et plus.">
+    <meta name="theme-color" content="#050d1a">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy-950: #050d1a;
+            --navy-900: #0a1428;
+            --navy-800: #0f1d38;
+            --gold-500: #d4a843;
+            --gold-400: #f5d060;
+            --fire-500: #ff6b35;
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            background: var(--navy-950);
+            color: #fff;
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .lang-fr { font-family: 'Poppins', sans-serif; direction: ltr; }
+        ::selection { background: rgba(212, 168, 67, 0.35); color: #fff; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--navy-950); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--gold-500), var(--fire-500)); border-radius: 999px; }
+
+        /* ── Noise Overlay ── */
+        .noise {
+            position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.02;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+        }
+
+        /* ── Header ── */
+        .book-header {
+            position: sticky; top: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.85rem 1.25rem;
+            background: rgba(5, 13, 26, 0.92);
+            backdrop-filter: blur(24px) saturate(1.6);
+            border-bottom: 1px solid rgba(212, 168, 67, 0.08);
+        }
+
+        .book-header .logo-group {
+            display: flex; align-items: center; gap: 0.6rem;
+            text-decoration: none; color: #fff;
+        }
+
+        .book-header .logo-group img {
+            width: 36px; height: 36px; border-radius: 10px; object-fit: contain;
+        }
+
+        .book-header .logo-text { font-weight: 800; font-size: 0.95rem; }
+        .book-header .logo-sub { font-size: 0.6rem; color: var(--gold-500); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+
+        .header-actions { display: flex; align-items: center; gap: 0.5rem; }
+
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5rem 0.9rem; border-radius: 999px;
+            font-size: 0.75rem; font-weight: 700; color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.06);
+            cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit;
+        }
+        .btn-ghost:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+        .btn-gold {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5rem 1rem; border-radius: 999px;
+            font-size: 0.75rem; font-weight: 800; color: var(--navy-950);
+            background: linear-gradient(135deg, var(--gold-500), var(--gold-400));
+            border: none; cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit;
+            box-shadow: 0 4px 16px rgba(212, 168, 67, 0.25);
+        }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212, 168, 67, 0.35); }
+
+        .btn-green {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5rem 1rem; border-radius: 999px;
+            font-size: 0.75rem; font-weight: 800; color: #fff;
+            background: #25d366; border: none; cursor: pointer;
+            transition: all 0.3s ease; text-decoration: none; font-family: inherit;
+        }
+        .btn-green:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25); }
+
+        /* ── Page Counter (header) ── */
+        .page-indicator {
+            display: flex; align-items: center; gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 999px; padding: 0.35rem 0.85rem;
+        }
+        .page-indicator span { font-size: 0.8rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); }
+        .page-indicator .current-page { color: var(--gold-400); font-weight: 900; }
+
+        /* ── Book Container ── */
+        .book-wrapper {
+            display: flex; flex-direction: column; align-items: center;
+            padding: 1.5rem 1rem 3rem;
+            min-height: calc(100vh - 60px);
+        }
+
+        .book-title { text-align: center; margin-bottom: 1.5rem; }
+        .book-title h1 {
+            font-family: 'Cairo', sans-serif; font-weight: 900;
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
+            background: linear-gradient(135deg, var(--gold-400), var(--fire-500), var(--gold-400));
+            background-size: 200% 100%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        .book-title p { font-size: 0.85rem; color: rgba(255, 255, 255, 0.3); margin-top: 0.4rem; }
+
+        /* ── Flipbook ── */
+        .flipbook-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .flipbook-viewport {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1.42 / 1;
+            overflow: hidden;
+            border-radius: 1rem;
+            background: var(--navy-900);
+            box-shadow:
+                0 0 0 1px rgba(212, 168, 67, 0.1),
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 80px rgba(212, 168, 67, 0.05);
+            touch-action: pan-y;
+            cursor: grab;
+        }
+
+        .flipbook-viewport.dragging { cursor: grabbing; }
+
+        .flipbook-page {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform, opacity;
+        }
+
+        .flipbook-page img {
+            width: 100%; height: 100%;
+            object-fit: contain;
+            user-select: none; -webkit-user-drag: none; pointer-events: none;
+        }
+
+        .flipbook-page.active { opacity: 1; transform: translateX(0) scale(1); z-index: 2; }
+        .flipbook-page.prev { opacity: 0; transform: translateX(-30%) scale(0.92); z-index: 1; }
+        .flipbook-page.next { opacity: 0; transform: translateX(30%) scale(0.92); z-index: 1; }
+        .flipbook-page.hidden { opacity: 0; pointer-events: none; z-index: 0; }
+
+        /* Live drag feedback — no transition */
+        .flipbook-page.dragging { transition: none !important; }
+
+        /* Nav Arrows */
+        .flip-nav {
+            position: absolute; top: 50%; z-index: 10;
+            transform: translateY(-50%);
+            width: 48px; height: 48px; border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(5, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            color: rgba(255, 255, 255, 0.7);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s ease; font-size: 1rem;
+        }
+        .flip-nav:hover {
+            background: rgba(212, 168, 67, 0.15);
+            border-color: rgba(212, 168, 67, 0.3);
+            color: var(--gold-400);
+            transform: translateY(-50%) scale(1.08);
+        }
+        .flip-nav:disabled {
+            opacity: 0.2; cursor: default;
+            transform: translateY(-50%) !important;
+            background: rgba(5, 13, 26, 0.5) !important;
+        }
+        .flip-nav:active:not(:disabled) { transform: translateY(-50%) scale(0.95); }
+        .flip-prev { left: 0.6rem; }
+        .flip-next { right: 0.6rem; }
+        [dir="rtl"] .flip-prev { left: auto; right: 0.6rem; }
+        [dir="rtl"] .flip-next { right: auto; left: 0.6rem; }
+
+        /* ── Progress Dots (mobile) ── */
+        .progress-dots {
+            display: none;
+            justify-content: center; gap: 8px;
+            margin-top: 1rem;
+        }
+        .progress-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            transition: all 0.3s ease; cursor: pointer;
+        }
+        .progress-dot.active {
+            background: var(--gold-400);
+            box-shadow: 0 0 8px rgba(212,168,67,0.4);
+            width: 24px; border-radius: 4px;
+        }
+
+        /* ── Page Thumbnails (desktop) ── */
+        .page-thumbnails {
+            display: flex; gap: 0.6rem; margin-top: 1.25rem;
+            overflow-x: auto; padding: 0.5rem;
+            scrollbar-width: none;
+        }
+        .page-thumbnails::-webkit-scrollbar { display: none; }
+
+        .page-thumb {
+            flex: 0 0 auto;
+            width: 90px; height: 63px;
+            border-radius: 0.5rem; overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            cursor: pointer; transition: all 0.3s ease;
+            position: relative; opacity: 0.5;
+        }
+        .page-thumb:hover { opacity: 0.8; border-color: rgba(255, 255, 255, 0.15); }
+        .page-thumb.active {
+            opacity: 1; border-color: var(--gold-500);
+            box-shadow: 0 4px 16px rgba(212, 168, 67, 0.25);
+        }
+        .page-thumb img { width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; }
+        .page-thumb .thumb-num {
+            position: absolute; bottom: 2px; right: 2px;
+            background: rgba(5, 13, 26, 0.85); color: rgba(255, 255, 255, 0.6);
+            font-size: 0.6rem; font-weight: 800;
+            padding: 1px 5px; border-radius: 4px;
+        }
+
+        /* ── Controls ── */
+        .book-controls {
+            display: flex; align-items: center; justify-content: center;
+            gap: 0.5rem; margin-top: 1.25rem; flex-wrap: wrap;
+        }
+
+        .ctrl-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+            padding: 0.6rem 1rem; border-radius: 999px;
+            font-size: 0.78rem; font-weight: 700; color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06);
+            cursor: pointer; transition: all 0.3s ease; font-family: inherit;
+        }
+        .ctrl-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.12); }
+        .ctrl-btn.active { color: var(--gold-400); border-color: rgba(212, 168, 67, 0.2); background: rgba(212, 168, 67, 0.06); }
+
+        /* ── Fullscreen Mode ── */
+        .fullscreen-overlay {
+            position: fixed; inset: 0; z-index: 9998;
+            background: rgba(3, 7, 18, 0.97); backdrop-filter: blur(20px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 0; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .fullscreen-overlay.visible { opacity: 1; pointer-events: all; }
+
+        .fullscreen-img-wrap {
+            flex: 1; display: flex; align-items: center; justify-content: center;
+            width: 100%; overflow: hidden;
+            touch-action: none;
+        }
+
+        .fullscreen-overlay .fullscreen-img {
+            max-width: 96vw; max-height: 82vh;
+            object-fit: contain; border-radius: 0.5rem;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease;
+            user-select: none; -webkit-user-drag: none;
+        }
+
+        .fullscreen-close {
+            position: absolute; top: 0.75rem; right: 0.75rem; z-index: 5;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(5, 13, 26, 0.85); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s ease; font-size: 1rem;
+        }
+        .fullscreen-close:hover { background: rgba(212, 168, 67, 0.2); }
+
+        .fullscreen-bottom {
+            display: flex; align-items: center; justify-content: center;
+            gap: 1rem; padding: 0.75rem 1rem;
+            padding-bottom: calc(0.75rem + var(--safe-bottom));
+            width: 100%;
+            background: rgba(5, 13, 26, 0.8);
+        }
+
+        .fs-nav-btn {
+            width: 48px; height: 48px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.7);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s ease; font-size: 1rem;
+        }
+        .fs-nav-btn:hover { background: rgba(212,168,67,0.15); color: var(--gold-400); }
+        .fs-nav-btn:disabled { opacity: 0.2; cursor: default; }
+
+        /* ── Bottom Mobile Bar ── */
+        .mobile-bar {
+            display: none;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(5, 13, 26, 0.95);
+            backdrop-filter: blur(24px) saturate(1.6);
+            border-top: 1px solid rgba(212, 168, 67, 0.08);
+            padding: 0.5rem 0.75rem;
+            padding-bottom: calc(0.5rem + var(--safe-bottom));
+        }
+
+        .mobile-bar-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .mob-btn {
+            display: flex; flex-direction: column; align-items: center; gap: 2px;
+            padding: 0.4rem 0.6rem; border-radius: 0.75rem;
+            background: none; border: none;
+            color: rgba(255,255,255,0.45); font-size: 0.6rem; font-weight: 700;
+            cursor: pointer; transition: all 0.2s ease; font-family: inherit;
+            min-width: 52px;
+        }
+        .mob-btn i { font-size: 1.1rem; margin-bottom: 1px; }
+        .mob-btn:active { transform: scale(0.93); }
+        .mob-btn.active-btn { color: var(--gold-400); }
+
+        .mob-page-display {
+            display: flex; align-items: center; gap: 0.4rem;
+            font-weight: 800; font-size: 0.85rem; color: rgba(255,255,255,0.6);
+        }
+        .mob-page-display .mob-cur { color: var(--gold-400); font-size: 1.05rem; }
+
+        /* ── Swipe Hint ── */
+        .swipe-hint {
+            text-align: center; margin-top: 0.75rem;
+            font-size: 0.75rem; color: rgba(255, 255, 255, 0.2);
+            animation: fadeHint 4s ease forwards;
+        }
+        @keyframes fadeHint { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }
+
+        /* ── Download Section ── */
+        .download-section {
+            margin-top: 2.5rem; padding: 1.5rem 2rem;
+            background: rgba(14, 25, 50, 0.55);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1rem;
+            display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+            flex-wrap: wrap; max-width: 700px;
+        }
+        .download-section .dl-text { flex: 1; min-width: 200px; }
+        .download-section .dl-text h3 { font-weight: 800; font-size: 1rem; margin-bottom: 0.25rem; }
+        .download-section .dl-text p { font-size: 0.8rem; color: rgba(255, 255, 255, 0.35); }
+
+        /* ── Footer ── */
+        .book-footer {
+            text-align: center; padding: 2rem 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            margin-top: 2rem;
+        }
+        .book-footer p { font-size: 0.7rem; color: rgba(255, 255, 255, 0.15); }
+        .book-footer a { color: rgba(212, 168, 67, 0.4); text-decoration: none; transition: color 0.3s; }
+        .book-footer a:hover { color: var(--gold-400); }
+
+        /* ── Loading shimmer ── */
+        .page-loading {
+            position: absolute; inset: 0;
+            background: linear-gradient(90deg, var(--navy-900) 25%, var(--navy-800) 50%, var(--navy-900) 75%);
+            background-size: 200% 100%;
+            animation: loadShimmer 1.5s infinite;
+            border-radius: 0.5rem;
+        }
+        @keyframes loadShimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+        /* ═══════════════════════════════════════ */
+        /* ── RESPONSIVE — MOBILE FIRST ────────── */
+        /* ═══════════════════════════════════════ */
+
+        @media (max-width: 768px) {
+            .book-header { padding: 0.6rem 0.75rem; }
+            .book-header .logo-group img { width: 30px; height: 30px; border-radius: 8px; }
+            .book-header .logo-text { font-size: 0.85rem; }
+            .book-header .logo-sub { font-size: 0.55rem; }
+            .hide-mobile { display: none !important; }
+
+            .book-wrapper { padding: 0.75rem 0.5rem 5.5rem; min-height: auto; }
+            .book-title { margin-bottom: 0.75rem; }
+            .book-title p { font-size: 0.75rem; }
+
+            .flipbook-viewport {
+                border-radius: 0.75rem;
+                aspect-ratio: auto;
+                height: calc(100vw / 1.42);
+                max-height: 65vh;
+                box-shadow:
+                    0 0 0 1px rgba(212, 168, 67, 0.08),
+                    0 10px 40px rgba(0, 0, 0, 0.4);
+            }
+
+            .flip-nav {
+                width: 42px; height: 42px; font-size: 0.9rem;
+                background: rgba(5, 13, 26, 0.7);
+            }
+            .flip-prev { left: 0.25rem; }
+            .flip-next { right: 0.25rem; }
+            [dir="rtl"] .flip-prev { left: auto; right: 0.25rem; }
+            [dir="rtl"] .flip-next { right: auto; left: 0.25rem; }
+
+            /* Show dots, hide thumbnails on mobile */
+            .progress-dots { display: flex; }
+            .page-thumbnails { display: none; }
+
+            .book-controls { display: none; }
+            .swipe-hint { font-size: 0.7rem; margin-top: 0.5rem; }
+
+            /* Show bottom bar */
+            .mobile-bar { display: block; }
+
+            .download-section {
+                padding: 1rem; margin-top: 1.5rem;
+                border-radius: 0.75rem; flex-direction: column; text-align: center;
+            }
+            .download-section .dl-text { min-width: auto; }
+
+            .book-footer { padding: 1.5rem 0.75rem 1rem; margin-top: 1.5rem; }
+
+            /* Fullscreen adjustments */
+            .fullscreen-img { max-height: 75vh !important; border-radius: 0.25rem !important; }
+            .fullscreen-close { top: 0.5rem; right: 0.5rem; width: 40px; height: 40px; }
+        }
+
+        @media (max-width: 380px) {
+            .flipbook-viewport { max-height: 58vh; }
+            .book-title h1 { font-size: 1.3rem; }
+            .mob-btn { min-width: 44px; padding: 0.35rem 0.4rem; font-size: 0.55rem; }
+        }
+
+        /* Tall phones (fix viewport) */
+        @media (max-width: 768px) and (min-height: 700px) {
+            .flipbook-viewport { max-height: 55vh; }
+        }
+
+        /* Landscape mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .book-header { padding: 0.4rem 0.75rem; }
+            .book-title { display: none; }
+            .book-wrapper { padding: 0.5rem; }
+            .flipbook-viewport { height: calc(100vh - 90px); max-height: none; aspect-ratio: auto; }
+            .progress-dots { margin-top: 0.4rem; }
+            .mobile-bar { padding: 0.35rem 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="noise"></div>
+
+<!-- ── Header ── -->
+<header class="book-header">
+    <a href="index.html" class="logo-group">
+        <img src="img/logo.png" alt="Hamza Food">
+        <div>
+            <div class="logo-text">Hamza Food</div>
+            <div class="logo-sub">Menu</div>
+        </div>
+    </a>
+    <div class="header-actions">
+        <div class="page-indicator hide-mobile">
+            <span data-ar="صفحة" data-fr="Page">صفحة</span>
+            <span class="current-page" id="pageNum">1</span>
+            <span>/</span>
+            <span id="totalPages">6</span>
+        </div>
+        <button onclick="toggleBookLang()" class="btn-ghost" id="langToggle">
+            <i class="fas fa-language"></i>
+            <span id="langLabel">Fr</span>
+        </button>
+        <a href="index.html" class="btn-ghost hide-mobile">
+            <i class="fas fa-arrow-left"></i>
+            <span data-ar="رجوع" data-fr="Retour">رجوع</span>
+        </a>
+        <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B9%D9%86%D8%AF%D9%83%D9%85" target="_blank" rel="noopener noreferrer" class="btn-green">
+            <i class="fab fa-whatsapp"></i>
+            <span class="hide-mobile" data-ar="أطلب" data-fr="Commander">أطلب</span>
+        </a>
+    </div>
+</header>
+
+<!-- ── Book ── -->
+<div class="book-wrapper">
+    <div class="book-title">
+        <h1 data-ar="📖 المنيو الكامل" data-fr="📖 Menu Complet">📖 المنيو الكامل</h1>
+        <p data-ar="تصفح جميع صفحات المنيو — اسحب أو اضغط الأسهم" data-fr="Parcourez le menu — glissez ou utilisez les flèches">تصفح جميع صفحات المنيو — اسحب أو اضغط الأسهم</p>
+    </div>
+
+    <div class="flipbook-container">
+        <div class="flipbook-viewport" id="flipbook"></div>
+        <button class="flip-nav flip-prev" id="btnPrev" onclick="flipPage(-1)" aria-label="Previous">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <button class="flip-nav flip-next" id="btnNext" onclick="flipPage(1)" aria-label="Next">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+    </div>
+
+    <!-- Progress Dots (mobile) -->
+    <div class="progress-dots" id="progressDots"></div>
+
+    <!-- Thumbnails (desktop) -->
+    <div class="page-thumbnails" id="thumbs"></div>
+
+    <!-- Swipe hint -->
+    <div class="swipe-hint" data-ar="👆 اسحب لتصفح الصفحات" data-fr="👆 Glissez pour naviguer">👆 اسحب لتصفح الصفحات</div>
+
+    <!-- Controls (desktop) -->
+    <div class="book-controls">
+        <button class="ctrl-btn" onclick="openFullscreen()" data-ar="🔍 عرض كبير" data-fr="🔍 Plein écran">🔍 عرض كبير</button>
+        <button class="ctrl-btn" onclick="flipPage(-currentPage)" data-ar="⏮ الأولى" data-fr="⏮ Première">⏮ الأولى</button>
+        <button class="ctrl-btn" onclick="flipPage(totalPages - 1 - currentPage)" data-ar="⏭ الأخيرة" data-fr="⏭ Dernière">⏭ الأخيرة</button>
+    </div>
+
+    <!-- Download -->
+    <div class="download-section">
+        <div class="dl-text">
+            <h3 data-ar="📥 حمّل المنيو PDF" data-fr="📥 Télécharger le menu PDF">📥 حمّل المنيو PDF</h3>
+            <p data-ar="حمّل المنيو باش تشوفو بلا انترنت" data-fr="Téléchargez pour consultation hors ligne">حمّل المنيو باش تشوفو بلا انترنت</p>
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <a href="MENU HAMZA FOOD 1.pdf" download class="btn-gold"><i class="fas fa-download"></i> PDF</a>
+        </div>
+    </div>
+</div>
+
+<!-- Fullscreen Overlay -->
+<div class="fullscreen-overlay" id="fullscreenOverlay">
+    <button class="fullscreen-close" onclick="closeFullscreen()"><i class="fas fa-times"></i></button>
+    <div class="fullscreen-img-wrap" id="fsWrap">
+        <img class="fullscreen-img" id="fullscreenImg" src="" alt="Menu page">
+    </div>
+    <div class="fullscreen-bottom">
+        <button class="fs-nav-btn" onclick="fullscreenNav(-1)" id="fsPrev"><i class="fas fa-chevron-right"></i></button>
+        <div class="mob-page-display">
+            <span class="mob-cur" id="fsPageNum">1</span>
+            <span>/</span>
+            <span>6</span>
+        </div>
+        <button class="fs-nav-btn" onclick="fullscreenNav(1)" id="fsNext"><i class="fas fa-chevron-left"></i></button>
+    </div>
+</div>
+
+<!-- Bottom Mobile Bar -->
+<div class="mobile-bar">
+    <div class="mobile-bar-inner">
+        <button class="mob-btn" onclick="flipPage(-currentPage)" data-ar="الأولى" data-fr="Début">
+            <i class="fas fa-backward-step"></i>
+            <span data-ar="الأولى" data-fr="Début">الأولى</span>
+        </button>
+        <button class="mob-btn" onclick="flipPage(-1)" id="mobPrev">
+            <i class="fas fa-chevron-right"></i>
+            <span data-ar="السابق" data-fr="Préc.">السابق</span>
+        </button>
+        <div class="mob-page-display">
+            <span class="mob-cur" id="mobPageNum">1</span>
+            <span style="color:rgba(255,255,255,0.25)">/</span>
+            <span style="color:rgba(255,255,255,0.25)" id="mobTotal">6</span>
+        </div>
+        <button class="mob-btn" onclick="flipPage(1)" id="mobNext">
+            <i class="fas fa-chevron-left"></i>
+            <span data-ar="التالي" data-fr="Suiv.">التالي</span>
+        </button>
+        <button class="mob-btn" onclick="openFullscreen()">
+            <i class="fas fa-expand"></i>
+            <span data-ar="تكبير" data-fr="Zoom">تكبير</span>
+        </button>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="book-footer">
+    <p>© 2026 Hamza Food — <span data-ar="صُنع بواسطة" data-fr="Réalisé par">صُنع بواسطة</span> <a href="https://wa.me/212774946024" target="_blank" rel="noopener noreferrer">Mediabuz</a> ⚡</p>
+</div>
+
+<script>
+const PAGES = [
+    'img/menu-pages/page-1.jpg',
+    'img/menu-pages/page-2.jpg',
+    'img/menu-pages/page-3.jpg',
+    'img/menu-pages/page-4.jpg',
+    'img/menu-pages/page-5.jpg',
+    'img/menu-pages/page-6.jpg'
+];
+
+const totalPages = PAGES.length;
+let currentPage = 0;
+let bookLang = 'ar';
+
+/* ── Build ── */
+function buildBook() {
+    const flipbook = document.getElementById('flipbook');
+    const thumbs = document.getElementById('thumbs');
+    const dots = document.getElementById('progressDots');
+
+    PAGES.forEach((src, i) => {
+        // Page
+        const page = document.createElement('div');
+        page.className = 'flipbook-page ' + (i === 0 ? 'active' : 'hidden');
+        page.dataset.index = i;
+
+        // Loading shimmer
+        const loader = document.createElement('div');
+        loader.className = 'page-loading';
+
+        const img = document.createElement('img');
+        img.alt = 'Menu page ' + (i + 1);
+        img.loading = i < 2 ? 'eager' : 'lazy';
+        img.onload = () => loader.remove();
+        img.src = src;
+
+        page.appendChild(loader);
+        page.appendChild(img);
+        flipbook.appendChild(page);
+
+        // Thumbnail
+        const thumb = document.createElement('div');
+        thumb.className = 'page-thumb' + (i === 0 ? ' active' : '');
+        thumb.onclick = () => goToPage(i);
+        const timg = document.createElement('img');
+        timg.src = src; timg.alt = 'Page ' + (i + 1); timg.loading = 'lazy';
+        const num = document.createElement('span');
+        num.className = 'thumb-num'; num.textContent = i + 1;
+        thumb.appendChild(timg); thumb.appendChild(num);
+        thumbs.appendChild(thumb);
+
+        // Dot
+        const dot = document.createElement('div');
+        dot.className = 'progress-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => goToPage(i);
+        dots.appendChild(dot);
+    });
+}
+
+function updatePageDisplay() {
+    const pages = document.querySelectorAll('.flipbook-page');
+    pages.forEach((p, i) => {
+        p.classList.remove('active', 'prev', 'next', 'hidden', 'dragging');
+        if (i === currentPage) p.classList.add('active');
+        else if (i === currentPage - 1) p.classList.add('prev');
+        else if (i === currentPage + 1) p.classList.add('next');
+        else p.classList.add('hidden');
+    });
+
+    document.querySelectorAll('.page-thumb').forEach((t, i) => t.classList.toggle('active', i === currentPage));
+    document.querySelectorAll('.progress-dot').forEach((d, i) => d.classList.toggle('active', i === currentPage));
+
+    document.getElementById('pageNum').textContent = currentPage + 1;
+    document.getElementById('mobPageNum').textContent = currentPage + 1;
+    document.getElementById('btnPrev').disabled = currentPage === 0;
+    document.getElementById('btnNext').disabled = currentPage === totalPages - 1;
+
+    // Scroll thumb into view
+    const activeTh = document.querySelectorAll('.page-thumb')[currentPage];
+    activeTh?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+}
+
+function flipPage(dir) {
+    const next = currentPage + dir;
+    if (next < 0 || next >= totalPages) return;
+    currentPage = next;
+    updatePageDisplay();
+}
+
+function goToPage(index) {
+    if (index < 0 || index >= totalPages) return;
+    currentPage = index;
+    updatePageDisplay();
+}
+
+/* ── Touch/Swipe with live drag feedback ── */
+function initSwipe() {
+    const flipbook = document.getElementById('flipbook');
+    let startX = 0, isDragging = false, dragDelta = 0;
+
+    function getActivePage() { return document.querySelector('.flipbook-page.active'); }
+    function getAdjacentPage(dir) {
+        const idx = currentPage + dir;
+        if (idx < 0 || idx >= totalPages) return null;
+        return document.querySelectorAll('.flipbook-page')[idx];
+    }
+
+    function onStart(x) {
+        isDragging = true; startX = x; dragDelta = 0;
+        flipbook.classList.add('dragging');
+        const ap = getActivePage();
+        if (ap) ap.classList.add('dragging');
+        const pp = getAdjacentPage(-1); if (pp) pp.classList.add('dragging');
+        const np = getAdjacentPage(1); if (np) np.classList.add('dragging');
+    }
+
+    function onMove(x) {
+        if (!isDragging) return;
+        dragDelta = x - startX;
+        const pct = (dragDelta / flipbook.offsetWidth) * 100;
+        const clampedPct = Math.max(-40, Math.min(40, pct));
+
+        const active = getActivePage();
+        if (active) {
+            active.style.transform = `translateX(${clampedPct}%) scale(${1 - Math.abs(clampedPct) * 0.001})`;
+            active.style.opacity = 1 - Math.abs(clampedPct) * 0.008;
+        }
+
+        // Show incoming page
+        const isRTL = document.documentElement.dir === 'rtl';
+        const dir = dragDelta > 0 ? (isRTL ? 1 : -1) : (isRTL ? -1 : 1);
+        const incoming = getAdjacentPage(dir);
+        if (incoming) {
+            const startOffset = dir > 0 ? 30 : -30;
+            const progress = Math.abs(clampedPct) / 40;
+            incoming.style.transform = `translateX(${startOffset * (1 - progress)}%) scale(${0.92 + 0.08 * progress})`;
+            incoming.style.opacity = progress * 0.7;
+            incoming.style.zIndex = 1;
+        }
+    }
+
+    function onEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        flipbook.classList.remove('dragging');
+
+        // Clear inline styles
+        document.querySelectorAll('.flipbook-page').forEach(p => {
+            p.classList.remove('dragging');
+            p.style.transform = ''; p.style.opacity = ''; p.style.zIndex = '';
+        });
+
+        const threshold = flipbook.offsetWidth * 0.12;
+        if (Math.abs(dragDelta) > threshold) {
+            const isRTL = document.documentElement.dir === 'rtl';
+            if (dragDelta > 0) flipPage(isRTL ? 1 : -1);
+            else flipPage(isRTL ? -1 : 1);
+        } else {
+            updatePageDisplay();
+        }
+    }
+
+    // Touch events
+    flipbook.addEventListener('touchstart', e => onStart(e.changedTouches[0].clientX), { passive: true });
+    flipbook.addEventListener('touchmove', e => onMove(e.changedTouches[0].clientX), { passive: true });
+    flipbook.addEventListener('touchend', () => onEnd(), { passive: true });
+
+    // Mouse events
+    flipbook.addEventListener('mousedown', e => { e.preventDefault(); onStart(e.clientX); });
+    document.addEventListener('mousemove', e => onMove(e.clientX));
+    document.addEventListener('mouseup', () => onEnd());
+}
+
+/* ── Keyboard ── */
+document.addEventListener('keydown', e => {
+    const isRTL = document.documentElement.dir === 'rtl';
+    if (e.key === 'ArrowLeft') flipPage(isRTL ? -1 : 1);
+    else if (e.key === 'ArrowRight') flipPage(isRTL ? 1 : -1);
+    else if (e.key === 'Escape') closeFullscreen();
+});
+
+/* ── Fullscreen ── */
+let fsZoom = 1, fsPanX = 0, fsPanY = 0;
+
+function openFullscreen() {
+    const overlay = document.getElementById('fullscreenOverlay');
+    const img = document.getElementById('fullscreenImg');
+    img.src = PAGES[currentPage];
+    fsZoom = 1; fsPanX = 0; fsPanY = 0;
+    img.style.transform = '';
+    updateFsPage();
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFullscreen() {
+    document.getElementById('fullscreenOverlay').classList.remove('visible');
+    document.body.style.overflow = '';
+}
+
+function updateFsPage() {
+    document.getElementById('fullscreenImg').src = PAGES[currentPage];
+    document.getElementById('fsPageNum').textContent = currentPage + 1;
+    document.getElementById('fsPrev').disabled = currentPage === 0;
+    document.getElementById('fsNext').disabled = currentPage === totalPages - 1;
+}
+
+function fullscreenNav(dir) {
+    const next = currentPage + dir;
+    if (next < 0 || next >= totalPages) return;
+    currentPage = next;
+    fsZoom = 1; fsPanX = 0; fsPanY = 0;
+    document.getElementById('fullscreenImg').style.transform = '';
+    updateFsPage();
+    updatePageDisplay();
+}
+
+// Fullscreen pinch-to-zoom & swipe
+(function initFsTouch() {
+    const wrap = document.getElementById('fsWrap');
+    const img = document.getElementById('fullscreenImg');
+    let lastDist = 0, startX = 0, startY = 0, isSwiping = false;
+
+    wrap.addEventListener('touchstart', e => {
+        if (e.touches.length === 2) {
+            lastDist = Math.hypot(
+                e.touches[1].clientX - e.touches[0].clientX,
+                e.touches[1].clientY - e.touches[0].clientY
+            );
+        } else if (e.touches.length === 1 && fsZoom <= 1) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isSwiping = true;
+        }
+    }, { passive: true });
+
+    wrap.addEventListener('touchmove', e => {
+        if (e.touches.length === 2) {
+            const dist = Math.hypot(
+                e.touches[1].clientX - e.touches[0].clientX,
+                e.touches[1].clientY - e.touches[0].clientY
+            );
+            fsZoom = Math.max(1, Math.min(4, fsZoom * (dist / lastDist)));
+            lastDist = dist;
+            img.style.transform = `scale(${fsZoom}) translate(${fsPanX}px, ${fsPanY}px)`;
+        } else if (e.touches.length === 1 && fsZoom > 1) {
+            // Pan when zoomed
+            const dx = e.touches[0].clientX - startX;
+            const dy = e.touches[0].clientY - startY;
+            fsPanX += dx * 0.5; fsPanY += dy * 0.5;
+            startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+            img.style.transform = `scale(${fsZoom}) translate(${fsPanX}px, ${fsPanY}px)`;
+        }
+    }, { passive: true });
+
+    wrap.addEventListener('touchend', e => {
+        if (isSwiping && e.changedTouches.length === 1 && fsZoom <= 1) {
+            isSwiping = false;
+            const dx = e.changedTouches[0].clientX - startX;
+            if (Math.abs(dx) > 60) {
+                const isRTL = document.documentElement.dir === 'rtl';
+                if (dx > 0) fullscreenNav(isRTL ? 1 : -1);
+                else fullscreenNav(isRTL ? -1 : 1);
+            }
+        }
+        // Reset zoom on double-finger release
+        if (e.touches.length === 0 && fsZoom < 1.1) {
+            fsZoom = 1; fsPanX = 0; fsPanY = 0;
+            img.style.transform = '';
+        }
+    }, { passive: true });
+
+    // Double-tap to zoom
+    let lastTap = 0;
+    wrap.addEventListener('touchend', e => {
+        if (e.changedTouches.length !== 1) return;
+        const now = Date.now();
+        if (now - lastTap < 300) {
+            if (fsZoom > 1) {
+                fsZoom = 1; fsPanX = 0; fsPanY = 0;
+                img.style.transform = '';
+            } else {
+                fsZoom = 2.5;
+                img.style.transform = `scale(${fsZoom})`;
+            }
+        }
+        lastTap = now;
+    }, { passive: true });
+})();
+
+/* ── Language ── */
+function toggleBookLang() {
+    bookLang = bookLang === 'ar' ? 'fr' : 'ar';
+    document.body.classList.toggle('lang-fr', bookLang === 'fr');
+    document.documentElement.dir = bookLang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = bookLang;
+    document.getElementById('langLabel').textContent = bookLang === 'ar' ? 'Fr' : 'عر';
+
+    // Arrow icons
+    document.querySelector('.flip-prev i').className = bookLang === 'ar' ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
+    document.querySelector('.flip-next i').className = bookLang === 'ar' ? 'fas fa-chevron-left' : 'fas fa-chevron-right';
+
+    // Update all translatable text
+    document.querySelectorAll('[data-ar]').forEach(el => {
+        const val = el.getAttribute(`data-${bookLang}`);
+        if (val) el.textContent = val;
+    });
+}
+
+/* ── Init ── */
+buildBook();
+initSwipe();
+document.getElementById('mobTotal').textContent = totalPages;
+</script>
+</body>
+</html>

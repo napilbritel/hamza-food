@@ -7,7 +7,7 @@
     <meta name="description" content="Hamza Food — Fast food premium à Rabat. Tacos, Burger, Pizza, Chawarma, Kumpir et plus. Livraison rapide.">
     <meta name="robots" content="index,follow">
     <meta name="format-detection" content="telephone=no">
-    <meta name="theme-color" content="#0A1228">
+    <meta name="theme-color" content="#050d1a">
     <meta property="og:title" content="Hamza Food — سناك حمزة | Fast Food Premium Rabat">
     <meta property="og:description" content="Tacos, burgers, pizza, chawarma, kumpir et plus a Rabat. Commande rapide via WhatsApp ou telephone.">
     <meta property="og:type" content="website">
@@ -24,9 +24,9 @@
         theme: {
             extend: {
                 colors: {
-                    navy: { 950:'#060E1F', 900:'#0A1228', 800:'#0F1A36', 700:'#152244', 600:'#1C2D58' },
-                    gold: { 300:'#F7E08A', 400:'#F5D060', 500:'#D4A843', 600:'#B8922E' },
-                    fire: { 400:'#FF8A5C', 500:'#FF6B35', 600:'#E85D2C' }
+                    navy: { 950:'#050d1a', 900:'#0a1428', 800:'#0f1d38', 700:'#162848', 600:'#1c3060' },
+                    gold: { 300:'#f7e08a', 400:'#f5d060', 500:'#d4a843', 600:'#b8922e' },
+                    fire: { 400:'#ff8a5c', 500:'#ff6b35', 600:'#e85d2c' }
                 },
                 fontFamily: {
                     display: ['Cairo', 'sans-serif'],
@@ -38,7 +38,8 @@
                     'float-delay': 'float 6s ease-in-out 3s infinite',
                     'slide': 'slideMarquee 30s linear infinite',
                     'glow': 'glow 3s ease-in-out infinite',
-                    'shimmer': 'shimmer 2.5s ease-in-out infinite'
+                    'shimmer': 'shimmer 2.5s ease-in-out infinite',
+                    'spin-slow': 'spin 8s linear infinite'
                 },
                 keyframes: {
                     float: { '0%,100%': { transform:'translateY(0)' }, '50%': { transform:'translateY(-14px)' } },
@@ -76,18 +77,28 @@
     </script>
 </head>
 <body class="bg-navy-950 text-white font-body antialiased overflow-x-hidden">
+
+<!-- Noise Texture Overlay -->
+<div class="noise-overlay"></div>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
 <a href="#content" class="skip-link" data-ar="تجاوز إلى المحتوى" data-fr="Passer au contenu">Passer au contenu</a>
 
 <!-- ══════════════ LOADER ══════════════ -->
-<div id="loader" class="fixed inset-0 z-[9999] bg-navy-950 flex items-center justify-center transition-all duration-700">
+<div id="loader" class="fixed inset-0 z-[9999] bg-navy-950/95 flex items-center justify-center">
     <div class="text-center">
-        <div class="relative w-24 h-24 mx-auto mb-6">
-            <div class="absolute inset-0 rounded-full border-2 border-navy-700"></div>
-            <div class="absolute inset-0 rounded-full border-2 border-transparent border-t-gold-500 border-r-fire-500 animate-spin"></div>
-            <img src="img/logo.png" alt="HF" class="absolute inset-2 w-20 h-20 rounded-full object-contain">
+        <div class="relative w-28 h-28 mx-auto mb-8">
+            <div class="absolute inset-0 rounded-full border-2 border-navy-700/50"></div>
+            <div class="absolute inset-0 rounded-full border-2 border-transparent border-t-gold-500 border-r-fire-500 loader-logo-ring"></div>
+            <div class="absolute inset-[-8px] rounded-full border border-transparent border-b-gold-500/30 animate-spin-slow" style="animation-direction:reverse"></div>
+            <img src="img/logo.png" alt="HF" class="absolute inset-3 w-[88px] h-[88px] rounded-full object-contain">
         </div>
-        <p class="text-sm font-bold tracking-[0.3em] text-gold-500 mb-4">HAMZA FOOD</p>
-        <div class="w-48 h-[3px] bg-navy-800 rounded-full mx-auto overflow-hidden">
+        <p class="text-sm font-black tracking-[0.4em] text-gold-500 mb-2 uppercase">Hamza Food</p>
+        <p class="text-[10px] text-white/30 tracking-[0.2em] mb-6 uppercase" data-ar="أحسن وجبات سريعة في الرباط" data-fr="Meilleur fast-food à Rabat">أحسن وجبات سريعة في الرباط</p>
+        <div class="w-52 h-[2px] bg-navy-800/60 rounded-full mx-auto overflow-hidden">
             <div class="h-full bg-gradient-to-r from-gold-500 via-fire-500 to-gold-500 rounded-full loader-fill"></div>
         </div>
     </div>
@@ -98,7 +109,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-[4.5rem]">
             <!-- Logo -->
-            <a href="#home" class="flex items-center gap-3 group shrink-0">
+            <a href="#home" class="flex items-center gap-3 group shrink-0 magnetic-btn">
                 <div class="relative">
                     <img src="img/logo.png" alt="Hamza Food" class="w-11 h-11 rounded-xl object-contain ring-1 ring-white/10 group-hover:ring-gold-500/50 transition-all duration-300">
                     <div class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-navy-950"></div>
@@ -124,7 +135,7 @@
                     <button onclick="toggleLang('ar')" class="lang-opt active" data-l="ar" data-aria-ar="اللغة الحالية العربية" data-aria-fr="Langue actuelle arabe" aria-label="اللغة الحالية العربية">عر</button>
                     <button onclick="toggleLang('fr')" class="lang-opt" data-l="fr" data-aria-ar="التبديل إلى الفرنسية" data-aria-fr="Passer au francais" aria-label="التبديل إلى الفرنسية">Fr</button>
                 </div>
-                <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B9%D9%86%D8%AF%D9%83%D9%85" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-500 text-white text-[13px] font-bold px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 hover:-translate-y-0.5 active:scale-95">
+                <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B9%D9%86%D8%AF%D9%83%D9%85" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-500 text-white text-[13px] font-bold px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 hover:-translate-y-0.5 active:scale-95 magnetic-btn">
                     <i class="fab fa-whatsapp text-base"></i>
                     <span data-ar="أطلب الآن" data-fr="Commander">أطلب الآن</span>
                 </a>
@@ -163,40 +174,45 @@
 <main id="content">
 <!-- ══════════════ HERO ══════════════ -->
 <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-20">
-    <!-- BG -->
-    <div class="absolute inset-0">
+    <!-- Gradient Mesh BG -->
+    <div class="hero-gradient-mesh">
         <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950"></div>
-        <div class="absolute inset-0 opacity-[0.035]" style="background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:64px 64px"></div>
-        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gold-500/[0.06] rounded-full blur-[120px] animate-glow"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-fire-500/[0.05] rounded-full blur-[100px] animate-glow" style="animation-delay:1.5s"></div>
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:64px 64px"></div>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
     </div>
+
+    <!-- Floating Particles -->
+    <div class="hero-particles" id="heroParticles"></div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <!-- Text -->
             <div class="text-center lg:text-right order-2 lg:order-1" data-reveal>
-                <div class="inline-flex items-center gap-2.5 bg-gradient-to-r from-gold-500/[0.08] to-transparent border border-gold-500/[0.12] text-gold-400 text-[13px] font-semibold px-5 py-2 rounded-full mb-7" style="backdrop-filter: blur(10px);">
+                <div class="inline-flex items-center gap-2.5 bg-gradient-to-r from-gold-500/[0.08] to-transparent border border-gold-500/[0.12] text-gold-400 text-[13px] font-semibold px-5 py-2 rounded-full mb-7 backdrop-blur-sm">
                     <span class="relative flex h-2 w-2"><span class="animate-ping absolute inset-0 rounded-full bg-green-400 opacity-75"></span><span class="relative rounded-full h-2 w-2 bg-green-400"></span></span>
                     <span id="status-badge" data-ar="مفتوح الآن · 11h—23h" data-fr="Ouvert · 11h—23h">مفتوح الآن · 11h—23h</span>
                 </div>
 
-                <h1 class="font-display font-black leading-[1.15] mb-7">
-                    <span class="text-[2.5rem] sm:text-5xl lg:text-[3.5rem] text-white block" data-ar="أطيب الوجبات" data-fr="Les Meilleurs Plats">أطيب الوجبات</span>
-                    <span class="text-[2.5rem] sm:text-5xl lg:text-[3.5rem] block mt-1">
+                <h1 class="font-display font-black leading-[1.1] mb-7">
+                    <span class="text-[2.5rem] sm:text-5xl lg:text-[3.8rem] text-white block" data-ar="أطيب الوجبات" data-fr="Les Meilleurs Plats">أطيب الوجبات</span>
+                    <span class="text-[2.5rem] sm:text-5xl lg:text-[3.8rem] block mt-2">
                         <span class="text-white" data-ar="في " data-fr="chez ">في </span>
                         <span class="bg-gradient-to-r from-gold-400 via-fire-400 to-gold-400 bg-clip-text text-transparent bg-[length:200%] animate-shimmer">Hamza Food</span>
                     </span>
                 </h1>
 
-                <p class="text-white/50 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 mb-9 leading-relaxed" data-ar="تاكوس، برگر، بيتزا، شاورما، كومپير و بزاف ديال الأطباق اللذيذة بأثمنة مناسبة. جربونا!" data-fr="Tacos, burgers, pizza, chawarma, kumpir et bien plus à des prix abordables. Essayez-nous !">تاكوس، برگر، بيتزا، شاورما، كومپير و بزاف ديال الأطباق اللذيذة بأثمنة مناسبة. جربونا!</p>
+                <p class="text-white/45 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 mb-9 leading-relaxed" data-ar="تاكوس، برگر، بيتزا، شاورما، كومپير و بزاف ديال الأطباق اللذيذة بأثمنة مناسبة. جربونا!" data-fr="Tacos, burgers, pizza, chawarma, kumpir et bien plus à des prix abordables. Essayez-nous !">تاكوس، برگر، بيتزا، شاورما، كومپير و بزاف ديال الأطباق اللذيذة بأثمنة مناسبة. جربونا!</p>
 
                 <div class="flex flex-wrap gap-3.5 justify-center lg:justify-start mb-12">
-                    <a href="#menu" class="group inline-flex items-center gap-2.5 bg-gradient-to-r from-gold-500 to-fire-500 text-navy-950 font-extrabold px-8 py-[14px] rounded-full text-[15px] hover:shadow-xl hover:shadow-gold-500/30 transition-all duration-300 hover:-translate-y-1 active:scale-95">
-                        <i class="fas fa-utensils text-sm opacity-80"></i>
-                        <span data-ar="شوف المنيو" data-fr="Voir le menu">شوف المنيو</span>
-                        <i class="fas fa-arrow-down text-xs group-hover:translate-y-0.5 transition-transform"></i>
+                    <a href="#menu" class="magnetic-btn group inline-flex items-center gap-2.5 bg-gradient-to-r from-gold-500 to-fire-500 text-navy-950 font-extrabold px-8 py-[14px] rounded-full text-[15px] hover:shadow-xl hover:shadow-gold-500/30 transition-all duration-300 hover:-translate-y-1 active:scale-95 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-fire-500 to-gold-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <i class="fas fa-utensils text-sm opacity-80 relative z-10"></i>
+                        <span class="relative z-10" data-ar="شوف المنيو" data-fr="Voir le menu">شوف المنيو</span>
+                        <i class="fas fa-arrow-down text-xs group-hover:translate-y-0.5 transition-transform relative z-10"></i>
                     </a>
-                    <a href="tel:0676220003" class="inline-flex items-center gap-2.5 bg-white/[0.04] border border-white/[0.08] text-white font-semibold px-8 py-[14px] rounded-full text-[15px] hover:bg-white/[0.1] transition-all duration-300 backdrop-blur-sm active:scale-95">
+                    <a href="tel:0676220003" class="magnetic-btn inline-flex items-center gap-2.5 bg-white/[0.04] border border-white/[0.08] text-white font-semibold px-8 py-[14px] rounded-full text-[15px] hover:bg-white/[0.1] transition-all duration-300 backdrop-blur-sm active:scale-95">
                         <i class="fas fa-phone text-sm opacity-60"></i>
                         <span dir="ltr">0676-220003</span>
                     </a>
@@ -206,43 +222,46 @@
                 <div class="flex gap-8 sm:gap-12 justify-center lg:justify-start" data-reveal data-delay="200">
                     <div class="text-center lg:text-right">
                         <div class="text-2xl sm:text-3xl font-black font-display text-white"><span data-count="500">0</span><span class="text-gold-500">+</span></div>
-                        <div class="text-[11px] sm:text-xs text-white/40 mt-1 font-medium" data-ar="عميل سعيد" data-fr="Clients satisfaits">عميل سعيد</div>
+                        <div class="text-[11px] sm:text-xs text-white/35 mt-1 font-medium" data-ar="عميل سعيد" data-fr="Clients satisfaits">عميل سعيد</div>
                     </div>
                     <div class="w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
                     <div class="text-center lg:text-right">
                         <div class="text-2xl sm:text-3xl font-black font-display text-white">4.5<span class="text-gold-400 text-lg ms-0.5">⭐</span></div>
-                        <div class="text-[11px] sm:text-xs text-white/40 mt-1 font-medium" data-ar="تقييم Google" data-fr="Note Google">تقييم Google</div>
+                        <div class="text-[11px] sm:text-xs text-white/35 mt-1 font-medium" data-ar="تقييم Google" data-fr="Note Google">تقييم Google</div>
                     </div>
                     <div class="w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
                     <div class="text-center lg:text-right">
                         <div class="text-2xl sm:text-3xl font-black font-display text-white"><span data-count="70">0</span><span class="text-gold-500">+</span></div>
-                        <div class="text-[11px] sm:text-xs text-white/40 mt-1 font-medium" data-ar="وصفة فالمنيو" data-fr="Recettes au menu">وصفة فالمنيو</div>
+                        <div class="text-[11px] sm:text-xs text-white/35 mt-1 font-medium" data-ar="وصفة فالمنيو" data-fr="Recettes au menu">وصفة فالمنيو</div>
                     </div>
                 </div>
             </div>
 
             <!-- Visual -->
             <div class="relative flex justify-center order-1 lg:order-2" data-reveal data-delay="150">
-                <div class="relative w-72 sm:w-80 lg:w-[22rem]">
-                    <!-- Glow -->
-                    <div class="absolute -inset-8 bg-gradient-to-br from-gold-500/15 via-fire-500/10 to-gold-500/15 rounded-full blur-3xl animate-glow"></div>
-                    <!-- Logo -->
-                    <img src="img/logo.png" alt="Hamza Food" class="relative w-full drop-shadow-2xl animate-float">
-                    <!-- Floating Badges -->
-                    <div class="absolute -top-4 -left-4 sm:left-0 bg-navy-800/80 backdrop-blur-xl border border-white/[0.08] rounded-2xl px-4 py-3 shadow-2xl animate-float" data-reveal data-delay="500">
-                        <div class="flex items-center gap-2.5">
-                            <span class="text-2xl">🔥</span>
-                            <div><div class="text-sm font-extrabold text-white">+70</div><div class="text-[9px] text-white/40 font-medium" data-ar="وصفة" data-fr="Recettes">وصفة</div></div>
+                <div class="hero-image-wrapper">
+                    <div class="tilt-inner relative w-72 sm:w-80 lg:w-[22rem]">
+                        <!-- Glow Ring -->
+                        <div class="absolute -inset-10 bg-gradient-to-br from-gold-500/15 via-fire-500/10 to-gold-500/15 rounded-full blur-3xl animate-glow"></div>
+                        <div class="absolute -inset-4 rounded-full border border-gold-500/10 animate-spin-slow"></div>
+                        <!-- Logo -->
+                        <img src="img/logo.png" alt="Hamza Food" class="relative w-full drop-shadow-2xl animate-float">
+                        <!-- Floating Badges -->
+                        <div class="absolute -top-4 -left-4 sm:left-0 glass-card px-4 py-3 shadow-2xl animate-float" data-reveal data-delay="500">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-2xl">🔥</span>
+                                <div><div class="text-sm font-extrabold text-white">+70</div><div class="text-[9px] text-white/35 font-medium" data-ar="وصفة" data-fr="Recettes">وصفة</div></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="absolute -bottom-2 -right-4 sm:right-0 bg-navy-800/80 backdrop-blur-xl border border-white/[0.08] rounded-2xl px-4 py-3 shadow-2xl animate-float-delay" data-reveal data-delay="700">
-                        <div class="flex items-center gap-2">
-                            <div class="text-gold-400 text-sm">★★★★★</div>
-                            <span class="text-sm font-extrabold text-white">4.5</span>
+                        <div class="absolute -bottom-2 -right-4 sm:right-0 glass-card px-4 py-3 shadow-2xl animate-float-delay" data-reveal data-delay="700">
+                            <div class="flex items-center gap-2">
+                                <div class="text-gold-400 text-sm">★★★★★</div>
+                                <span class="text-sm font-extrabold text-white">4.5</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="absolute top-1/2 -right-2 sm:-right-6 bg-gradient-to-r from-gold-500 to-fire-500 text-navy-950 font-extrabold rounded-full px-3.5 py-2 text-xs shadow-xl animate-float-delay">
-                        <span data-ar="ابتداءً من" data-fr="Dès">ابتداءً من</span> 8 DH
+                        <div class="absolute top-1/2 -right-2 sm:-right-6 bg-gradient-to-r from-gold-500 to-fire-500 text-navy-950 font-extrabold rounded-full px-3.5 py-2 text-xs shadow-xl animate-float-delay">
+                            <span data-ar="ابتداءً من" data-fr="Dès">ابتداءً من</span> 8 DH
+                        </div>
                     </div>
                 </div>
             </div>
@@ -251,12 +270,12 @@
 
     <!-- Scroll hint -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <a href="#popular" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-white/60 transition"><i class="fas fa-chevron-down text-sm"></i></a>
+        <a href="#popular" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-white/60 transition backdrop-blur-sm"><i class="fas fa-chevron-down text-sm"></i></a>
     </div>
 </section>
 
 <!-- ══════════════ PROMO STRIP ══════════════ -->
-<div class="relative bg-gradient-to-r from-gold-500 via-fire-500 to-gold-500 py-3.5 overflow-hidden">
+<div class="promo-strip relative bg-gradient-to-r from-gold-500 via-fire-500 to-gold-500 py-3.5 overflow-hidden">
     <div class="flex gap-10 items-center whitespace-nowrap animate-slide font-display">
         <span class="text-navy-950 font-extrabold text-sm flex items-center gap-2">🍔 BURGER</span><span class="text-navy-950/40">✦</span>
         <span class="text-navy-950 font-extrabold text-sm flex items-center gap-2">🌮 TACOS</span><span class="text-navy-950/40">✦</span>
@@ -281,43 +300,105 @@
 <section id="popular" class="py-20 sm:py-28 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-14" data-reveal>
-            <div class="inline-flex items-center gap-2 bg-fire-500/[0.08] border border-fire-500/[0.15] text-fire-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase"><i class="fas fa-fire-flame-curved text-[10px]"></i> <span data-ar="الأكثر طلبا" data-fr="Les plus demandés">الأكثر طلبا</span></div>
+            <div class="inline-flex items-center gap-2 bg-fire-500/[0.08] border border-fire-500/[0.12] text-fire-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase backdrop-blur-sm"><i class="fas fa-fire-flame-curved text-[10px]"></i> <span data-ar="الأكثر طلبا" data-fr="Les plus demandés">الأكثر طلبا</span></div>
             <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black" data-ar="أشهر أطباقنا" data-fr="Nos plats populaires">أشهر أطباقنا</h2>
-            <p class="text-white/40 mt-3 text-sm sm:text-base max-w-lg mx-auto" data-ar="الأطباق اللي كيحماقو عليها الزبائن" data-fr="Les plats préférés de nos clients">الأطباق اللي كيحماقو عليها الزبائن</p>
+            <p class="text-white/35 mt-3 text-sm sm:text-base max-w-lg mx-auto" data-ar="الأطباق اللي كيحماقو عليها الزبائن" data-fr="Les plats préférés de nos clients">الأطباق اللي كيحماقو عليها الزبائن</p>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="group bg-navy-800/40 border border-white/[0.04] rounded-2xl overflow-hidden hover:border-gold-500/20 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20" data-reveal data-delay="0">
-                <div class="relative h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400&h=300&fit=crop" alt="Tacos Hamza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"><div class="absolute top-3 start-3 bg-gradient-to-r from-fire-500 to-gold-500 text-navy-950 text-[10px] font-extrabold px-3 py-1 rounded-full" data-ar="🔥 الأكثر طلبا" data-fr="🔥 Best-seller">🔥 الأكثر طلبا</div><div class="absolute bottom-3 end-3 bg-navy-950/80 backdrop-blur text-gold-400 font-extrabold text-sm px-3 py-1.5 rounded-lg">40-50<small class="text-[10px] text-white/40 ms-0.5">DH</small></div></div>
-                <div class="p-5"><h3 class="font-display font-extrabold text-base mb-1" data-ar="تاكوس ميزون" data-fr="Tacos Maison">تاكوس ميزون</h3><p class="text-white/40 text-xs mb-4" data-ar="الطبق الخاص — تاكوس معمر بالكامل" data-fr="Notre spécialité — Tacos bien garni">الطبق الخاص — تاكوس معمر بالكامل</p><div class="flex items-center justify-between"><div class="text-gold-400 text-xs font-semibold"><i class="fas fa-star"></i> 4.9</div><a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D8%AA%D8%A7%D9%83%D9%88%D8%B3%20%D9%85%D9%8A%D8%B2%D9%88%D9%86" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-green-500/10 text-green-400 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all text-sm" aria-label="Commander Tacos Maison sur WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div>
+        <!-- Horizontal Scroll Cards -->
+        <div class="popular-scroll scrollbar-hide" data-reveal data-delay="100">
+            <div class="popular-card" data-tilt>
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400&h=300&fit=crop" alt="Tacos Hamza" loading="lazy">
+                    <div class="absolute top-3 start-3 z-10 bg-gradient-to-r from-fire-500 to-gold-500 text-navy-950 text-[10px] font-extrabold px-3 py-1 rounded-full" data-ar="🔥 الأكثر طلبا" data-fr="🔥 Best-seller">🔥 الأكثر طلبا</div>
+                    <div class="absolute bottom-3 end-3 z-10 bg-navy-950/80 backdrop-blur text-gold-400 font-extrabold text-sm px-3 py-1.5 rounded-lg">40-50<small class="text-[10px] text-white/40 ms-0.5">DH</small></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="font-display font-extrabold text-base mb-1" data-ar="تاكوس ميزون" data-fr="Tacos Maison">تاكوس ميزون</h3>
+                    <p class="text-white/40 text-xs mb-4" data-ar="الطبق الخاص — تاكوس معمر بالكامل" data-fr="Notre spécialité — Tacos bien garni">الطبق الخاص — تاكوس معمر بالكامل</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-gold-400 text-xs font-semibold"><i class="fas fa-star"></i> 4.9</div>
+                        <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D8%AA%D8%A7%D9%83%D9%88%D8%B3%20%D9%85%D9%8A%D8%B2%D9%88%D9%86" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-green-500/10 text-green-400 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all text-sm" aria-label="Commander Tacos Maison sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="group bg-navy-800/40 border border-white/[0.04] rounded-2xl overflow-hidden hover:border-gold-500/20 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20" data-reveal data-delay="100">
-                <div class="relative h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1586816001966-79b736744398?w=400&h=300&fit=crop" alt="Royal Burger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"><div class="absolute bottom-3 end-3 bg-navy-950/80 backdrop-blur text-gold-400 font-extrabold text-sm px-3 py-1.5 rounded-lg">28<small class="text-[10px] text-white/40 ms-0.5">DH</small></div></div>
-                <div class="p-5"><h3 class="font-display font-extrabold text-base mb-1" data-ar="رويال برگر" data-fr="Royal Burger">رويال برگر</h3><p class="text-white/40 text-xs mb-4" data-ar="برگر كبير محشي و لذيذ" data-fr="Gros burger bien garni et délicieux">برگر كبير محشي و لذيذ</p><div class="flex items-center justify-between"><div class="text-gold-400 text-xs font-semibold"><i class="fas fa-star"></i> 4.8</div><a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D8%B1%D9%88%D9%8A%D8%A7%D9%84%20%D8%A8%D8%B1%DA%AF%D8%B1" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-green-500/10 text-green-400 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all text-sm" aria-label="Commander Royal Burger sur WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div>
+            <div class="popular-card" data-tilt>
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1586816001966-79b736744398?w=400&h=300&fit=crop" alt="Royal Burger" loading="lazy">
+                    <div class="absolute bottom-3 end-3 z-10 bg-navy-950/80 backdrop-blur text-gold-400 font-extrabold text-sm px-3 py-1.5 rounded-lg">28<small class="text-[10px] text-white/40 ms-0.5">DH</small></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="font-display font-extrabold text-base mb-1" data-ar="رويال برگر" data-fr="Royal Burger">رويال برگر</h3>
+                    <p class="text-white/40 text-xs mb-4" data-ar="برگر كبير محشي و لذيذ" data-fr="Gros burger bien garni et délicieux">برگر كبير محشي و لذيذ</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-gold-400 text-xs font-semibold"><i class="fas fa-star"></i> 4.8</div>
+                        <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D8%B1%D9%88%D9%8A%D8%A7%D9%84%20%D8%A8%D8%B1%DA%AF%D8%B1" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-green-500/10 text-green-400 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all text-sm" aria-label="Commander Royal Burger sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="group bg-navy-800/40 border border-white/[0.04] rounded-2xl overflow-hidden hover:border-gold-500/20 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20" data-reveal data-delay="200">
-                <div class="relative h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&h=300&fit=crop" alt="Chawarma Double" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"><div class="absolute bottom-3 end-3 bg-navy-950/80 backdrop-blur text-gold-400 font-extrabold text-sm px-3 py-1.5 rounded-lg">30<small class="text-[10px] text-white/40 ms-0.5">DH</small></div></div>
-                <div class="p-5"><h3 class="font-display font-extrabold text-base mb-1" data-ar="شاورما دوبل" data-fr="Chawarma Double">شاورما دوبل</h3><p class="text-white/40 text-xs mb-4" data-ar="شاورما مضاعفة — ضعف اللذة" data-fr="Double chawarma — double plaisir">شاورما مضاعفة — ضعف اللذة</p><div class="flex items-center justify-between"><div class="text-gold-400 text-xs font-semibold"><i class="fas fa-star"></i> 4.9</div><a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D8%B4%D8%A7%D9%88%D8%B1%D9%85%D8%A7%20%D8%AF%D9%88%D8%A8%D9%84" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-green-500/10 text-green-400 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all text-sm" aria-label="Commander Chawarma Double sur WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div>
+            <div class="popular-card" data-tilt>
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&h=300&fit=crop" alt="Chawarma Double" loading="lazy">
+                    <div class="absolute bottom-3 end-3 z-10 bg-navy-950/80 backdrop-blur text-gold-400 font-extrabold text-sm px-3 py-1.5 rounded-lg">30<small class="text-[10px] text-white/40 ms-0.5">DH</small></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="font-display font-extrabold text-base mb-1" data-ar="شاورما دوبل" data-fr="Chawarma Double">شاورما دوبل</h3>
+                    <p class="text-white/40 text-xs mb-4" data-ar="شاورما مضاعفة — ضعف اللذة" data-fr="Double chawarma — double plaisir">شاورما مضاعفة — ضعف اللذة</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-gold-400 text-xs font-semibold"><i class="fas fa-star"></i> 4.9</div>
+                        <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D8%B4%D8%A7%D9%88%D8%B1%D9%85%D8%A7%20%D8%AF%D9%88%D8%A8%D9%84" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-green-500/10 text-green-400 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all text-sm" aria-label="Commander Chawarma Double sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="group bg-navy-800/40 border border-white/[0.04] rounded-2xl overflow-hidden hover:border-gold-500/20 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20" data-reveal data-delay="300">
-                <div class="relative h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop" alt="Pizza Maison" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"><div class="absolute top-3 start-3 bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 text-[10px] font-extrabold px-3 py-1 rounded-full">⭐ Chef Special</div><div class="absolute bottom-3 end-3 bg-navy-950/80 backdrop-blur text-gold-400 font-extrabold text-sm px-3 py-1.5 rounded-lg">40-55<small class="text-[10px] text-white/40 ms-0.5">DH</small></div></div>
-                <div class="p-5"><h3 class="font-display font-extrabold text-base mb-1" data-ar="بيتزا ميزون" data-fr="Pizza Maison">بيتزا ميزون</h3><p class="text-white/40 text-xs mb-4" data-ar="بيتزا خاصة بالشاف — كبيرة و لذيذة" data-fr="Pizza spéciale du chef — grande et délicieuse">بيتزا خاصة بالشاف — كبيرة و لذيذة</p><div class="flex items-center justify-between"><div class="text-gold-400 text-xs font-semibold"><i class="fas fa-star"></i> 4.9</div><a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D8%A8%D9%8A%D8%AA%D8%B2%D8%A7%20%D9%85%D9%8A%D8%B2%D9%88%D9%86" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-green-500/10 text-green-400 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all text-sm" aria-label="Commander Pizza Maison sur WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div>
+            <div class="popular-card" data-tilt>
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop" alt="Pizza Maison" loading="lazy">
+                    <div class="absolute top-3 start-3 z-10 bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 text-[10px] font-extrabold px-3 py-1 rounded-full">⭐ Chef Special</div>
+                    <div class="absolute bottom-3 end-3 z-10 bg-navy-950/80 backdrop-blur text-gold-400 font-extrabold text-sm px-3 py-1.5 rounded-lg">40-55<small class="text-[10px] text-white/40 ms-0.5">DH</small></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="font-display font-extrabold text-base mb-1" data-ar="بيتزا ميزون" data-fr="Pizza Maison">بيتزا ميزون</h3>
+                    <p class="text-white/40 text-xs mb-4" data-ar="بيتزا خاصة بالشاف — كبيرة و لذيذة" data-fr="Pizza spéciale du chef — grande et délicieuse">بيتزا خاصة بالشاف — كبيرة و لذيذة</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-gold-400 text-xs font-semibold"><i class="fas fa-star"></i> 4.9</div>
+                        <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D8%A8%D9%8A%D8%AA%D8%B2%D8%A7%20%D9%85%D9%8A%D8%B2%D9%88%D9%86" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-green-500/10 text-green-400 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all text-sm" aria-label="Commander Pizza Maison sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Extra card for scroll -->
+            <div class="popular-card" data-tilt>
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=500&h=300&fit=crop" alt="Chawarma Royal" loading="lazy">
+                    <div class="absolute bottom-3 end-3 z-10 bg-navy-950/80 backdrop-blur text-gold-400 font-extrabold text-sm px-3 py-1.5 rounded-lg">28<small class="text-[10px] text-white/40 ms-0.5">DH</small></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="font-display font-extrabold text-base mb-1" data-ar="شاورما رويال" data-fr="Chawarma Royal">شاورما رويال</h3>
+                    <p class="text-white/40 text-xs mb-4" data-ar="شاورما خاصة مع كورنيشو و موزاريلا" data-fr="Chawarma spéciale avec cornichon et mozzarella">شاورما خاصة مع كورنيشو و موزاريلا</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-gold-400 text-xs font-semibold"><i class="fas fa-star"></i> 4.8</div>
+                        <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D8%B4%D8%A7%D9%88%D8%B1%D9%85%D8%A7%20%D8%B1%D9%88%D9%8A%D8%A7%D9%84" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-green-500/10 text-green-400 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all text-sm" aria-label="Commander Chawarma Royal sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ══════════════ MENU ══════════════ -->
-<section id="menu" class="py-20 sm:py-28 relative bg-navy-900/40">
+<section id="menu" class="py-20 sm:py-28 relative bg-navy-900/30">
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[42rem] h-[42rem] bg-gold-500/[0.04] rounded-full blur-[160px]"></div>
-        <div class="absolute bottom-0 end-0 w-[28rem] h-[28rem] bg-fire-500/[0.05] rounded-full blur-[140px]"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[42rem] h-[42rem] bg-gold-500/[0.03] rounded-full blur-[160px]"></div>
+        <div class="absolute bottom-0 end-0 w-[28rem] h-[28rem] bg-fire-500/[0.04] rounded-full blur-[140px]"></div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-10 relative" data-reveal>
-            <div class="inline-flex items-center gap-2 bg-gold-500/[0.08] border border-gold-500/[0.15] text-gold-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase"><i class="fas fa-utensils text-[10px]"></i> <span data-ar="القائمة الكاملة" data-fr="Menu complet">القائمة الكاملة</span></div>
+            <div class="inline-flex items-center gap-2 bg-gold-500/[0.08] border border-gold-500/[0.12] text-gold-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase backdrop-blur-sm"><i class="fas fa-utensils text-[10px]"></i> <span data-ar="القائمة الكاملة" data-fr="Menu complet">القائمة الكاملة</span></div>
             <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black" data-ar="شنو بغيتي تاكل؟" data-fr="Que voulez-vous manger ?">شنو بغيتي تاكل؟</h2>
-            <p class="text-white/40 mt-3 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed" data-ar="منيو منظمة وواضحة باش تلقى الطبق اللي بغيتي بسرعة: اختار الصنف، قلب بالاسم، وطلب مباشرة عبر واتساب." data-fr="Une carte plus claire et plus professionnelle pour trouver rapidement votre plat, filtrer par categorie et commander directement via WhatsApp.">منيو منظمة وواضحة باش تلقى الطبق اللي بغيتي بسرعة: اختار الصنف، قلب بالاسم، وطلب مباشرة عبر واتساب.</p>
+            <p class="text-white/35 mt-3 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed" data-ar="منيو منظمة وواضحة باش تلقى الطبق اللي بغيتي بسرعة: اختار الصنف، قلب بالاسم، وطلب مباشرة عبر واتساب." data-fr="Une carte plus claire et plus professionnelle pour trouver rapidement votre plat, filtrer par categorie et commander directement via WhatsApp.">منيو منظمة وواضحة باش تلقى الطبق اللي بغيتي بسرعة: اختار الصنف، قلب بالاسم، وطلب مباشرة عبر واتساب.</p>
+            <a href="menu-book.html" class="inline-flex items-center gap-2.5 mt-5 bg-gradient-to-r from-gold-500 to-fire-500 text-navy-950 font-extrabold px-7 py-3 rounded-full text-sm hover:shadow-xl hover:shadow-gold-500/30 transition-all duration-300 hover:-translate-y-1 active:scale-95">
+                <i class="fas fa-book-open text-sm"></i>
+                <span data-ar="📖 شوف المنيو كامل بشكل كتاب" data-fr="📖 Voir le menu complet en livre">📖 شوف المنيو كامل بشكل كتاب</span>
+            </a>
         </div>
 
         <div class="menu-overview" data-reveal data-delay="70">
@@ -351,7 +432,7 @@
 
         <div class="menu-toolbar" data-reveal data-delay="150">
             <label for="menuSearch" class="menu-search">
-                <i class="fas fa-magnifying-glass text-white/35 text-sm"></i>
+                <i class="fas fa-magnifying-glass text-white/30 text-sm"></i>
                 <input id="menuSearch" type="search" autocomplete="off" class="menu-search-input" placeholder="قلب على الطبق..." data-placeholder-ar="قلب على الطبق..." data-placeholder-fr="Rechercher un plat..." data-aria-ar="البحث في المنيو" data-aria-fr="Rechercher dans le menu" aria-label="البحث في المنيو">
             </label>
             <div class="menu-toolbar-meta">
@@ -381,30 +462,40 @@
     </div>
 </section>
 
-<!-- ══════════════ ABOUT ══════════════ -->
+<!-- ══════════════ ABOUT — BENTO GRID ══════════════ -->
 <section id="about" class="py-20 sm:py-28 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <!-- Images -->
-            <div class="relative" data-reveal>
-                <div class="grid grid-cols-12 gap-4">
-                    <div class="col-span-7 space-y-4">
-                        <div class="rounded-2xl overflow-hidden aspect-[4/5] bg-navy-800"><img src="img/salad-bar.jpg" alt="Hamza Food salade bar" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy"></div>
-                    </div>
-                    <div class="col-span-5 space-y-4 pt-12">
-                        <div class="rounded-2xl overflow-hidden aspect-square bg-navy-800"><img src="img/salad-bar2.jpg" alt="Hamza Food buffet" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy"></div>
-                        <div class="bg-gradient-to-br from-gold-500 to-fire-500 rounded-2xl p-5 text-center text-navy-950"><div class="text-3xl font-black font-display">5+</div><div class="text-xs font-bold opacity-80" data-ar="سنوات خبرة" data-fr="Ans d'expérience">سنوات خبرة</div></div>
-                    </div>
-                </div>
+        <div class="text-center mb-14" data-reveal>
+            <div class="inline-flex items-center gap-2 bg-gold-500/[0.08] border border-gold-500/[0.12] text-gold-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase backdrop-blur-sm"><i class="fas fa-info-circle text-[10px]"></i> <span data-ar="من نحن" data-fr="À propos">من نحن</span></div>
+            <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black" data-ar="علاش Hamza Food؟" data-fr="Pourquoi Hamza Food ?">علاش Hamza Food؟</h2>
+            <p class="text-white/35 mt-3 text-sm sm:text-base max-w-xl mx-auto" data-ar="حنا سناك عائلي فالرباط، كنقدمو أطيب الوجبات السريعة بمكونات طازجة كل يوم." data-fr="Nous sommes un snack familial à Rabat, proposant les meilleurs plats rapides avec des ingrédients frais chaque jour.">حنا سناك عائلي فالرباط، كنقدمو أطيب الوجبات السريعة بمكونات طازجة كل يوم.</p>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="bento-grid" data-reveal data-delay="100">
+            <!-- Large Image -->
+            <div class="bento-item span-2 row-2 min-h-[300px]">
+                <img src="img/salad-bar.jpg" alt="Hamza Food salade bar" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
             </div>
-
-            <!-- Content -->
-            <div data-reveal data-delay="200">
-                <div class="inline-flex items-center gap-2 bg-gold-500/[0.08] border border-gold-500/[0.15] text-gold-400 text-xs font-bold px-4 py-1.5 rounded-full mb-5 tracking-wide uppercase"><i class="fas fa-info-circle text-[10px]"></i> <span data-ar="من نحن" data-fr="À propos">من نحن</span></div>
-                <h2 class="text-3xl sm:text-4xl font-display font-black mb-5" data-ar="علاش Hamza Food؟" data-fr="Pourquoi Hamza Food ?">علاش Hamza Food؟</h2>
-                <p class="text-white/50 text-base leading-relaxed mb-8" data-ar="حنا سناك عائلي فالرباط، كنقدمو أطيب الوجبات السريعة بمكونات طازجة كل يوم. من الطاكوس حتى البيتزا و الكومپير، عندنا كلشي باش ترضيو ذوقكم!" data-fr="Nous sommes un snack familial à Rabat, proposant les meilleurs plats rapides avec des ingrédients frais chaque jour. Des tacos aux pizzas et kumpir, nous avons tout !">حنا سناك عائلي فالرباط، كنقدمو أطيب الوجبات السريعة بمكونات طازجة كل يوم. من الطاكوس حتى البيتزا و الكومپير، عندنا كلشي باش ترضيو ذوقكم!</p>
-
-                <div class="grid grid-cols-2 gap-3.5 mb-8">
+            <!-- Stat: Years -->
+            <div class="bento-item bento-stat">
+                <div class="stat-circle" style="--progress:90%">
+                    <div class="stat-circle-inner">5+</div>
+                </div>
+                <div class="text-sm font-bold mt-1" data-ar="سنوات خبرة" data-fr="Ans d'expérience">سنوات خبرة</div>
+                <div class="text-[11px] text-white/35" data-ar="في مجال الوجبات السريعة" data-fr="Dans la restauration rapide">في مجال الوجبات السريعة</div>
+            </div>
+            <!-- Stat: Recipes -->
+            <div class="bento-item bento-stat">
+                <div class="stat-circle" style="--progress:85%">
+                    <div class="stat-circle-inner">70+</div>
+                </div>
+                <div class="text-sm font-bold mt-1" data-ar="وصفة" data-fr="Recettes">وصفة</div>
+                <div class="text-[11px] text-white/35" data-ar="منوعة و لذيذة" data-fr="Variées et délicieuses">منوعة و لذيذة</div>
+            </div>
+            <!-- Features -->
+            <div class="bento-item span-2 p-6">
+                <div class="grid grid-cols-2 gap-3 h-full">
                     <div class="flex items-center gap-3 bg-white/[0.02] border border-white/[0.04] rounded-xl p-4 hover:border-gold-500/20 transition-all">
                         <div class="w-10 h-10 bg-gold-500/[0.08] rounded-lg flex items-center justify-center text-gold-500 shrink-0"><i class="fas fa-leaf text-sm"></i></div>
                         <span class="text-[13px] font-semibold leading-snug" data-ar="مكونات طازجة يوميا" data-fr="Ingrédients frais quotidiens">مكونات طازجة يوميا</span>
@@ -422,11 +513,20 @@
                         <span class="text-[13px] font-semibold leading-snug" data-ar="أثمنة في المتناول" data-fr="Prix abordables">أثمنة في المتناول</span>
                     </div>
                 </div>
-
-                <a href="https://maps.app.goo.gl/u7gHWxWksG43x8Tb6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-white/[0.02] border border-white/[0.06] rounded-xl px-6 py-4 hover:bg-white/[0.04] transition-all group">
-                    <i class="fas fa-map-marker-alt text-fire-500 text-lg"></i>
-                    <div><div class="text-sm font-bold" data-ar="الموقع ديالنا" data-fr="Notre adresse">الموقع ديالنا</div><div class="text-[11px] text-white/40" data-ar="الرباط — شوف فخريطة" data-fr="Rabat — Voir sur la carte">الرباط — شوف فخريطة</div></div>
-                    <i class="fas fa-external-link-alt text-white/20 group-hover:text-white/50 transition ms-auto text-xs"></i>
+            </div>
+            <!-- Small Image -->
+            <div class="bento-item min-h-[180px]">
+                <img src="img/salad-bar2.jpg" alt="Hamza Food buffet" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+            </div>
+            <!-- Location -->
+            <div class="bento-item p-6 flex flex-col items-center justify-center text-center">
+                <a href="https://maps.app.goo.gl/u7gHWxWksG43x8Tb6" target="_blank" rel="noopener noreferrer" class="group">
+                    <div class="w-14 h-14 bg-fire-500/[0.1] rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-fire-500/20 transition">
+                        <i class="fas fa-map-marker-alt text-fire-500 text-xl"></i>
+                    </div>
+                    <div class="text-sm font-bold mb-1" data-ar="الموقع ديالنا" data-fr="Notre adresse">الموقع ديالنا</div>
+                    <div class="text-[11px] text-white/35" data-ar="الرباط — شوف فخريطة" data-fr="Rabat — Voir sur la carte">الرباط — شوف فخريطة</div>
+                    <i class="fas fa-external-link-alt text-white/15 group-hover:text-white/40 transition text-[10px] mt-2"></i>
                 </a>
             </div>
         </div>
@@ -434,19 +534,55 @@
 </section>
 
 <!-- ══════════════ GALLERY ══════════════ -->
-<section id="gallery" class="py-20 sm:py-28 relative bg-navy-900/40">
+<section id="gallery" class="py-20 sm:py-28 relative bg-navy-900/30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-14" data-reveal>
-            <div class="inline-flex items-center gap-2 bg-gold-500/[0.08] border border-gold-500/[0.15] text-gold-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase"><i class="fas fa-camera text-[10px]"></i> <span data-ar="صور أطباقنا" data-fr="Nos créations">صور أطباقنا</span></div>
+            <div class="inline-flex items-center gap-2 bg-gold-500/[0.08] border border-gold-500/[0.12] text-gold-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase backdrop-blur-sm"><i class="fas fa-camera text-[10px]"></i> <span data-ar="صور أطباقنا" data-fr="Nos créations">صور أطباقنا</span></div>
             <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black" data-ar="شوفو شنو كنحضرو" data-fr="Découvrez nos créations">شوفو شنو كنحضرو</h2>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4" data-reveal>
-            <div class="gallery-item group relative rounded-2xl overflow-hidden aspect-square cursor-pointer row-span-2"><img src="img/salad-bar.jpg" alt="Hamza Food salade bar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5"><span class="text-white font-bold text-sm" data-ar="سلطة بار" data-fr="Salade bar">سلطة بار</span></div></div>
-            <div class="gallery-item group relative rounded-2xl overflow-hidden aspect-square cursor-pointer"><img src="img/salad-bar2.jpg" alt="Hamza Food buffet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5"><span class="text-white font-bold text-sm" data-ar="ركن التحضير" data-fr="Espace preparation">ركن التحضير</span></div></div>
-            <div class="gallery-item group relative rounded-2xl overflow-hidden aspect-square cursor-pointer"><img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=500&h=500&fit=crop" alt="Tacos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5"><span class="text-white font-bold text-sm" data-ar="تاكوس" data-fr="Tacos">تاكوس</span></div></div>
-            <div class="gallery-item group relative rounded-2xl overflow-hidden aspect-square cursor-pointer"><img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=500&h=500&fit=crop" alt="Chawarma" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5"><span class="text-white font-bold text-sm" data-ar="شاورما" data-fr="Chawarma">شاورما</span></div></div>
-            <div class="gallery-item group relative rounded-2xl overflow-hidden aspect-square cursor-pointer col-span-2"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" alt="أطباق" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5"><span class="text-white font-bold text-sm" data-ar="أطباق متنوعة" data-fr="Plats variés">أطباق متنوعة</span></div></div>
-            <div class="gallery-item group relative rounded-2xl overflow-hidden aspect-square cursor-pointer"><img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=500&h=500&fit=crop" alt="Sandwich" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5"><span class="text-white font-bold text-sm" data-ar="سندويتش" data-fr="Sandwich">سندويتش</span></div></div>
+            <div class="gallery-item group aspect-square row-span-2">
+                <img src="img/salad-bar.jpg" alt="Hamza Food salade bar" class="w-full h-full object-cover" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="view-icon"><i class="fas fa-expand text-sm"></i></div>
+                    <span class="text-white font-bold text-sm relative z-10" data-ar="سلطة بار" data-fr="Salade bar">سلطة بار</span>
+                </div>
+            </div>
+            <div class="gallery-item group aspect-square">
+                <img src="img/salad-bar2.jpg" alt="Hamza Food buffet" class="w-full h-full object-cover" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="view-icon"><i class="fas fa-expand text-sm"></i></div>
+                    <span class="text-white font-bold text-sm relative z-10" data-ar="ركن التحضير" data-fr="Espace preparation">ركن التحضير</span>
+                </div>
+            </div>
+            <div class="gallery-item group aspect-square">
+                <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=500&h=500&fit=crop" alt="Tacos" class="w-full h-full object-cover" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="view-icon"><i class="fas fa-expand text-sm"></i></div>
+                    <span class="text-white font-bold text-sm relative z-10" data-ar="تاكوس" data-fr="Tacos">تاكوس</span>
+                </div>
+            </div>
+            <div class="gallery-item group aspect-square">
+                <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=500&h=500&fit=crop" alt="Chawarma" class="w-full h-full object-cover" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="view-icon"><i class="fas fa-expand text-sm"></i></div>
+                    <span class="text-white font-bold text-sm relative z-10" data-ar="شاورما" data-fr="Chawarma">شاورما</span>
+                </div>
+            </div>
+            <div class="gallery-item group aspect-square col-span-2">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" alt="أطباق" class="w-full h-full object-cover" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="view-icon"><i class="fas fa-expand text-sm"></i></div>
+                    <span class="text-white font-bold text-sm relative z-10" data-ar="أطباق متنوعة" data-fr="Plats variés">أطباق متنوعة</span>
+                </div>
+            </div>
+            <div class="gallery-item group aspect-square">
+                <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=500&h=500&fit=crop" alt="Sandwich" class="w-full h-full object-cover" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="view-icon"><i class="fas fa-expand text-sm"></i></div>
+                    <span class="text-white font-bold text-sm relative z-10" data-ar="سندويتش" data-fr="Sandwich">سندويتش</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -455,17 +591,17 @@
 <section id="reviews" class="py-20 sm:py-28 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-14" data-reveal>
-            <div class="inline-flex items-center gap-2 bg-gold-500/[0.08] border border-gold-500/[0.15] text-gold-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase"><i class="fas fa-star text-[10px]"></i> <span data-ar="آراء العملاء" data-fr="Avis clients">آراء العملاء</span></div>
+            <div class="inline-flex items-center gap-2 bg-gold-500/[0.08] border border-gold-500/[0.12] text-gold-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase backdrop-blur-sm"><i class="fas fa-star text-[10px]"></i> <span data-ar="آراء العملاء" data-fr="Avis clients">آراء العملاء</span></div>
             <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black" data-ar="شنو كيقولو عملاؤنا" data-fr="Ce que disent nos clients">شنو كيقولو عملاؤنا</h2>
         </div>
 
         <div class="swiper reviews-swiper" data-reveal data-delay="100">
             <div class="swiper-wrapper pb-14">
-                <div class="swiper-slide"><div class="bg-navy-800/40 border border-white/[0.04] rounded-2xl p-7 h-full flex flex-col"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/60 text-sm leading-relaxed mb-6 flex-1" data-ar="أحسن سناك في الحي! الطاكوس ديالهم خياليين و البرغر ديالهم كبير و معمر. 🔥" data-fr="Le meilleur snack du quartier ! Leurs tacos sont incroyables et leur burger est énorme. 🔥">أحسن سناك في الحي! الطاكوس ديالهم خياليين و البرغر ديالهم كبير و معمر. 🔥</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="w-10 h-10 bg-gradient-to-br from-gold-500 to-fire-500 rounded-full flex items-center justify-center font-bold text-navy-950 text-sm font-display">أ</div><div><div class="text-sm font-bold" data-ar="أحمد م." data-fr="Ahmed M.">أحمد م.</div><div class="text-[11px] text-white/30">Google Review</div></div></div></div></div>
-                <div class="swiper-slide"><div class="bg-navy-800/40 border border-white/[0.04] rounded-2xl p-7 h-full flex flex-col"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/60 text-sm leading-relaxed mb-6 flex-1" data-ar="الشاورما ديالهم لذيذة بزاف! و التوصيل كان سريع. الأكل وصل ساخن. 👌" data-fr="Leur chawarma est vraiment délicieuse ! La livraison était rapide et chaude. 👌">الشاورما ديالهم لذيذة بزاف! و التوصيل كان سريع. الأكل وصل ساخن. 👌</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="w-10 h-10 bg-gradient-to-br from-fire-500 to-gold-500 rounded-full flex items-center justify-center font-bold text-navy-950 text-sm font-display">س</div><div><div class="text-sm font-bold" data-ar="سارة ب." data-fr="Sara B.">سارة ب.</div><div class="text-[11px] text-white/30">Google Review</div></div></div></div></div>
-                <div class="swiper-slide"><div class="bg-navy-800/40 border border-white/[0.04] rounded-2xl p-7 h-full flex flex-col"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/60 text-sm leading-relaxed mb-6 flex-1" data-ar="ولادي كيحماقو على البيتزا و العرض ديال الأطفال مزيان بزاف. أثمنة مناسبة! 👨‍👩‍👧‍👦" data-fr="Mes enfants adorent la pizza et l'offre enfants est géniale. Bons prix ! 👨‍👩‍👧‍👦">ولادي كيحماقو على البيتزا و العرض ديال الأطفال مزيان بزاف. أثمنة مناسبة! 👨‍👩‍👧‍👦</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="w-10 h-10 bg-gradient-to-br from-gold-500 to-gold-300 rounded-full flex items-center justify-center font-bold text-navy-950 text-sm font-display">ي</div><div><div class="text-sm font-bold" data-ar="يوسف ك." data-fr="Youssef K.">يوسف ك.</div><div class="text-[11px] text-white/30">Google Review</div></div></div></div></div>
-                <div class="swiper-slide"><div class="bg-navy-800/40 border border-white/[0.04] rounded-2xl p-7 h-full flex flex-col"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/60 text-sm leading-relaxed mb-6 flex-1" data-ar="الكومپير ديالهم حاجة خيالية! و المقيلات ديال فواكه البحر ممتازة. المكان نظيف 🐟" data-fr="Leur kumpir est incroyable ! Et les fritures de fruits de mer excellentes. Endroit propre 🐟">الكومپير ديالهم حاجة خيالية! و المقيلات ديال فواكه البحر ممتازة. المكان نظيف 🐟</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="w-10 h-10 bg-gradient-to-br from-fire-500 to-fire-400 rounded-full flex items-center justify-center font-bold text-navy-950 text-sm font-display">ف</div><div><div class="text-sm font-bold" data-ar="فاطمة ر." data-fr="Fatima R.">فاطمة ر.</div><div class="text-[11px] text-white/30">Google Review</div></div></div></div></div>
-                <div class="swiper-slide"><div class="bg-navy-800/40 border border-white/[0.04] rounded-2xl p-7 h-full flex flex-col"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/60 text-sm leading-relaxed mb-6 flex-1" data-ar="جربت الباستيتشو رويال و كان لذيذ بزاف! و الگراتان ميكست تحفة. أسعار جيدة 💯" data-fr="J'ai essayé le pasticcio royal, c'était délicieux ! Et le gratin mixte superbe. Bon rapport qualité/prix 💯">جربت الباستيتشو رويال و كان لذيذ بزاف! و الگراتان ميكست تحفة. أسعار جيدة 💯</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="w-10 h-10 bg-gradient-to-br from-gold-500 to-fire-500 rounded-full flex items-center justify-center font-bold text-navy-950 text-sm font-display">م</div><div><div class="text-sm font-bold" data-ar="محمد ع." data-fr="Mohamed A.">محمد ع.</div><div class="text-[11px] text-white/30">Google Review</div></div></div></div></div>
+                <div class="swiper-slide"><div class="review-card"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/55 text-sm leading-relaxed mb-6 flex-1" data-ar="أحسن سناك في الحي! الطاكوس ديالهم خياليين و البرغر ديالهم كبير و معمر. 🔥" data-fr="Le meilleur snack du quartier ! Leurs tacos sont incroyables et leur burger est énorme. 🔥">أحسن سناك في الحي! الطاكوس ديالهم خياليين و البرغر ديالهم كبير و معمر. 🔥</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="review-avatar bg-gradient-to-br from-gold-500 to-fire-500 font-display">أ</div><div><div class="text-sm font-bold" data-ar="أحمد م." data-fr="Ahmed M.">أحمد م.</div><div class="text-[11px] text-white/25">Google Review</div></div></div></div></div>
+                <div class="swiper-slide"><div class="review-card"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/55 text-sm leading-relaxed mb-6 flex-1" data-ar="الشاورما ديالهم لذيذة بزاف! و التوصيل كان سريع. الأكل وصل ساخن. 👌" data-fr="Leur chawarma est vraiment délicieuse ! La livraison était rapide et chaude. 👌">الشاورما ديالهم لذيذة بزاف! و التوصيل كان سريع. الأكل وصل ساخن. 👌</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="review-avatar bg-gradient-to-br from-fire-500 to-gold-500 font-display">س</div><div><div class="text-sm font-bold" data-ar="سارة ب." data-fr="Sara B.">سارة ب.</div><div class="text-[11px] text-white/25">Google Review</div></div></div></div></div>
+                <div class="swiper-slide"><div class="review-card"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/55 text-sm leading-relaxed mb-6 flex-1" data-ar="ولادي كيحماقو على البيتزا و العرض ديال الأطفال مزيان بزاف. أثمنة مناسبة! 👨‍👩‍👧‍👦" data-fr="Mes enfants adorent la pizza et l'offre enfants est géniale. Bons prix ! 👨‍👩‍👧‍👦">ولادي كيحماقو على البيتزا و العرض ديال الأطفال مزيان بزاف. أثمنة مناسبة! 👨‍👩‍👧‍👦</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="review-avatar bg-gradient-to-br from-gold-500 to-gold-300 font-display">ي</div><div><div class="text-sm font-bold" data-ar="يوسف ك." data-fr="Youssef K.">يوسف ك.</div><div class="text-[11px] text-white/25">Google Review</div></div></div></div></div>
+                <div class="swiper-slide"><div class="review-card"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/55 text-sm leading-relaxed mb-6 flex-1" data-ar="الكومپير ديالهم حاجة خيالية! و المقيلات ديال فواكه البحر ممتازة. المكان نظيف 🐟" data-fr="Leur kumpir est incroyable ! Et les fritures de fruits de mer excellentes. Endroit propre 🐟">الكومپير ديالهم حاجة خيالية! و المقيلات ديال فواكه البحر ممتازة. المكان نظيف 🐟</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="review-avatar bg-gradient-to-br from-fire-500 to-fire-400 font-display">ف</div><div><div class="text-sm font-bold" data-ar="فاطمة ر." data-fr="Fatima R.">فاطمة ر.</div><div class="text-[11px] text-white/25">Google Review</div></div></div></div></div>
+                <div class="swiper-slide"><div class="review-card"><div class="text-gold-400 text-sm mb-4 tracking-wide">★★★★★</div><p class="text-white/55 text-sm leading-relaxed mb-6 flex-1" data-ar="جربت الباستيتشو رويال و كان لذيذ بزاف! و الگراتان ميكست تحفة. أسعار جيدة 💯" data-fr="J'ai essayé le pasticcio royal, c'était délicieux ! Et le gratin mixte superbe. Bon rapport qualité/prix 💯">جربت الباستيتشو رويال و كان لذيذ بزاف! و الگراتان ميكست تحفة. أسعار جيدة 💯</p><div class="flex items-center gap-3 pt-5 border-t border-white/[0.04]"><div class="review-avatar bg-gradient-to-br from-gold-500 to-fire-500 font-display">م</div><div><div class="text-sm font-bold" data-ar="محمد ع." data-fr="Mohamed A.">محمد ع.</div><div class="text-[11px] text-white/25">Google Review</div></div></div></div></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -473,19 +609,19 @@
 </section>
 
 <!-- ══════════════ CTA ══════════════ -->
-<section class="py-24 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-gold-500/[0.05] via-fire-500/[0.03] to-transparent"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold-500/[0.04] rounded-full blur-[150px]"></div>
-        <div class="relative max-w-3xl mx-auto px-4 text-center" data-reveal>
-            <div class="text-6xl sm:text-7xl mb-6">🍔</div>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-black mb-4" data-ar="عندك الجوع؟ 😋" data-fr="Vous avez faim ? 😋">عندك الجوع؟ 😋</h2>
-            <p class="text-white/40 text-base sm:text-lg mb-10 max-w-xl mx-auto" data-ar="أطلب دابا عبر واتساب أو بالتيليفون و نوصلو ليك الأكل ساخن" data-fr="Commandez maintenant via WhatsApp ou par téléphone et recevez votre commande chaude">أطلب دابا عبر واتساب أو بالتيليفون و نوصلو ليك الأكل ساخن</p>
+<section class="cta-section py-28 relative overflow-hidden">
+    <div class="cta-glow bg-gold-500/[0.06] top-[-10%] left-[20%]"></div>
+    <div class="cta-glow bg-fire-500/[0.04] bottom-[-15%] right-[10%]" style="animation-delay:4s"></div>
+    <div class="relative max-w-3xl mx-auto px-4 text-center" data-reveal>
+        <div class="text-7xl sm:text-8xl mb-8 animate-float">🍔</div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-black mb-5" data-ar="عندك الجوع؟ 😋" data-fr="Vous avez faim ? 😋">عندك الجوع؟ 😋</h2>
+        <p class="text-white/35 text-base sm:text-lg mb-10 max-w-xl mx-auto" data-ar="أطلب دابا عبر واتساب أو بالتيليفون و نوصلو ليك الأكل ساخن" data-fr="Commandez maintenant via WhatsApp ou par téléphone et recevez votre commande chaude">أطلب دابا عبر واتساب أو بالتيليفون و نوصلو ليك الأكل ساخن</p>
         <div class="flex flex-wrap gap-4 justify-center">
-            <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B9%D9%86%D8%AF%D9%83%D9%85" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold px-9 py-4 rounded-full text-base transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-green-500/20 active:scale-95">
+            <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B9%D9%86%D8%AF%D9%83%D9%85" target="_blank" rel="noopener noreferrer" class="magnetic-btn inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold px-9 py-4 rounded-full text-base transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-500/25 active:scale-95">
                 <i class="fab fa-whatsapp text-xl"></i>
                 <span data-ar="أطلب عبر واتساب" data-fr="Commander via WhatsApp">أطلب عبر واتساب</span>
             </a>
-            <a href="tel:0676220003" class="inline-flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] text-white font-bold px-9 py-4 rounded-full text-base hover:bg-white/[0.08] transition-all duration-300 backdrop-blur-sm active:scale-95">
+            <a href="tel:0676220003" class="magnetic-btn inline-flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] text-white font-bold px-9 py-4 rounded-full text-base hover:bg-white/[0.08] transition-all duration-300 backdrop-blur-sm active:scale-95">
                 <i class="fas fa-phone text-sm"></i>
                 <span data-ar="إتصل بينا" data-fr="Appelez-nous">إتصل بينا</span>
             </a>
@@ -494,27 +630,27 @@
 </section>
 
 <!-- ══════════════ CONTACT / LOCATION ══════════════ -->
-<section id="contact" class="py-20 sm:py-28 bg-navy-900/40">
+<section id="contact" class="py-20 sm:py-28 bg-navy-900/30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-14" data-reveal>
             <h2 class="text-3xl sm:text-4xl font-display font-black" data-ar="فين تلقاونا" data-fr="Où nous trouver">فين تلقاونا</h2>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5 mb-10" data-reveal data-delay="100">
-            <a href="tel:0676220003" class="group bg-navy-800/40 border border-white/[0.04] rounded-2xl p-7 text-center hover:border-gold-500/20 transition-all duration-300">
+            <a href="tel:0676220003" class="contact-card group">
                 <div class="w-14 h-14 bg-gold-500/[0.08] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gold-500/[0.15] transition"><i class="fas fa-phone text-lg text-gold-500"></i></div>
                 <h3 class="font-display font-bold mb-1.5 text-sm" data-ar="التيليفون" data-fr="Téléphone">التيليفون</h3>
-                <p class="text-white/40 text-sm" dir="ltr">0676 220 003</p>
+                <p class="text-white/35 text-sm" dir="ltr">0676 220 003</p>
             </a>
-            <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B9%D9%86%D8%AF%D9%83%D9%85" target="_blank" rel="noopener noreferrer" class="group bg-navy-800/40 border border-white/[0.04] rounded-2xl p-7 text-center hover:border-green-500/20 transition-all duration-300">
+            <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B9%D9%86%D8%AF%D9%83%D9%85" target="_blank" rel="noopener noreferrer" class="contact-card group">
                 <div class="w-14 h-14 bg-green-500/[0.08] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500/[0.15] transition"><i class="fab fa-whatsapp text-lg text-green-500"></i></div>
                 <h3 class="font-display font-bold mb-1.5 text-sm">WhatsApp</h3>
-                <p class="text-white/40 text-sm" data-ar="راسلنا دابا" data-fr="Écrivez-nous maintenant">راسلنا دابا</p>
+                <p class="text-white/35 text-sm" data-ar="راسلنا دابا" data-fr="Écrivez-nous maintenant">راسلنا دابا</p>
             </a>
-            <a href="https://maps.app.goo.gl/u7gHWxWksG43x8Tb6" target="_blank" rel="noopener noreferrer" class="group bg-navy-800/40 border border-white/[0.04] rounded-2xl p-7 text-center hover:border-fire-500/20 transition-all duration-300">
+            <a href="https://maps.app.goo.gl/u7gHWxWksG43x8Tb6" target="_blank" rel="noopener noreferrer" class="contact-card group">
                 <div class="w-14 h-14 bg-fire-500/[0.08] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-fire-500/[0.15] transition"><i class="fas fa-map-marker-alt text-lg text-fire-500"></i></div>
                 <h3 class="font-display font-bold mb-1.5 text-sm" data-ar="العنوان" data-fr="Adresse">العنوان</h3>
-                <p class="text-white/40 text-sm" data-ar="الرباط، المغرب" data-fr="Rabat, Maroc">الرباط، المغرب</p>
+                <p class="text-white/35 text-sm" data-ar="الرباط، المغرب" data-fr="Rabat, Maroc">الرباط، المغرب</p>
             </a>
         </div>
 
@@ -524,12 +660,12 @@
         </div>
 
         <!-- Hours -->
-        <div class="mt-5 bg-navy-800/40 border border-white/[0.04] rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4" data-reveal data-delay="250">
+        <div class="mt-5 glass-card p-5 flex flex-col sm:flex-row items-center justify-between gap-4" data-reveal data-delay="250">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-gold-500/[0.08] rounded-lg flex items-center justify-center text-gold-500"><i class="fas fa-clock"></i></div>
                 <div>
                     <div class="text-sm font-bold" data-ar="أوقات العمل" data-fr="Horaires">أوقات العمل</div>
-                    <div class="text-xs text-white/40" data-ar="كل يوم: 11:00 — 23:00" data-fr="Tous les jours : 11h — 23h">كل يوم: 11:00 — 23:00</div>
+                    <div class="text-xs text-white/35" data-ar="كل يوم: 11:00 — 23:00" data-fr="Tous les jours : 11h — 23h">كل يوم: 11:00 — 23:00</div>
                 </div>
             </div>
             <div id="status-badge-footer" class="inline-flex items-center gap-2 bg-green-500/10 text-green-400 text-xs font-bold px-4 py-2 rounded-full">
@@ -551,7 +687,7 @@
                     <img src="img/logo.png" alt="Hamza Food" class="w-10 h-10 rounded-xl object-contain">
                     <span class="font-display font-extrabold text-lg">Hamza Food</span>
                 </div>
-                <p class="text-sm text-white/40 mb-5 max-w-sm leading-relaxed" data-ar="سناك حمزة — أحسن الوجبات السريعة في الرباط. أكثر من 70 وصفة من تاكوس و برگر و بيتزا و شاورما و بزاف." data-fr="Hamza Food — Le meilleur fast-food de Rabat. Plus de 70 recettes de tacos, burgers, pizzas, chawarma et plus.">سناك حمزة — أحسن الوجبات السريعة في الرباط. أكثر من 70 وصفة من تاكوس و برگر و بيتزا و شاورما و بزاف.</p>
+                <p class="text-sm text-white/35 mb-5 max-w-sm leading-relaxed" data-ar="سناك حمزة — أحسن الوجبات السريعة في الرباط. أكثر من 70 وصفة من تاكوس و برگر و بيتزا و شاورما و بزاف." data-fr="Hamza Food — Le meilleur fast-food de Rabat. Plus de 70 recettes de tacos, burgers, pizzas, chawarma et plus.">سناك حمزة — أحسن الوجبات السريعة في الرباط. أكثر من 70 وصفة من تاكوس و برگر و بيتزا و شاورما و بزاف.</p>
                 <div class="flex gap-2.5">
                     <a href="tel:0676220003" class="social-action" aria-label="Appeler Hamza Food"><i class="fas fa-phone"></i></a>
                     <a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B9%D9%86%D8%AF%D9%83%D9%85" target="_blank" rel="noopener noreferrer" class="social-action" aria-label="Commander sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -562,22 +698,22 @@
             <!-- Links -->
             <div>
                 <h4 class="font-display font-bold text-sm mb-4" data-ar="روابط سريعة" data-fr="Liens rapides">روابط سريعة</h4>
-                <div class="space-y-2.5"><a href="#home" class="block text-sm text-white/40 hover:text-gold-400 transition" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a><a href="#menu" class="block text-sm text-white/40 hover:text-gold-400 transition" data-ar="المنيو" data-fr="Menu">المنيو</a><a href="#about" class="block text-sm text-white/40 hover:text-gold-400 transition" data-ar="من نحن" data-fr="À propos">من نحن</a><a href="#gallery" class="block text-sm text-white/40 hover:text-gold-400 transition" data-ar="صور" data-fr="Galerie">صور</a></div>
+                <div class="space-y-2.5"><a href="#home" class="block text-sm text-white/35 hover:text-gold-400 transition" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a><a href="#menu" class="block text-sm text-white/35 hover:text-gold-400 transition" data-ar="المنيو" data-fr="Menu">المنيو</a><a href="#about" class="block text-sm text-white/35 hover:text-gold-400 transition" data-ar="من نحن" data-fr="À propos">من نحن</a><a href="#gallery" class="block text-sm text-white/35 hover:text-gold-400 transition" data-ar="صور" data-fr="Galerie">صور</a></div>
             </div>
             <!-- Contact -->
             <div>
                 <h4 class="font-display font-bold text-sm mb-4" data-ar="تواصل معنا" data-fr="Contact">تواصل معنا</h4>
                 <div class="space-y-3">
-                    <div class="flex items-center gap-2.5 text-sm text-white/40"><i class="fas fa-map-marker-alt text-fire-500/60 w-4 text-center"></i> <span data-ar="الرباط، المغرب" data-fr="Rabat, Maroc">الرباط، المغرب</span></div>
-                    <div class="flex items-center gap-2.5 text-sm text-white/40"><i class="fas fa-phone text-gold-500/60 w-4 text-center"></i> <span dir="ltr">0676 220 003</span></div>
-                    <div class="flex items-center gap-2.5 text-sm text-white/40"><i class="fas fa-clock text-gold-500/60 w-4 text-center"></i> <span data-ar="كل يوم 11h—23h" data-fr="Tous les jours 11h—23h">كل يوم 11h—23h</span></div>
+                    <div class="flex items-center gap-2.5 text-sm text-white/35"><i class="fas fa-map-marker-alt text-fire-500/60 w-4 text-center"></i> <span data-ar="الرباط، المغرب" data-fr="Rabat, Maroc">الرباط، المغرب</span></div>
+                    <div class="flex items-center gap-2.5 text-sm text-white/35"><i class="fas fa-phone text-gold-500/60 w-4 text-center"></i> <span dir="ltr">0676 220 003</span></div>
+                    <div class="flex items-center gap-2.5 text-sm text-white/35"><i class="fas fa-clock text-gold-500/60 w-4 text-center"></i> <span data-ar="كل يوم 11h—23h" data-fr="Tous les jours 11h—23h">كل يوم 11h—23h</span></div>
                 </div>
             </div>
         </div>
 
         <div class="pt-8 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p class="text-xs text-white/25">© 2026 Hamza Food — <span data-ar="جميع الحقوق محفوظة" data-fr="Tous droits réservés">جميع الحقوق محفوظة</span></p>
-            <p class="text-xs text-white/25"><span data-ar="صُنع بواسطة" data-fr="Réalisé par">صُنع بواسطة</span> <a href="https://wa.me/212774946024" target="_blank" rel="noopener noreferrer" class="text-gold-500/60 hover:text-gold-400 transition font-semibold">Mediabuz</a> ⚡</p>
+            <p class="text-xs text-white/20">© 2026 Hamza Food — <span data-ar="جميع الحقوق محفوظة" data-fr="Tous droits réservés">جميع الحقوق محفوظة</span></p>
+            <p class="text-xs text-white/20"><span data-ar="صُنع بواسطة" data-fr="Réalisé par">صُنع بواسطة</span> <a href="https://wa.me/212774946024" target="_blank" rel="noopener noreferrer" class="text-gold-500/50 hover:text-gold-400 transition font-semibold">Mediabuz</a> ⚡</p>
         </div>
     </div>
 </footer>
@@ -589,8 +725,7 @@
 </button>
 
 <!-- WhatsApp Float -->
-<a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B9%D9%86%D8%AF%D9%83%D9%85" target="_blank" rel="noopener noreferrer" class="fixed bottom-5 start-5 z-40 group" aria-label="Commander sur WhatsApp">
-    <div class="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-20"></div>
+<a href="https://wa.me/212676220003?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B9%D9%86%D8%AF%D9%83%D9%85" target="_blank" rel="noopener noreferrer" class="fixed bottom-5 start-5 z-40 group wa-float" aria-label="Commander sur WhatsApp">
     <div class="relative w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg shadow-green-500/25 group-hover:scale-110 transition-transform text-2xl">
         <i class="fab fa-whatsapp"></i>
     </div>
@@ -598,7 +733,7 @@
 
 <!-- Powered by -->
 <div class="fixed bottom-0 left-0 right-0 bg-navy-950/80 backdrop-blur-sm border-t border-white/[0.03] py-1.5 text-center z-30">
-    <span class="text-[10px] text-white/20">⚡ Powered by <a href="https://wa.me/212774946024" target="_blank" rel="noopener noreferrer" class="text-gold-500/40 hover:text-gold-400 transition">Mediabuz</a></span>
+    <span class="text-[10px] text-white/15">⚡ Powered by <a href="https://wa.me/212774946024" target="_blank" rel="noopener noreferrer" class="text-gold-500/35 hover:text-gold-400 transition">Mediabuz</a></span>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
