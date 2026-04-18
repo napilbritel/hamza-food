@@ -1,17 +1,21 @@
 /* ═══════════════════════════════════════════════
-   HAMZA FOOD — App v3 (Premium Interactions)
+   HAMZA FOOD — App v2 (Bilingual + Food Images)
    ═══════════════════════════════════════════════ */
 
 // ─── Language System ───
 let currentLang = 'ar';
 
 function toggleLang(lang) {
-    if (!lang) lang = currentLang === 'ar' ? 'fr' : 'ar';
+    // If called without arg, toggle between ar/fr
+    if (!lang) {
+        lang = currentLang === 'ar' ? 'fr' : 'ar';
+    }
     currentLang = lang;
     document.body.classList.toggle('lang-fr', lang === 'fr');
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = lang;
+    document.documentElement.lang = lang === 'ar' ? 'ar' : 'fr';
 
+    // Update all bilingual elements
     document.querySelectorAll('[data-ar]').forEach(el => {
         if (el.hasAttribute('data-ar-html')) {
             el.innerHTML = lang === 'ar' ? el.getAttribute('data-ar-html') : el.getAttribute('data-fr-html');
@@ -20,18 +24,21 @@ function toggleLang(lang) {
         }
     });
 
+    // Update lang toggle buttons
     document.querySelectorAll('.lang-opt').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-l') === lang);
     });
 
+    // Re-render menu
     renderMenu();
-    updateStatus();
 }
 
 // ─── Menu Data ───
 const MENU = {
     tacos: {
-        ar: 'تاكوس', fr: 'Tacos', icon: 'fas fa-pepper-hot',
+        ar: 'تاكوس',
+        fr: 'Tacos',
+        icon: 'fas fa-pepper-hot',
         items: [
             { ar: 'تاكوس بوليه', fr: 'Tacos Poulet', price: [27, 32], img: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200&h=200&fit=crop' },
             { ar: 'تاكوس بوليه گريي', fr: 'Tacos Poulet Grillé', price: [28, 35], img: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=200&h=200&fit=crop' },
@@ -45,7 +52,9 @@ const MENU = {
         ]
     },
     burger: {
-        ar: 'برگر', fr: 'Burger', icon: 'fas fa-hamburger',
+        ar: 'برگر',
+        fr: 'Burger',
+        icon: 'fas fa-hamburger',
         items: [
             { ar: 'برگر سيمبل', fr: 'Burger Simple', price: 23, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&h=200&fit=crop' },
             { ar: 'تشيز برگر', fr: 'Cheeseburger', price: 27, img: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200&h=200&fit=crop' },
@@ -54,7 +63,9 @@ const MENU = {
         ]
     },
     chawarma: {
-        ar: 'شاورما', fr: 'Chawarma', icon: 'fas fa-drumstick-bite',
+        ar: 'شاورما',
+        fr: 'Chawarma',
+        icon: 'fas fa-drumstick-bite',
         items: [
             { ar: 'شاورما سيمبل', fr: 'Chawarma Simple', price: 25, img: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=200&h=200&fit=crop' },
             { ar: 'شاورما فروماج', fr: 'Chawarma Fromage', price: 27, img: 'https://images.unsplash.com/photo-1561651188-d207bbec4ec3?w=200&h=200&fit=crop' },
@@ -65,7 +76,9 @@ const MENU = {
         ]
     },
     panini: {
-        ar: 'بانيني', fr: 'Panini', icon: 'fas fa-bread-slice',
+        ar: 'بانيني',
+        fr: 'Panini',
+        icon: 'fas fa-bread-slice',
         items: [
             { ar: 'بانيني هوت دوغ', fr: 'Panini Hot Dog', price: 22, img: 'https://images.unsplash.com/photo-1619740455993-9e612b49640a?w=200&h=200&fit=crop' },
             { ar: 'بانيني طون', fr: 'Panini Thon', price: 23, img: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=200&h=200&fit=crop' },
@@ -77,7 +90,9 @@ const MENU = {
         ]
     },
     sandwich: {
-        ar: 'سندويتش', fr: 'Sandwich', icon: 'fas fa-hotdog',
+        ar: 'سندويتش',
+        fr: 'Sandwich',
+        icon: 'fas fa-hotdog',
         items: [
             { ar: 'سندويتش هوت دوغ', fr: 'Sandwich Hot Dog', price: 22, img: 'https://images.unsplash.com/photo-1612392062126-47986823ac3d?w=200&h=200&fit=crop' },
             { ar: 'سندويتش ستراسبورگ', fr: 'Sandwich Strasbourg', price: 22, img: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=200&h=200&fit=crop' },
@@ -91,7 +106,9 @@ const MENU = {
         ]
     },
     plats: {
-        ar: 'أطباق', fr: 'Plats', icon: 'fas fa-utensils',
+        ar: 'أطباق',
+        fr: 'Plats',
+        icon: 'fas fa-utensils',
         items: [
             { ar: 'لحم مفروم', fr: 'Viande Hachée', price: 28, img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200&h=200&fit=crop' },
             { ar: 'داند', fr: 'Dinde', price: 30, img: 'https://images.unsplash.com/photo-1432139509613-5c4255a187fb?w=200&h=200&fit=crop' },
@@ -102,7 +119,9 @@ const MENU = {
         ]
     },
     tajin: {
-        ar: 'طاجين', fr: 'Tajin', icon: 'fas fa-fire',
+        ar: 'طاجين',
+        fr: 'Tajin',
+        icon: 'fas fa-fire',
         items: [
             { ar: 'طاجين داند', fr: 'Tajin Dinde', price: 28, img: 'https://images.unsplash.com/photo-1511690743698-d9d18f7e20f1?w=200&h=200&fit=crop' },
             { ar: 'طاجين سوسيس', fr: 'Tajin Saucisse', price: 30, img: 'https://images.unsplash.com/photo-1547424850-28ac9ac2fa43?w=200&h=200&fit=crop' },
@@ -111,7 +130,9 @@ const MENU = {
         ]
     },
     omelette: {
-        ar: 'أومليت', fr: 'Omelette', icon: 'fas fa-egg',
+        ar: 'أومليت',
+        fr: 'Omelette',
+        icon: 'fas fa-egg',
         items: [
             { ar: 'أومليت سيمبل', fr: 'Omelette Simple', price: 15, img: 'https://images.unsplash.com/photo-1525184782196-8e2ded604bf7?w=200&h=200&fit=crop' },
             { ar: 'أومليت فروماج', fr: 'Omelette Fromage', price: 17, img: 'https://images.unsplash.com/photo-1510693206972-df098062cb71?w=200&h=200&fit=crop' },
@@ -120,7 +141,9 @@ const MENU = {
         ]
     },
     kids: {
-        ar: 'أطفال', fr: 'Kids', icon: 'fas fa-child',
+        ar: 'أطفال',
+        fr: 'Kids',
+        icon: 'fas fa-child',
         items: [
             { ar: 'هامبرگر + فريت + عصير', fr: 'Hamburger + Frite + Jus', price: 30, img: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200&h=200&fit=crop' },
             { ar: 'بيتزا + فريت + عصير', fr: 'Pizza + Frite + Jus', price: 35, img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&h=200&fit=crop' }
@@ -134,28 +157,40 @@ let activeTab = 'all';
 function renderMenu() {
     const grid = document.getElementById('menu-grid');
     if (!grid) return;
+
     const lang = currentLang;
     let html = '';
     let delay = 0;
 
     Object.entries(MENU).forEach(([key, cat]) => {
         if (activeTab !== 'all' && activeTab !== key) return;
+
+        // Category header when showing all
         if (activeTab === 'all') {
-            html += '<div class="menu-cat-header"><span class="cat-icon"><i class="' + cat.icon + '"></i></span><h3>' + cat[lang] + '</h3></div>';
+            html += `<div class="menu-cat-header">
+                <span class="cat-icon"><i class="${cat.icon}"></i></span>
+                <h3>${cat[lang]}</h3>
+            </div>`;
         }
+
         cat.items.forEach(item => {
             const name = item[lang];
             const priceText = Array.isArray(item.price)
-                ? '<small>DH</small> ' + item.price[0] + '/' + item.price[1]
-                : '<small>DH</small> ' + item.price;
+                ? `<small>DH</small> ${item.price[0]}/${item.price[1]}`
+                : `<small>DH</small> ${item.price}`;
             const featured = item.featured ? ' featured' : '';
-            html += '<div class="menu-card' + featured + '" style="animation-delay:' + delay + 'ms">';
-            html += '<div class="mc-img"><img src="' + item.img + '" alt="' + name + '" loading="lazy"></div>';
-            html += '<div class="mc-info"><div class="mc-name">' + name + '</div></div>';
-            html += '<div class="mc-price">' + priceText + '</div></div>';
-            delay += 35;
+
+            html += `<div class="menu-card${featured}" style="animation-delay:${delay}ms">
+                <div class="mc-img"><img src="${item.img}" alt="${name}" loading="lazy"></div>
+                <div class="mc-info">
+                    <div class="mc-name">${name}</div>
+                </div>
+                <div class="mc-price">${priceText}</div>
+            </div>`;
+            delay += 40;
         });
     });
+
     grid.innerHTML = html;
 }
 
@@ -171,47 +206,16 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         const loader = document.querySelector('.loader');
         if (loader) loader.classList.add('hidden');
-    }, 2000);
+    }, 1800);
 });
 
-// ─── Navbar Scroll ───
+// ─── Navbar ───
 const navbar = document.querySelector('.navbar');
-const scrollProgressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
 
-function onScroll() {
-    const scrollY = window.scrollY;
-    // Navbar solid bg
-    if (navbar) navbar.classList.toggle('scrolled', scrollY > 50);
-    // Scroll progress bar
-    if (scrollProgressBar) {
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
-        scrollProgressBar.style.width = progress + '%';
-    }
-    // Active nav section tracking
-    updateActiveNav();
-}
-window.addEventListener('scroll', onScroll, { passive: true });
-
-// ─── Active Nav Section ───
-function updateActiveNav() {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollPos = window.scrollY + 200;
-    sections.forEach(section => {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        const id = section.getAttribute('id');
-        const link = document.querySelector('.nav-link[href="#' + id + '"]');
-        if (link) {
-            if (scrollPos >= top && scrollPos < top + height) {
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-            }
-        }
-    });
-}
-
-// ─── Mobile Nav ───
+// Mobile nav
 function toggleMenu() {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -221,6 +225,7 @@ function toggleMenu() {
     }
 }
 
+// Close mobile nav on link click
 document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('click', () => {
         const navToggle = document.querySelector('.nav-toggle');
@@ -238,38 +243,36 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         const target = document.querySelector(id);
         if (target) {
             e.preventDefault();
-            const offset = 80;
-            const y = target.getBoundingClientRect().top + window.scrollY - offset;
-            window.scrollTo({ top: y, behavior: 'smooth' });
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 });
 
-// ─── Reveal on Scroll (Staggered) ───
+// ─── Reveal on Scroll ───
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const delay = parseInt(entry.target.getAttribute('data-delay')) || 0;
-            setTimeout(() => {
-                entry.target.classList.add('revealed');
-            }, delay);
+            entry.target.classList.add('revealed');
             revealObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
 
 // ─── Counter Animation ───
 function animateCounter(el) {
     const target = parseInt(el.getAttribute('data-count'));
-    const duration = 2200;
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 2000;
     const start = performance.now();
+
     function update(now) {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 4);
-        el.textContent = Math.floor(eased * target);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        el.textContent = current + suffix;
         if (progress < 1) requestAnimationFrame(update);
     }
     requestAnimationFrame(update);
@@ -287,31 +290,13 @@ const counterObserver = new IntersectionObserver((entries) => {
 const heroStats = document.querySelector('.hero-stats');
 if (heroStats) counterObserver.observe(heroStats);
 
-// ─── Cursor Glow (Desktop Only) ───
-const cursorGlow = document.getElementById('cursorGlow');
-if (cursorGlow && window.matchMedia('(min-width: 1024px)').matches) {
-    let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
-    document.addEventListener('mousemove', e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    }, { passive: true });
-
-    function updateGlow() {
-        glowX += (mouseX - glowX) * 0.08;
-        glowY += (mouseY - glowY) * 0.08;
-        cursorGlow.style.transform = 'translate(' + (glowX - 250) + 'px, ' + (glowY - 250) + 'px)';
-        requestAnimationFrame(updateGlow);
-    }
-    updateGlow();
-}
-
 // ─── Swiper (Reviews) ───
 if (typeof Swiper !== 'undefined') {
     new Swiper('.reviews-swiper', {
         slidesPerView: 1,
         spaceBetween: 20,
         loop: true,
-        autoplay: { delay: 5000, disableOnInteraction: false },
+        autoplay: { delay: 4500, disableOnInteraction: false },
         pagination: { el: '.swiper-pagination', clickable: true },
         breakpoints: {
             640: { slidesPerView: 2, spaceBetween: 20 },
@@ -324,43 +309,43 @@ if (typeof Swiper !== 'undefined') {
 function updateStatus() {
     const badge = document.getElementById('status-badge');
     if (!badge) return;
-    const hour = new Date().getHours();
-    const isOpen = hour >= 11 && hour < 23;
+    const now = new Date();
+    const hour = now.getHours();
+    const isOpen = hour >= 12 && hour < 23;
+
     badge.className = 'status-badge ' + (isOpen ? 'open' : 'closed');
+
     const dotHtml = '<span class="dot"></span>';
     if (isOpen) {
-        badge.innerHTML = currentLang === 'ar' ? dotHtml + ' مفتوح الآن' : dotHtml + ' Ouvert maintenant';
+        badge.innerHTML = currentLang === 'ar'
+            ? `${dotHtml} مفتوح الآن`
+            : `${dotHtml} Ouvert maintenant`;
     } else {
-        badge.innerHTML = currentLang === 'ar' ? dotHtml + ' مغلق الآن' : dotHtml + ' Fermé maintenant';
+        badge.innerHTML = currentLang === 'ar'
+            ? `${dotHtml} مغلق الآن`
+            : `${dotHtml} Fermé maintenant`;
     }
 }
 updateStatus();
 setInterval(updateStatus, 60000);
 
-// ─── Gallery Lightbox ───
+// ─── Gallery Lightbox (simple) ───
 document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('click', () => {
         const img = item.querySelector('img');
         if (!img) return;
         const overlay = document.createElement('div');
-        overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(16px);opacity:0;transition:opacity 0.3s';
+        overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(10px)';
         const bigImg = document.createElement('img');
-        bigImg.src = img.src.replace('w=500', 'w=1200').replace('w=600', 'w=1200').replace('w=800', 'w=1200');
-        bigImg.style.cssText = 'max-width:92%;max-height:92%;border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,0.6);transform:scale(0.9);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+        bigImg.src = img.src;
+        bigImg.style.cssText = 'max-width:90%;max-height:90%;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.5)';
         overlay.appendChild(bigImg);
-        overlay.addEventListener('click', () => {
-            overlay.style.opacity = '0';
-            setTimeout(() => overlay.remove(), 300);
-        });
+        overlay.addEventListener('click', () => overlay.remove());
         document.body.appendChild(overlay);
-        requestAnimationFrame(() => {
-            overlay.style.opacity = '1';
-            bigImg.style.transform = 'scale(1)';
-        });
     });
 });
 
-// ─── Init ───
+// ─── Init Menu ───
 document.addEventListener('DOMContentLoaded', () => {
     renderMenu();
 });
